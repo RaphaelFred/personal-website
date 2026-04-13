@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import SiteHeader from '../components/SiteHeader.astro';
+import { withBase } from '../utils/paths';
 
 const offers = [
   {
@@ -58,7 +59,7 @@ const contactMailto =
           </div>
         </div>
         <aside class="graphic-panel" aria-label="Grafik">
-          <img src="/graphics/ai-data-panel.svg" alt="Abstrakte grafische Komposition fuer AI und Daten" />
+          <img src={withBase('/graphics/ai-data-panel.svg')} alt="Abstrakte grafische Komposition fuer AI und Daten" />
         </aside>
       </div>
     </section>
@@ -99,7 +100,7 @@ const contactMailto =
           <p class="kicker">Artikel</p>
           <h2>Notizen, Analysen und Beispiele aus meiner Arbeit mit Daten und AI.</h2>
         </div>
-        <a class="section-link" href="/blog">Zum Archiv</a>
+        <a class="section-link" href={withBase('/blog')}>Zum Archiv</a>
       </div>
       <div class="article-grid">
         {posts.map((post) => (
@@ -112,7 +113,7 @@ const contactMailto =
               })}
             </p>
             <h3>
-              <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              <a href={withBase(`/blog/${post.slug}`)}>{post.data.title}</a>
             </h3>
             <p>{post.data.description}</p>
           </article>

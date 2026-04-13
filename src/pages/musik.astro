@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import { withBase } from '../utils/paths';
 
 const platformLinks = [
   {
@@ -36,7 +37,7 @@ const platformLinks = [
           </p>
         </div>
         <aside class="graphic-panel" aria-label="Grafik">
-          <img src="/graphics/music-panel.svg" alt="Abstrakte grafische Komposition fuer Musik" />
+          <img src={withBase('/graphics/music-panel.svg')} alt="Abstrakte grafische Komposition fuer Musik" />
         </aside>
       </div>
     </section>

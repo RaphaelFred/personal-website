@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../utils/paths';
+
 interface Props {
   current?: 'home' | 'ai-data' | 'musik' | 'blog';
 }
@@ -18,10 +20,10 @@ const externalLinks = [
 ---
 
 <header class="site-header">
-  <a class="wordmark" href="/" aria-label="Startseite Raphael Fredebeul">Raphael Fredebeul</a>
+  <a class="wordmark" href={withBase('/')} aria-label="Startseite Raphael Fredebeul">Raphael Fredebeul</a>
   <nav class="nav" aria-label="Hauptnavigation">
     {navItems.map((item) => (
-      <a href={item.href} aria-current={current === item.key ? 'page' : undefined}>{item.label}</a>
+      <a href={withBase(item.href)} aria-current={current === item.key ? 'page' : undefined}>{item.label}</a>
     ))}
   </nav>
   <div class="header-links" aria-label="Externe Links">

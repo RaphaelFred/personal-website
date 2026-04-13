@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../utils/paths';
+
 interface Props {
   title?: string;
   description?: string;
@@ -8,6 +10,8 @@ const {
   title = 'Raphael Fredebeul | Data Science',
   description = 'Persoenliche Website von Raphael Fredebeul mit Fokus auf AI & Data, Innovation, Kreativitaet und Consulting.',
 } = Astro.props;
+
+const socialImage = withBase('/social-card.svg');
 ---
 
 <!doctype html>
@@ -16,8 +20,8 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="icon" href={withBase('/favicon.ico')} />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f7f8f5" />
@@ -26,14 +30,14 @@ const {
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="de_DE" />
     <meta property="og:site_name" content="Raphael Fredebeul" />
-    <meta property="og:image" content="/social-card.svg" />
+    <meta property="og:image" content={socialImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <title>{title}</title>
   </head>
   <body>
-    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
+    <a class="skip-link" href={withBase('/#main-content')}>Zum Inhalt springen</a>
     <slot />
   </body>
 </html>

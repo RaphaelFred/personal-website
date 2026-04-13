@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
 import SiteHeader from '../../components/SiteHeader.astro';
+import { withBase } from '../../utils/paths';
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
@@ -20,7 +21,7 @@ const { Content } = await render(post);
   <main class="post-page" id="main-content">
     <SiteHeader current="ai-data" />
     <header class="post-header">
-      <a class="back-link" href="/beratung#artikel">Zurueck zu AI & Data</a>
+      <a class="back-link" href={withBase('/beratung#artikel')}>Zurueck zu AI & Data</a>
       <p class="kicker">AI & Data</p>
       <h1>{post.data.title}</h1>
       <p class="post-date">
