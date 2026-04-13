@@ -1,0 +1,29 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" rx="36" fill="#07111F"/>
+  <rect x="28" y="28" width="1144" height="574" rx="28" fill="url(#paint0_linear)" fill-opacity="0.45" stroke="#9CC1FF" stroke-opacity="0.25"/>
+  <circle cx="196" cy="136" r="124" fill="#43D3FF" fill-opacity="0.18"/>
+  <circle cx="1028" cy="138" r="110" fill="#FFD47A" fill-opacity="0.16"/>
+  <rect x="86" y="96" width="84" height="84" rx="42" fill="#0D182B" stroke="#7DF9D0" stroke-opacity="0.4"/>
+  <text x="111" y="148" fill="#7DF9D0" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="700">AL</text>
+  <text x="86" y="258" fill="#7DF9D0" font-family="Inter, Arial, sans-serif" font-size="20" letter-spacing="4">DATA SCIENTIST</text>
+  <text x="86" y="344" fill="#F2F6FF" font-family="Inter, Arial, sans-serif" font-size="78" font-weight="700">
+    Turning data into
+  </text>
+  <text x="86" y="426" fill="#F2F6FF" font-family="Inter, Arial, sans-serif" font-size="78" font-weight="700">
+    decisive stories.
+  </text>
+  <text x="86" y="500" fill="#9DB1D0" font-family="Inter, Arial, sans-serif" font-size="28">
+    Machine learning, experimentation, and analytics strategy for growth-minded teams.
+  </text>
+  <rect x="864" y="360" width="230" height="152" rx="24" fill="#0D182B" stroke="#9CC1FF" stroke-opacity="0.18"/>
+  <text x="902" y="416" fill="#FFD47A" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="700">34%</text>
+  <text x="902" y="458" fill="#9DB1D0" font-family="Inter, Arial, sans-serif" font-size="22">Typical lift uncovered</text>
+  <text x="902" y="486" fill="#9DB1D0" font-family="Inter, Arial, sans-serif" font-size="22">through sharper insight</text>
+  <defs>
+    <linearGradient id="paint0_linear" x1="86" y1="72" x2="1112" y2="574" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#43D3FF" stop-opacity="0.32"/>
+      <stop offset="0.55" stop-color="#07111F" stop-opacity="0.14"/>
+      <stop offset="1" stop-color="#FFD47A" stop-opacity="0.26"/>
+    </linearGradient>
+  </defs>
+</svg>

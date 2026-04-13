@@ -1,0 +1,567 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const manifesto = [
+  'Clarity over ornament.',
+  'Evidence over hype.',
+  'Taste over dashboard clutter.',
+];
+
+const work = [
+  {
+    index: '01',
+    title: 'Retention System',
+    detail:
+      'Mapped product behavior to churn risk and turned a vague retention problem into a weekly operating rhythm for growth and lifecycle teams.',
+  },
+  {
+    index: '02',
+    title: 'Experiment Design',
+    detail:
+      'Reframed channel performance around incrementality, not attribution theater, so budget decisions became easier to defend.',
+  },
+  {
+    index: '03',
+    title: 'Forecast Architecture',
+    detail:
+      'Built forecasting with uncertainty upfront, giving operators a way to plan around risk instead of pretending it was not there.',
+  },
+];
+
+const methods = [
+  'Product analytics',
+  'ML systems',
+  'Causal inference',
+  'Decision design',
+  'Executive narrative',
+];
+---
+
+<Layout
+  title="Avery Lane | Data Scientist"
+  description="A quiet, iconic personal website for a data scientist. Minimal structure, editorial scale, and high-trust case study storytelling."
+>
+  <main class="page">
+    <header class="topbar">
+      <a class="monogram" href="/" aria-label="Avery Lane home">AL</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#work">Work</a>
+        <a href="#method">Method</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-meta">
+        <p class="kicker">Data Scientist</p>
+        <p class="status">Independent perspective for product, growth, and strategy.</p>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="stamp">Personal Brand</p>
+          <h1>
+            Quiet rigor.
+            <br />
+            Sharp systems.
+            <br />
+            Better decisions.
+          </h1>
+          <p class="lead">
+            I design analytical clarity for teams that have enough data already and need stronger
+            judgment, stronger models, and a cleaner way to act on both.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#contact">Start a conversation</a>
+            <a class="button button-secondary" href="#work">Selected work</a>
+          </div>
+        </div>
+
+        <aside class="hero-object" aria-label="Brand composition">
+          <div class="object-frame">
+            <div class="object-disc"></div>
+            <div class="object-bar"></div>
+            <div class="object-label">
+              <span>Systems</span>
+              <span>Signal</span>
+              <span>Taste</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="manifesto">
+      {manifesto.map((item) => (
+        <p>{item}</p>
+      ))}
+    </section>
+
+    <section class="feature-band" id="work">
+      <div class="feature-intro">
+        <p class="kicker">Selected Work</p>
+        <h2>Three examples of what thoughtful data science looks like when it is designed to be used.</h2>
+      </div>
+
+      <div class="work-list">
+        {work.map((item) => (
+          <article class="work-item">
+            <p class="work-index">{item.index}</p>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.detail}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="method-section" id="method">
+      <div class="method-copy">
+        <p class="kicker">Method</p>
+        <h2>Closer to industrial design than dashboard decoration.</h2>
+        <p>
+          The site direction takes cues from poster-based music branding and early modern product
+          thinking: fewer elements, stronger intent, and a sense that every line had to earn its
+          place. For a data scientist, that translates into generous white space, bold hierarchy,
+          and language that signals discernment rather than noise.
+        </p>
+      </div>
+
+      <div class="method-panel">
+        <p class="panel-title">Capabilities</p>
+        <div class="method-tags">
+          {methods.map((item) => (
+            <span>{item}</span>
+          ))}
+        </div>
+        <p class="panel-note">
+          Designed for someone who wants to feel like a trusted advisor, not another analytics
+          freelancer with a template portfolio.
+        </p>
+      </div>
+    </section>
+
+    <section class="quote-block">
+      <p>
+        Good data work should feel inevitable in hindsight.
+        <span>Calm on the surface. Exact underneath.</span>
+      </p>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="contact-copy">
+        <p class="kicker">Contact</p>
+        <h2>Available for select collaborations, advisory work, and strategic analytics projects.</h2>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:avery@datalane.studio">avery@datalane.studio</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .page {
+    width: var(--container);
+    margin: 0 auto;
+    padding: 1.15rem 0 4rem;
+  }
+
+  .topbar,
+  .hero-meta,
+  .hero-grid,
+  .manifesto,
+  .feature-band,
+  .method-section,
+  .contact {
+    border-top: 1px solid var(--line);
+  }
+
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 0 1rem;
+  }
+
+  .monogram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    border: 1px solid var(--text);
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1.25rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .nav a:hover,
+  .contact-links a:hover {
+    color: var(--accent-strong);
+  }
+
+  .hero {
+    padding-top: 0.75rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0 1.5rem;
+  }
+
+  .kicker,
+  .stamp,
+  .panel-title,
+  .work-index {
+    margin: 0;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+  }
+
+  .kicker,
+  .stamp,
+  .panel-title {
+    color: var(--accent-strong);
+  }
+
+  .status {
+    margin: 0;
+    color: var(--muted);
+    max-width: 28rem;
+    text-align: right;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    gap: 1.5rem;
+    padding: 1.75rem 0 2.25rem;
+  }
+
+  .hero-copy {
+    display: grid;
+    align-content: start;
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+
+  h1 {
+    margin: 0.55rem 0 1.5rem;
+    max-width: 8.2ch;
+    font-size: clamp(4rem, 10vw, 8rem);
+    line-height: 0.92;
+    letter-spacing: -0.07em;
+    font-weight: 700;
+  }
+
+  .lead,
+  .work-item p,
+  .method-copy p,
+  .panel-note,
+  .contact-copy h2,
+  .contact-links a,
+  .quote-block span {
+    color: var(--muted);
+    line-height: 1.65;
+    font-size: 1rem;
+  }
+
+  .lead {
+    max-width: 34rem;
+    font-size: 1.08rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 2rem;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.2rem;
+    padding: 0.85rem 1.35rem;
+    border: 1px solid var(--text);
+    border-radius: 999px;
+    transition:
+      transform 180ms ease,
+      background 180ms ease,
+      color 180ms ease;
+  }
+
+  .button:hover {
+    transform: translateY(-2px);
+  }
+
+  .button-primary {
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .button-secondary {
+    color: var(--text);
+    background: transparent;
+  }
+
+  .hero-object {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .object-frame {
+    position: relative;
+    width: 100%;
+    min-height: 36rem;
+    border: 1px solid var(--text);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0.02)),
+      linear-gradient(135deg, rgba(213, 163, 91, 0.16), rgba(180, 74, 42, 0.08));
+    overflow: hidden;
+  }
+
+  .object-disc {
+    position: absolute;
+    top: 12%;
+    right: 10%;
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    border: 1px solid rgba(17, 17, 17, 0.18);
+    background: radial-gradient(circle at 30% 30%, #fffdf6 0%, #ddd5c7 40%, #c8beac 100%);
+    box-shadow: inset -16px -16px 40px rgba(17, 17, 17, 0.08);
+  }
+
+  .object-bar {
+    position: absolute;
+    left: 8%;
+    bottom: 18%;
+    width: 74%;
+    height: 1.6rem;
+    background: var(--text);
+  }
+
+  .object-label {
+    position: absolute;
+    left: 8%;
+    bottom: 8%;
+    display: flex;
+    gap: 1rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .manifesto {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1.15rem 0 1.5rem;
+  }
+
+  .manifesto p {
+    margin: 0;
+    font-size: 1.25rem;
+    line-height: 1.25;
+  }
+
+  .feature-band {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 2rem;
+    padding: 2.25rem 0;
+  }
+
+  .feature-intro h2,
+  .method-copy h2,
+  .contact-copy h2 {
+    margin: 0.65rem 0 0;
+    max-width: 11ch;
+    font-size: clamp(2.2rem, 4.5vw, 4rem);
+    line-height: 0.98;
+    letter-spacing: -0.05em;
+  }
+
+  .work-list {
+    display: grid;
+  }
+
+  .work-item {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .work-item:first-child {
+    border-top: 1px solid var(--line);
+  }
+
+  .work-item h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1.65rem;
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .method-section {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
+    gap: 2rem;
+    padding: 2.25rem 0;
+    align-items: start;
+  }
+
+  .method-copy p:last-child {
+    max-width: 40rem;
+    margin-bottom: 0;
+  }
+
+  .method-panel {
+    padding: 1.5rem;
+    border: 1px solid var(--text);
+    background: rgba(255, 252, 245, 0.5);
+  }
+
+  .method-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin: 1.2rem 0 1.4rem;
+  }
+
+  .method-tags span {
+    padding: 0.7rem 0.9rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    font-size: 0.92rem;
+  }
+
+  .quote-block {
+    padding: 3rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .quote-block p {
+    margin: 0;
+    max-width: 11ch;
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    line-height: 0.98;
+    letter-spacing: -0.06em;
+  }
+
+  .quote-block span {
+    display: block;
+    margin-top: 1rem;
+    max-width: none;
+    font-size: 1rem;
+    letter-spacing: normal;
+  }
+
+  .contact {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 2rem 0 0.25rem;
+  }
+
+  .contact-copy h2 {
+    max-width: 14ch;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
+  }
+
+  .contact-links a {
+    color: var(--text);
+    font-size: 1.1rem;
+  }
+
+  @media (max-width: 980px) {
+    .hero-grid,
+    .feature-band,
+    .method-section,
+    .contact,
+    .manifesto {
+      grid-template-columns: 1fr;
+    }
+
+    .contact {
+      align-items: start;
+    }
+
+    .contact-links {
+      align-items: flex-start;
+    }
+
+    .status {
+      text-align: left;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .topbar,
+    .hero-meta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nav {
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      max-width: 100%;
+      font-size: clamp(3.25rem, 15vw, 4.75rem);
+    }
+
+    .object-frame {
+      min-height: 24rem;
+    }
+
+    .object-disc {
+      width: 12rem;
+      height: 12rem;
+    }
+
+    .feature-intro h2,
+    .method-copy h2,
+    .contact-copy h2,
+    .quote-block p {
+      max-width: 100%;
+    }
+  }
+</style>

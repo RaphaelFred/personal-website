@@ -1,0 +1,85 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Data Scientist Personal Brand',
+  description = 'A minimal, high-trust personal brand website for a data scientist focused on experimentation, machine learning, and decision intelligence.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#ede8dc" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/social-card.svg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    color-scheme: light;
+    --bg: #ede8dc;
+    --bg-soft: #e2dccf;
+    --panel: rgba(250, 248, 242, 0.82);
+    --panel-strong: rgba(255, 252, 245, 0.92);
+    --line: rgba(16, 16, 16, 0.11);
+    --text: #111111;
+    --muted: #5e5a52;
+    --accent: #b44a2a;
+    --accent-strong: #8d2f14;
+    --accent-warm: #d5a35b;
+    --shadow: 0 24px 60px rgba(17, 17, 17, 0.08);
+    --radius-xl: 32px;
+    --radius-lg: 24px;
+    --radius-md: 18px;
+    --container: min(1220px, calc(100vw - 2rem));
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    font-family: "Avenir Next", "Helvetica Neue", "Arial Nova", Arial, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(circle at top left, rgba(180, 74, 42, 0.08), transparent 22%),
+      linear-gradient(180deg, #f4f0e7 0%, #ede8dc 40%, #e6e0d3 100%);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+ </style>
