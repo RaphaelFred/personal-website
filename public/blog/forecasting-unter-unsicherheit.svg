@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+  <rect width="1200" height="720" fill="#f8f4eb"/>
+  <rect x="56" y="56" width="1088" height="608" rx="28" fill="#fffaf2" stroke="#d7cec0"/>
+  <text x="96" y="128" fill="#111111" font-size="34" font-family="Arial, Helvetica, sans-serif">Forecasting unter Unsicherheit</text>
+  <text x="96" y="164" fill="#6f675a" font-size="20" font-family="Arial, Helvetica, sans-serif">Szenarien statt Punktprognosen</text>
+  <line x1="110" y1="560" x2="1080" y2="560" stroke="#d7cec0" stroke-width="2"/>
+  <line x1="110" y1="190" x2="110" y2="560" stroke="#d7cec0" stroke-width="2"/>
+  <path d="M110 470 C200 440, 280 430, 360 395 S520 300, 610 320 S770 360, 850 285 S980 210, 1080 180" stroke="#8d2f14" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <path d="M110 520 C200 480, 280 470, 360 430 S520 330, 610 350 S770 390, 850 315 S980 250, 1080 225" stroke="#d5a35b" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="8 10"/>
+  <path d="M110 420 C200 400, 280 390, 360 360 S520 270, 610 290 S770 330, 850 250 S980 180, 1080 150" stroke="#d5a35b" stroke-width="3" fill="none" stroke-linecap="round" stroke-dasharray="8 10"/>
+  <text x="112" y="598" fill="#6f675a" font-size="18" font-family="Arial, Helvetica, sans-serif">Heute</text>
+  <text x="1006" y="598" fill="#6f675a" font-size="18" font-family="Arial, Helvetica, sans-serif">Naechste 12 Wochen</text>
+  <circle cx="770" cy="347" r="8" fill="#8d2f14"/>
+  <rect x="792" y="292" width="220" height="76" rx="18" fill="white" stroke="#d7cec0"/>
+  <text x="816" y="324" fill="#111111" font-size="20" font-family="Arial, Helvetica, sans-serif">Baseline + Unsicherheitsband</text>
+  <text x="816" y="350" fill="#6f675a" font-size="17" font-family="Arial, Helvetica, sans-serif">zeigt Planungsspielraum statt Scheinpraezision</text>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+  <rect width="1200" height="720" fill="#f8f4eb"/>
+  <rect x="56" y="56" width="1088" height="608" rx="28" fill="#fffaf2" stroke="#d7cec0"/>
+  <text x="96" y="128" fill="#111111" font-size="34" font-family="Arial, Helvetica, sans-serif">Fruehe Produktsignale</text>
+  <text x="96" y="164" fill="#6f675a" font-size="20" font-family="Arial, Helvetica, sans-serif">Vier Verhaltenscluster mit unterschiedlicher Dynamik</text>
+  <rect x="108" y="216" width="210" height="300" rx="26" fill="#f2e5d7"/>
+  <rect x="350" y="250" width="210" height="266" rx="26" fill="#f0dcc8"/>
+  <rect x="592" y="184" width="210" height="332" rx="26" fill="#ead0b7"/>
+  <rect x="834" y="120" width="210" height="396" rx="26" fill="#e3c19e"/>
+  <text x="134" y="552" fill="#111111" font-size="22" font-family="Arial, Helvetica, sans-serif">Neugier</text>
+  <text x="374" y="552" fill="#111111" font-size="22" font-family="Arial, Helvetica, sans-serif">Aktivierung</text>
+  <text x="620" y="552" fill="#111111" font-size="22" font-family="Arial, Helvetica, sans-serif">Bindung</text>
+  <text x="860" y="552" fill="#111111" font-size="22" font-family="Arial, Helvetica, sans-serif">Empfehlung</text>
+  <path d="M110 590 C260 610, 450 620, 590 592 S860 525, 1040 470" stroke="#8d2f14" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <text x="108" y="620" fill="#6f675a" font-size="18" font-family="Arial, Helvetica, sans-serif">Nicht nur Volumen beobachten, sondern Muster entlang der Journey</text>
+</svg>

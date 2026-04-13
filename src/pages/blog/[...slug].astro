@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+import SiteHeader from '../../components/SiteHeader.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout title={`${post.data.title} | AI & Data`} description={post.data.description}>
+  <main class="post-page" id="main-content">
+    <SiteHeader current="ai-data" />
+    <header class="post-header">
+      <a class="back-link" href="/beratung#artikel">Zurueck zu AI & Data</a>
+      <p class="kicker">AI & Data</p>
+      <h1>{post.data.title}</h1>
+      <p class="post-date">
+        {post.data.publishDate.toLocaleDateString('de-DE', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+        })}
+      </p>
+      <p class="lead">{post.data.description}</p>
+    </header>
+
+    <article class="post-body">
+      <Content />
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .post-page {
+    width: min(820px, calc(100vw - 2rem));
+    margin: 0 auto;
+    padding: 1.25rem 0 4rem;
+  }
+
+  .post-header,
+  .post-body {
+    border-top: 1px solid var(--line);
+  }
+
+  .post-header {
+    padding: 1rem 0 2rem;
+  }
+
+  .back-link,
+  .lead,
+  .post-body :global(p),
+  .post-body :global(li) {
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .kicker,
+  .post-date {
+    margin: 0;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent-strong);
+  }
+
+  h1,
+  p {
+    margin-top: 0;
+  }
+
+  h1 {
+    margin: 0.5rem 0 1rem;
+    font-size: var(--title-xl);
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+  }
+
+  .lead {
+    margin-top: 1rem;
+    max-width: 40rem;
+    font-size: var(--text-lg);
+  }
+
+  .post-body {
+    padding: 2rem 0;
+  }
+
+  .post-body :global(h2) {
+    margin: 2rem 0 0.75rem;
+    font-size: var(--title-md);
+    line-height: 1.14;
+    letter-spacing: -0.02em;
+  }
+
+  .post-body :global(img) {
+    display: block;
+    width: 100%;
+    margin: 1.5rem 0 2rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.82);
+  }
+
+  .post-body :global(ul),
+  .post-body :global(ol) {
+    padding-left: 1.2rem;
+  }
+ </style>

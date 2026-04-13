@@ -1,163 +1,168 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import SiteHeader from '../components/SiteHeader.astro';
 
-const manifesto = [
-  'Clarity over ornament.',
-  'Evidence over hype.',
-  'Taste over dashboard clutter.',
+const blogPosts = (await getCollection('blog'))
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
+  .slice(0, 4);
+
+const currentFocus = [
+  'AI & Data fuer Produktfragen, Innovation und analytische Strategie',
+  'Arbeit an Themen rund um Innovation, Struktur und bessere Entscheidungen',
+  'Musik als eigenstaendige kreative Praxis',
+  'Artikel innerhalb von AI & Data zu Data Science, kreative Prozesse und Arbeitsweisen',
 ];
 
-const work = [
+const background = [
+  'Data Scientist mit Interesse an Schnittstellen zwischen Analyse, Strategie und Kreativitaet',
+  'Fokus auf Fragen, bei denen Daten nicht nur messen, sondern Orientierung geben sollen',
+  'Besonderes Interesse an Projekten mit offenem Denkraum und echter Entscheidungsrelevanz',
+];
+
+const links = [
   {
-    index: '01',
-    title: 'Retention System',
-    detail:
-      'Mapped product behavior to churn risk and turned a vague retention problem into a weekly operating rhythm for growth and lifecycle teams.',
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/in/raphael-fredebeul-733605140/',
   },
   {
-    index: '02',
-    title: 'Experiment Design',
-    detail:
-      'Reframed channel performance around incrementality, not attribution theater, so budget decisions became easier to defend.',
-  },
-  {
-    index: '03',
-    title: 'Forecast Architecture',
-    detail:
-      'Built forecasting with uncertainty upfront, giving operators a way to plan around risk instead of pretending it was not there.',
+    label: 'SoundCloud',
+    href: 'https://soundcloud.com/raphael-fredebeul',
   },
 ];
 
-const methods = [
-  'Product analytics',
-  'ML systems',
-  'Causal inference',
-  'Decision design',
-  'Executive narrative',
-];
+const contactMailto =
+  'mailto:?subject=Anfrage%20zu%20AI%20%26%20Data&body=Hallo%20Raphael,%0A%0Aich%20interessiere%20mich%20fuer%20deine%20Arbeit%20im%20Bereich%20AI%20%26%20Data.%0A%0AViele%20Gruesse';
 ---
 
 <Layout
-  title="Avery Lane | Data Scientist"
-  description="A quiet, iconic personal website for a data scientist. Minimal structure, editorial scale, and high-trust case study storytelling."
+  title="Raphael Fredebeul | Data Scientist"
+  description="Persoenliche Website von Raphael Fredebeul mit Fokus auf AI & Data, Innovation, Kreativitaet und Consulting."
 >
-  <main class="page">
-    <header class="topbar">
-      <a class="monogram" href="/" aria-label="Avery Lane home">AL</a>
-      <nav class="nav" aria-label="Primary">
-        <a href="#work">Work</a>
-        <a href="#method">Method</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+  <main class="page" id="main-content">
+    <SiteHeader current="home" />
 
-    <section class="hero">
-      <div class="hero-meta">
-        <p class="kicker">Data Scientist</p>
-        <p class="status">Independent perspective for product, growth, and strategy.</p>
+    <section class="intro">
+      <p class="kicker">Data Scientist</p>
+      <h1>Daten, Strategie und kreative Praxis.</h1>
+      <p class="lead">
+        Ich arbeite an Themen rund um Data Science, Innovation und analytische Orientierung. Diese
+        Website ist als offene Uebersicht ueber meine Arbeit, meine Musik und meine Texte gedacht.
+      </p>
+    </section>
+
+    <section class="overview">
+      <div class="section-copy">
+        <p class="kicker">Aktuell</p>
+        <h2>Woran ich gerade arbeite.</h2>
       </div>
+      <div class="list-block">
+        {currentFocus.map((item) => (
+          <p>{item}</p>
+        ))}
+      </div>
+    </section>
 
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <p class="stamp">Personal Brand</p>
-          <h1>
-            Quiet rigor.
-            <br />
-            Sharp systems.
-            <br />
-            Better decisions.
-          </h1>
-          <p class="lead">
-            I design analytical clarity for teams that have enough data already and need stronger
-            judgment, stronger models, and a cleaner way to act on both.
-          </p>
-
-          <div class="hero-actions">
-            <a class="button button-primary" href="#contact">Start a conversation</a>
-            <a class="button button-secondary" href="#work">Selected work</a>
-          </div>
+    <section class="blog-preview">
+      <div class="blog-preview-head">
+        <div class="section-copy">
+          <p class="kicker">AI & Data Artikel</p>
+          <h2>Notizen und Artikel aus meiner analytischen Arbeit.</h2>
         </div>
-
-        <aside class="hero-object" aria-label="Brand composition">
-          <div class="object-frame">
-            <div class="object-disc"></div>
-            <div class="object-bar"></div>
-            <div class="object-label">
-              <span>Systems</span>
-              <span>Signal</span>
-              <span>Taste</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="manifesto">
-      {manifesto.map((item) => (
-        <p>{item}</p>
-      ))}
-    </section>
-
-    <section class="feature-band" id="work">
-      <div class="feature-intro">
-        <p class="kicker">Selected Work</p>
-        <h2>Three examples of what thoughtful data science looks like when it is designed to be used.</h2>
+        <a class="text-link" href="/beratung#artikel">Alle Artikel</a>
       </div>
 
-      <div class="work-list">
-        {work.map((item) => (
-          <article class="work-item">
-            <p class="work-index">{item.index}</p>
-            <div>
-              <h3>{item.title}</h3>
-              <p>{item.detail}</p>
+      <div class="posts-list">
+        {blogPosts.map((post) => (
+          <article class="post-row">
+            <p class="post-date">{post.data.publishDate.toLocaleDateString('de-DE', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}</p>
+            <div class="post-body">
+              <h3>
+                <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+              </h3>
+              <p>{post.data.description}</p>
             </div>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="method-section" id="method">
-      <div class="method-copy">
-        <p class="kicker">Method</p>
-        <h2>Closer to industrial design than dashboard decoration.</h2>
-        <p>
-          The site direction takes cues from poster-based music branding and early modern product
-          thinking: fewer elements, stronger intent, and a sense that every line had to earn its
-          place. For a data scientist, that translates into generous white space, bold hierarchy,
-          and language that signals discernment rather than noise.
-        </p>
+    <section class="overview">
+      <div class="section-copy">
+        <p class="kicker">Hintergrund</p>
+        <h2>Wie ich meine Arbeit einordne.</h2>
       </div>
-
-      <div class="method-panel">
-        <p class="panel-title">Capabilities</p>
-        <div class="method-tags">
-          {methods.map((item) => (
-            <span>{item}</span>
-          ))}
-        </div>
-        <p class="panel-note">
-          Designed for someone who wants to feel like a trusted advisor, not another analytics
-          freelancer with a template portfolio.
-        </p>
+      <div class="list-block">
+        {background.map((item) => (
+          <p>{item}</p>
+        ))}
       </div>
     </section>
 
-    <section class="quote-block">
-      <p>
-        Good data work should feel inevitable in hindsight.
-        <span>Calm on the surface. Exact underneath.</span>
-      </p>
+    <section class="feature-split">
+      <div class="section-copy">
+        <p class="kicker">AI & Data</p>
+        <h2>Analytische Klarheit fuer Produkt, Innovation und Entscheidungen.</h2>
+        <p class="body-copy">
+          Wenn du an einem Projekt arbeitest, bei dem Daten, Modelle oder AI in eine belastbare
+          Richtung uebersetzt werden sollen, ist diese Seite der richtige Einstieg.
+        </p>
+        <a class="text-link" href="/beratung">AI & Data ansehen</a>
+      </div>
+
+      <div class="section-copy">
+        <p class="kicker">Musik</p>
+        <h2>Ein eigener Bereich fuer Klang, Rhythmus und kreative Arbeit.</h2>
+        <p class="body-copy">
+          Neben meiner analytischen Arbeit ist Musik ein eigenstaendiger Teil meiner Praxis und
+          meines Denkens.
+        </p>
+        <a class="text-link" href="/musik">Musikbereich ansehen</a>
+      </div>
     </section>
 
-    <section class="contact" id="contact">
-      <div class="contact-copy">
-        <p class="kicker">Contact</p>
-        <h2>Available for select collaborations, advisory work, and strategic analytics projects.</h2>
+    <section class="cv-section">
+      <div class="section-copy">
+        <p class="kicker">Kurzprofil</p>
+        <h2>Ein kompakter Lebenslauf auf einen Blick.</h2>
       </div>
-      <div class="contact-links">
-        <a href="mailto:avery@datalane.studio">avery@datalane.studio</a>
-        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
+
+      <div class="cv-list">
+        <article class="cv-row">
+          <p class="cv-label">Profil</p>
+          <div>
+            <h3>Data Scientist</h3>
+            <p>Fokus auf Data Science, Innovation, Produktfragen und analytische Strategie.</p>
+          </div>
+        </article>
+        <article class="cv-row">
+          <p class="cv-label">Schwerpunkte</p>
+          <div>
+            <h3>Analyse, Modelle und Entscheidungsunterstuetzung</h3>
+            <p>Machine Learning, Forecasting, Produktanalyse, Experimentdesign und Data Storytelling.</p>
+          </div>
+        </article>
+        <article class="cv-row">
+          <p class="cv-label">Interessen</p>
+          <div>
+            <h3>Struktur, Innovation und kreative Praxis</h3>
+            <p>Besonderes Interesse an Projekten mit offenem Denkraum, Interpretationsspielraum und klarer Relevanz.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="kontakt">
+      <p class="kicker">Kontakt</p>
+      <div class="contact-grid">
+        <a class="contact-primary" href={contactMailto}>
+          AI & Data per E-Mail anfragen
+        </a>
+        <a href="https://soundcloud.com/raphael-fredebeul" target="_blank" rel="noreferrer">SoundCloud</a>
       </div>
     </section>
   </main>
@@ -167,98 +172,46 @@ const methods = [
   .page {
     width: var(--container);
     margin: 0 auto;
-    padding: 1.15rem 0 4rem;
+    padding: 1rem 0 4rem;
   }
 
-  .topbar,
-  .hero-meta,
-  .hero-grid,
-  .manifesto,
-  .feature-band,
-  .method-section,
+  .intro,
+  .overview,
+  .feature-split,
+  .blog-preview,
+  .cv-section,
   .contact {
     border-top: 1px solid var(--line);
   }
-
-  .topbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.75rem 0 1rem;
-  }
-
-  .monogram {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 3.25rem;
-    height: 3.25rem;
-    border: 1px solid var(--text);
-    border-radius: 999px;
-    font-size: 1rem;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-  }
-
-  .nav {
-    display: flex;
-    gap: 1.25rem;
-    color: var(--muted);
-    font-size: 0.95rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .nav a:hover,
-  .contact-links a:hover {
+  .text-link:hover,
+  .post-body a:hover,
+  .contact-grid a:hover {
     color: var(--accent-strong);
   }
 
-  .hero {
-    padding-top: 0.75rem;
+  .intro,
+  .overview,
+  .blog-preview,
+  .cv-section,
+  .contact {
+    padding: 2rem 0;
   }
 
-  .hero-meta {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1rem 0 1.5rem;
+  .feature-split {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
   }
 
   .kicker,
-  .stamp,
-  .panel-title,
-  .work-index {
+  .post-date,
+  .cv-label {
     margin: 0;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     text-transform: uppercase;
-    letter-spacing: 0.18em;
-  }
-
-  .kicker,
-  .stamp,
-  .panel-title {
+    letter-spacing: 0.16em;
     color: var(--accent-strong);
-  }
-
-  .status {
-    margin: 0;
-    color: var(--muted);
-    max-width: 28rem;
-    text-align: right;
-  }
-
-  .hero-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
-    gap: 1.5rem;
-    padding: 1.75rem 0 2.25rem;
-  }
-
-  .hero-copy {
-    display: grid;
-    align-content: start;
   }
 
   h1,
@@ -269,298 +222,145 @@ const methods = [
   }
 
   h1 {
-    margin: 0.55rem 0 1.5rem;
-    max-width: 8.2ch;
-    font-size: clamp(4rem, 10vw, 8rem);
-    line-height: 0.92;
-    letter-spacing: -0.07em;
+    margin: 0.55rem 0 1rem;
+    max-width: 10ch;
+    font-size: var(--title-xl);
+    line-height: 0.96;
+    letter-spacing: -0.045em;
     font-weight: 700;
   }
 
+  h2 {
+    margin: 0.6rem 0 0;
+    max-width: 15ch;
+    font-size: var(--title-lg);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: var(--title-md);
+    line-height: 1.14;
+    letter-spacing: -0.02em;
+  }
+
   .lead,
-  .work-item p,
-  .method-copy p,
-  .panel-note,
-  .contact-copy h2,
-  .contact-links a,
-  .quote-block span {
+  .body-copy,
+  .list-block p,
+  .post-body p,
+  .cv-row p,
+  .contact-grid a,
+  .text-link {
     color: var(--muted);
     line-height: 1.65;
-    font-size: 1rem;
+    font-size: var(--text-md);
   }
 
   .lead {
-    max-width: 34rem;
-    font-size: 1.08rem;
+    max-width: 38rem;
+    font-size: var(--text-lg);
   }
 
-  .hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.9rem;
-    margin-top: 2rem;
-  }
-
-  .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 3.2rem;
-    padding: 0.85rem 1.35rem;
-    border: 1px solid var(--text);
-    border-radius: 999px;
-    transition:
-      transform 180ms ease,
-      background 180ms ease,
-      color 180ms ease;
-  }
-
-  .button:hover {
-    transform: translateY(-2px);
-  }
-
-  .button-primary {
-    background: var(--text);
-    color: var(--bg);
-  }
-
-  .button-secondary {
-    color: var(--text);
-    background: transparent;
-  }
-
-  .hero-object {
-    display: flex;
-    align-items: stretch;
-  }
-
-  .object-frame {
-    position: relative;
-    width: 100%;
-    min-height: 36rem;
-    border: 1px solid var(--text);
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.35), rgba(0, 0, 0, 0.02)),
-      linear-gradient(135deg, rgba(213, 163, 91, 0.16), rgba(180, 74, 42, 0.08));
-    overflow: hidden;
-  }
-
-  .object-disc {
-    position: absolute;
-    top: 12%;
-    right: 10%;
-    width: 18rem;
-    height: 18rem;
-    border-radius: 50%;
-    border: 1px solid rgba(17, 17, 17, 0.18);
-    background: radial-gradient(circle at 30% 30%, #fffdf6 0%, #ddd5c7 40%, #c8beac 100%);
-    box-shadow: inset -16px -16px 40px rgba(17, 17, 17, 0.08);
-  }
-
-  .object-bar {
-    position: absolute;
-    left: 8%;
-    bottom: 18%;
-    width: 74%;
-    height: 1.6rem;
-    background: var(--text);
-  }
-
-  .object-label {
-    position: absolute;
-    left: 8%;
-    bottom: 8%;
-    display: flex;
-    gap: 1rem;
-    color: var(--muted);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
-
-  .manifesto {
+  .section-copy {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-    padding: 1.15rem 0 1.5rem;
+    gap: 0.2rem;
   }
 
-  .manifesto p {
+  .list-block {
+    display: grid;
+    border-top: 1px solid var(--line);
+    margin-top: 1.25rem;
+  }
+
+  .list-block p {
     margin: 0;
-    font-size: 1.25rem;
-    line-height: 1.25;
-  }
-
-  .feature-band {
-    display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: 2rem;
-    padding: 2.25rem 0;
-  }
-
-  .feature-intro h2,
-  .method-copy h2,
-  .contact-copy h2 {
-    margin: 0.65rem 0 0;
-    max-width: 11ch;
-    font-size: clamp(2.2rem, 4.5vw, 4rem);
-    line-height: 0.98;
-    letter-spacing: -0.05em;
-  }
-
-  .work-list {
-    display: grid;
-  }
-
-  .work-item {
-    display: grid;
-    grid-template-columns: 4rem 1fr;
-    gap: 1rem;
-    padding: 1.25rem 0;
+    padding: 1rem 0;
     border-bottom: 1px solid var(--line);
   }
 
-  .work-item:first-child {
-    border-top: 1px solid var(--line);
-  }
-
-  .work-item h3 {
-    margin: 0 0 0.5rem;
-    font-size: 1.65rem;
-    line-height: 1.05;
-    letter-spacing: -0.04em;
-  }
-
-  .method-section {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.85fr);
-    gap: 2rem;
-    padding: 2.25rem 0;
-    align-items: start;
-  }
-
-  .method-copy p:last-child {
-    max-width: 40rem;
-    margin-bottom: 0;
-  }
-
-  .method-panel {
-    padding: 1.5rem;
-    border: 1px solid var(--text);
-    background: rgba(255, 252, 245, 0.5);
-  }
-
-  .method-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin: 1.2rem 0 1.4rem;
-  }
-
-  .method-tags span {
-    padding: 0.7rem 0.9rem;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    font-size: 0.92rem;
-  }
-
-  .quote-block {
-    padding: 3rem 0;
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-  }
-
-  .quote-block p {
-    margin: 0;
-    max-width: 11ch;
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    line-height: 0.98;
-    letter-spacing: -0.06em;
-  }
-
-  .quote-block span {
-    display: block;
+  .text-link {
+    display: inline-block;
     margin-top: 1rem;
-    max-width: none;
-    font-size: 1rem;
-    letter-spacing: normal;
+    color: var(--text);
   }
 
-  .contact {
+  .blog-preview-head {
     display: flex;
     align-items: end;
     justify-content: space-between;
     gap: 1.5rem;
-    padding: 2rem 0 0.25rem;
   }
 
-  .contact-copy h2 {
-    max-width: 14ch;
+  .posts-list {
+    display: grid;
+    border-top: 1px solid var(--line);
+    margin-top: 1.25rem;
   }
 
-  .contact-links {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.4rem;
+  .post-row {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--line);
   }
 
-  .contact-links a {
+  .post-body {
+    min-width: 0;
+  }
+
+  .post-body a {
     color: var(--text);
-    font-size: 1.1rem;
+  }
+
+  .post-body p {
+    margin: 0.45rem 0 0;
+    max-width: 42rem;
+  }
+
+  .cv-list {
+    display: grid;
+    border-top: 1px solid var(--line);
+    margin-top: 1.25rem;
+  }
+
+  .cv-row {
+    display: grid;
+    grid-template-columns: 160px minmax(0, 1fr);
+    gap: 1.5rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cv-row p {
+    margin: 0.45rem 0 0;
+    max-width: 44ch;
+  }
+
+  .contact-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .contact-primary {
+    color: var(--text);
+    font-weight: 600;
   }
 
   @media (max-width: 980px) {
-    .hero-grid,
-    .feature-band,
-    .method-section,
-    .contact,
-    .manifesto {
+    .feature-split,
+    .post-row,
+    .cv-row {
       grid-template-columns: 1fr;
     }
-
-    .contact {
-      align-items: start;
-    }
-
-    .contact-links {
-      align-items: flex-start;
-    }
-
-    .status {
-      text-align: left;
-    }
   }
-
+  
   @media (max-width: 720px) {
-    .topbar,
-    .hero-meta {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .nav {
-      flex-wrap: wrap;
-    }
-
-    h1 {
-      max-width: 100%;
-      font-size: clamp(3.25rem, 15vw, 4.75rem);
-    }
-
-    .object-frame {
-      min-height: 24rem;
-    }
-
-    .object-disc {
-      width: 12rem;
-      height: 12rem;
-    }
-
-    .feature-intro h2,
-    .method-copy h2,
-    .contact-copy h2,
-    .quote-block p {
+    h1,
+    h2 {
       max-width: 100%;
     }
   }

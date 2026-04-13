@@ -5,24 +5,27 @@ interface Props {
 }
 
 const {
-  title = 'Data Scientist Personal Brand',
-  description = 'A minimal, high-trust personal brand website for a data scientist focused on experimentation, machine learning, and decision intelligence.',
+  title = 'Raphael Fredebeul | Data Science',
+  description = 'Persoenliche Website von Raphael Fredebeul mit Fokus auf AI & Data, Innovation, Kreativitaet und Consulting.',
 } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="de">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#ede8dc" />
+    <meta name="theme-color" content="#f7f8f5" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Raphael Fredebeul" />
     <meta property="og:image" content="/social-card.svg" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -30,6 +33,7 @@ const {
     <title>{title}</title>
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
     <slot />
   </body>
 </html>
@@ -37,21 +41,28 @@ const {
 <style is:global>
   :root {
     color-scheme: light;
-    --bg: #ede8dc;
-    --bg-soft: #e2dccf;
-    --panel: rgba(250, 248, 242, 0.82);
-    --panel-strong: rgba(255, 252, 245, 0.92);
-    --line: rgba(16, 16, 16, 0.11);
+    --bg: #f7f8f5;
+    --bg-soft: #eef2ec;
+    --panel: rgba(255, 255, 255, 0.82);
+    --panel-strong: rgba(255, 255, 255, 0.94);
+    --line: rgba(16, 16, 16, 0.09);
     --text: #111111;
-    --muted: #5e5a52;
-    --accent: #b44a2a;
-    --accent-strong: #8d2f14;
+    --muted: #5f6760;
+    --accent: #b54c31;
+    --accent-strong: #8c341d;
     --accent-warm: #d5a35b;
-    --shadow: 0 24px 60px rgba(17, 17, 17, 0.08);
+    --shadow: 0 24px 60px rgba(17, 17, 17, 0.06);
     --radius-xl: 32px;
     --radius-lg: 24px;
     --radius-md: 18px;
     --container: min(1220px, calc(100vw - 2rem));
+    --font-sans: "Avenir Next", "Helvetica Neue", "Arial Nova", Arial, sans-serif;
+    --text-sm: 0.95rem;
+    --text-md: 1rem;
+    --text-lg: 1.08rem;
+    --title-xl: clamp(3.3rem, 8vw, 6rem);
+    --title-lg: clamp(2rem, 4.2vw, 3.4rem);
+    --title-md: clamp(1.3rem, 1.9vw, 1.5rem);
   }
 
   * {
@@ -66,16 +77,41 @@ const {
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
-    font-family: "Avenir Next", "Helvetica Neue", "Arial Nova", Arial, sans-serif;
+    font-family: var(--font-sans);
     color: var(--text);
     background:
-      radial-gradient(circle at top left, rgba(180, 74, 42, 0.08), transparent 22%),
-      linear-gradient(180deg, #f4f0e7 0%, #ede8dc 40%, #e6e0d3 100%);
+      radial-gradient(circle at top left, rgba(181, 76, 49, 0.05), transparent 24%),
+      radial-gradient(circle at 85% 10%, rgba(213, 163, 91, 0.08), transparent 18%),
+      linear-gradient(180deg, #fbfcfa 0%, #f7f8f5 45%, #f1f4ee 100%);
   }
 
   a {
     color: inherit;
     text-decoration: none;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  iframe:focus-visible {
+    outline: 2px solid var(--accent-strong);
+    outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    z-index: 1000;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--text);
+    border-radius: 999px;
+    background: #ffffff;
+    transform: translateY(-200%);
+    transition: transform 180ms ease;
+  }
+
+  .skip-link:focus-visible {
+    transform: translateY(0);
   }
 
   img {

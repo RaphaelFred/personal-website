@@ -1,0 +1,136 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import SiteHeader from '../../components/SiteHeader.astro';
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+);
+---
+
+<Layout
+  title="Artikelarchiv | Raphael Fredebeul"
+  description="Archiv der Artikel von Raphael Fredebeul zu AI, Daten, Innovation und kreativer Arbeit."
+>
+  <main class="blog-page" id="main-content">
+    <SiteHeader current="ai-data" />
+
+    <header class="blog-header">
+      <div class="header-copy">
+        <p class="kicker">AI & Data</p>
+        <h1>Artikelarchiv zu Daten, Innovation und analytischer Arbeit.</h1>
+        <p class="lead">
+          Die Artikel gehoeren inhaltlich zum Bereich AI & Data. Hier liegt das vollstaendige Archiv
+          aller Beitraege.
+        </p>
+      </div>
+      <aside class="graphic-panel" aria-label="Grafik">
+        <img src="/graphics/blog-panel.svg" alt="Abstrakte grafische Komposition fuer Texte und Blog" />
+      </aside>
+    </header>
+
+    <section class="posts" id="posts">
+      {posts.map((post) => (
+        <article class="post-card">
+          <p class="post-date">{post.data.publishDate.toLocaleDateString('de-DE', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}</p>
+          <h2>
+            <a href={`/blog/${post.slug}`}>{post.data.title}</a>
+          </h2>
+          <p>{post.data.description}</p>
+        </article>
+      ))}
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .blog-page {
+    width: var(--container);
+    margin: 0 auto;
+    padding: 1.25rem 0 4rem;
+  }
+
+  .blog-header,
+  .posts {
+    border-top: 1px solid var(--line);
+  }
+
+  .blog-header {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+    gap: 3.25rem;
+    align-items: start;
+    padding: 1rem 0 2rem;
+  }
+
+  .header-copy {
+    padding-top: 0.25rem;
+  }
+
+  .kicker,
+  .post-date {
+    margin: 0;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent-strong);
+  }
+
+  h1,
+  h2,
+  p {
+    margin-top: 0;
+  }
+
+  h1 {
+    margin: 0.5rem 0 1rem;
+    max-width: 11ch;
+    font-size: var(--title-xl);
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+  }
+
+  .lead {
+    max-width: 38rem;
+    color: var(--muted);
+    line-height: 1.65;
+    font-size: var(--text-lg);
+  }
+
+  h2 {
+    margin: 0.4rem 0 0.5rem;
+    font-size: var(--title-md);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  .post-card {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .post-card p {
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 42rem;
+    font-size: var(--text-md);
+  }
+
+  .graphic-panel img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    background: white;
+  }
+
+  @media (max-width: 720px) {
+    .blog-header {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

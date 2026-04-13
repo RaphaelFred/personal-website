@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+
+const platformLinks = [
+  {
+    label: 'SoundCloud',
+    href: 'https://soundcloud.com/raphael-fredebeul',
+  },
+  {
+    label: 'Spotify',
+    href: 'https://open.spotify.com/search/Raphael%20Fredebeul',
+  },
+  {
+    label: 'YouTube',
+    href: 'https://www.youtube.com/results?search_query=Raphael+Fredebeul',
+  },
+];
+---
+
+<Layout
+  title="Musik | Raphael Fredebeul"
+  description="Musikseite von Raphael Fredebeul mit praesenter SoundCloud-Einbettung und reduzierter Release-Struktur."
+>
+  <main class="page" id="main-content">
+    <SiteHeader current="musik" />
+
+    <section class="intro">
+      <div class="intro-grid">
+        <div class="intro-copy">
+          <p class="kicker">Musik</p>
+          <h1>Musik zwischen Skizze, Produktion und Veroeffentlichung.</h1>
+          <p class="lead">
+            Hier ist der musikalische Teil meiner Arbeit gebuendelt. Der Fokus liegt bewusst auf dem
+            Hoeren selbst.
+          </p>
+        </div>
+        <aside class="graphic-panel" aria-label="Grafik">
+          <img src="/graphics/music-panel.svg" alt="Abstrakte grafische Komposition fuer Musik" />
+        </aside>
+      </div>
+    </section>
+
+    <section class="player-section">
+      <iframe
+        title="Alle SoundCloud-Tracks von Raphael Fredebeul"
+        width="100%"
+        height="760"
+        scrolling="no"
+        frameborder="no"
+        allow="autoplay"
+        loading="lazy"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/raphael-fredebeul/tracks&color=%238c341d&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true"
+      ></iframe>
+    </section>
+
+    <section class="links-section">
+      <p class="kicker">Plattformen</p>
+      <div class="platform-links">
+        {platformLinks.map((item) => (
+          <a class="platform-link" href={item.href} target="_blank" rel="noreferrer">
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .page {
+    width: var(--container);
+    margin: 0 auto;
+    padding: 1rem 0 4rem;
+  }
+
+  .intro,
+  .player-section,
+  .links-section {
+    border-top: 1px solid var(--line);
+  }
+
+  .intro,
+  .player-section,
+  .links-section {
+    padding: 2rem 0;
+  }
+
+  .intro-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+    gap: 3.25rem;
+    align-items: start;
+  }
+
+  .intro-copy {
+    padding-top: 0.25rem;
+  }
+
+  .kicker {
+    margin: 0;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent-strong);
+  }
+
+  h1,
+  p {
+    margin-top: 0;
+  }
+
+  h1 {
+    margin: 0.55rem 0 1rem;
+    max-width: 11ch;
+    font-size: var(--title-xl);
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+    font-weight: 700;
+  }
+
+  .lead,
+  .platform-link {
+    color: var(--muted);
+    line-height: 1.65;
+    font-size: var(--text-md);
+  }
+
+  .lead {
+    max-width: 36rem;
+    font-size: var(--text-lg);
+  }
+
+  .player-section iframe {
+    display: block;
+    width: 100%;
+    border: 1px solid var(--line);
+    background: #ffffff;
+  }
+
+  .graphic-panel img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    background: white;
+  }
+
+  .platform-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .platform-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.2rem;
+    padding: 0.85rem 1.15rem;
+    border: 1px solid var(--text);
+    color: var(--text);
+  }
+
+  .platform-link:hover {
+    color: var(--accent-strong);
+  }
+
+  @media (max-width: 720px) {
+    .intro-grid {
+      grid-template-columns: 1fr;
+    }
+
+    h1 {
+      max-width: 100%;
+      font-size: clamp(3rem, 14vw, 4.5rem);
+    }
+
+    .player-section iframe {
+      height: 640px;
+    }
+  }
+</style>

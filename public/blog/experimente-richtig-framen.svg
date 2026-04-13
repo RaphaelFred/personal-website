@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" fill="none">
+  <rect width="1200" height="720" fill="#f8f4eb"/>
+  <rect x="56" y="56" width="1088" height="608" rx="28" fill="#fffaf2" stroke="#d7cec0"/>
+  <text x="96" y="128" fill="#111111" font-size="34" font-family="Arial, Helvetica, sans-serif">Experimente richtig framen</text>
+  <text x="96" y="164" fill="#6f675a" font-size="20" font-family="Arial, Helvetica, sans-serif">Von der Hypothese zur Entscheidung</text>
+  <rect x="108" y="248" width="220" height="180" rx="26" fill="#f4eadf" stroke="#d7cec0"/>
+  <rect x="390" y="248" width="220" height="180" rx="26" fill="#f1e0d0" stroke="#d7cec0"/>
+  <rect x="672" y="248" width="220" height="180" rx="26" fill="#edd4bd" stroke="#d7cec0"/>
+  <rect x="954" y="248" width="136" height="180" rx="26" fill="#e6c5a6" stroke="#d7cec0"/>
+  <text x="136" y="314" fill="#111111" font-size="22" font-family="Arial, Helvetica, sans-serif">Hypothese</text>
+  <text x="136" y="346" fill="#6f675a" font-size="18" font-family="Arial, Helvetica, sans-serif">Welche Veraenderung</text>
+  <text x="136" y="372" fill="#6f675a" font-size="18" font-family="Arial, Helvetica, sans-serif">erwarten wir?</text>
+  <text x="418" y="314" fill="#111111" font-size="22" font-family="Arial, Helvetica, sans-serif">Messung</text>
+  <text x="418" y="346" fill="#6f675a" font-size="18" font-family="Arial, Helvetica, sans-serif">Woran erkennen wir</text>
+  <text x="418" y="372" fill="#6f675a" font-size="18" font-family="Arial, Helvetica, sans-serif">einen Effekt?</text>
+  <text x="700" y="314" fill="#111111" font-size="22" font-family="Arial, Helvetica, sans-serif">Interpretation</text>
+  <text x="700" y="346" fill="#6f675a" font-size="18" font-family="Arial, Helvetica, sans-serif">Was bedeutet das</text>
+  <text x="700" y="372" fill="#6f675a" font-size="18" font-family="Arial, Helvetica, sans-serif">fuer die Praxis?</text>
+  <text x="980" y="314" fill="#111111" font-size="22" font-family="Arial, Helvetica, sans-serif">Aktion</text>
+  <text x="980" y="346" fill="#6f675a" font-size="18" font-family="Arial, Helvetica, sans-serif">Was folgt?</text>
+  <path d="M329 338 H374" stroke="#8d2f14" stroke-width="6" stroke-linecap="round"/>
+  <path d="M611 338 H656" stroke="#8d2f14" stroke-width="6" stroke-linecap="round"/>
+  <path d="M893 338 H938" stroke="#8d2f14" stroke-width="6" stroke-linecap="round"/>
+</svg>
