@@ -1,9 +1,12 @@
 export function withBase(path: string) {
-  const base = import.meta.env.BASE_URL;
+  const base = import.meta.env.BASE_URL.endsWith('/')
+    ? import.meta.env.BASE_URL
+    : `${import.meta.env.BASE_URL}/`;
 
   if (!path || path === '/') {
     return base;
   }
 
-  return `${base}${path.replace(/^\/+/, '')}`;
+  const normalizedPath = path.startsWith('#') ? path.slice(1) : path.replace(/^\/+/, '');
+  return `${base}${normalizedPath}`;
 }
