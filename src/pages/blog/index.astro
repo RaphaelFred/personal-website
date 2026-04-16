@@ -22,28 +22,34 @@ const posts = (await getCollection('blog')).sort(
         <h1>Artikelarchiv zu Daten, Innovation und analytischer Arbeit.</h1>
         <p class="lead">
           Die Artikel gehoeren inhaltlich zum Bereich AI & Data. Hier liegt das vollstaendige Archiv
-          aller Beitraege.
+          aller Beitraege in einer klareren, leichter scanbaren Uebersicht.
         </p>
       </div>
-      <aside class="graphic-panel" aria-label="Grafik">
-        <img src={withBase('/graphics/blog-panel.svg')} alt="Abstrakte grafische Komposition fuer Texte und Blog" />
+
+      <aside class="archive-note">
+        <p class="meta">Archiv</p>
+        <h2>{posts.length} Beitraege</h2>
+        <p>Neueste Artikel zuerst. Fuer Projekte und Zusammenarbeit geht es ueber den AI-&-Data-Bereich weiter.</p>
+        <a class="archive-link" href={withBase('/beratung')}>Zur AI-&-Data-Seite</a>
       </aside>
     </header>
 
     <section class="posts" id="posts">
-      {posts.map((post) => (
-        <article class="post-card">
-          <p class="post-date">{post.data.publishDate.toLocaleDateString('de-DE', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          })}</p>
-          <h2>
-            <a href={withBase(`/blog/${post.slug}`)}>{post.data.title}</a>
-          </h2>
-          <p>{post.data.description}</p>
-        </article>
-      ))}
+      <div class="posts-grid">
+        {posts.map((post) => (
+          <article class="post-card">
+            <p class="post-date">{post.data.publishDate.toLocaleDateString('de-DE', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}</p>
+            <h2>
+              <a href={withBase(`/blog/${post.slug}`)}>{post.data.title}</a>
+            </h2>
+            <p>{post.data.description}</p>
+          </article>
+        ))}
+      </div>
     </section>
   </main>
 </Layout>
@@ -52,7 +58,7 @@ const posts = (await getCollection('blog')).sort(
   .blog-page {
     width: var(--container);
     margin: 0 auto;
-    padding: 1.25rem 0 4rem;
+    padding: 1.15rem 0 4rem;
   }
 
   .blog-header,
@@ -60,20 +66,21 @@ const posts = (await getCollection('blog')).sort(
     border-top: 1px solid var(--line);
   }
 
-  .blog-header {
-    display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
-    gap: 3.25rem;
-    align-items: start;
-    padding: 1rem 0 2rem;
+  .blog-header,
+  .posts {
+    padding: 2rem 0;
   }
 
-  .header-copy {
-    padding-top: 0.25rem;
+  .blog-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.74fr);
+    gap: clamp(1.4rem, 3vw, 3rem);
+    align-items: start;
   }
 
   .kicker,
-  .post-date {
+  .post-date,
+  .meta {
     margin: 0;
     font-size: 0.78rem;
     text-transform: uppercase;
@@ -95,43 +102,117 @@ const posts = (await getCollection('blog')).sort(
     letter-spacing: -0.045em;
   }
 
-  .lead {
-    max-width: 38rem;
-    color: var(--muted);
-    line-height: 1.65;
-    font-size: var(--text-lg);
-  }
-
   h2 {
-    margin: 0.4rem 0 0.5rem;
+    margin: 0.45rem 0 0;
     font-size: var(--title-md);
     line-height: 1.12;
     letter-spacing: -0.02em;
   }
 
-  .post-card {
-    padding: 1.5rem 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .post-card p {
+  .lead,
+  .post-card p,
+  .archive-note p {
     color: var(--muted);
-    line-height: 1.65;
-    max-width: 42rem;
+    line-height: 1.68;
     font-size: var(--text-md);
   }
 
-  .graphic-panel img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
+  .lead {
+    max-width: 38rem;
+    font-size: var(--text-lg);
+  }
+
+  .archive-note,
+  .post-card {
     border: 1px solid var(--line);
-    background: white;
+    border-radius: var(--radius-xl);
+    background: var(--panel);
+    box-shadow: var(--shadow-card);
+  }
+
+  .archive-note {
+    padding: 1.25rem;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 240, 232, 0.75)),
+      var(--panel);
+  }
+
+  .archive-note h2 {
+    margin-top: 0.35rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1;
+  }
+
+  .archive-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.8rem;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--text);
+    border-radius: var(--radius-pill);
+    color: var(--text);
+  }
+
+  .archive-link:hover,
+  .post-card a:hover {
+    color: var(--accent-strong);
+    border-color: currentColor;
+    transform: translateY(-1px);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .post-card {
+    padding: 1.25rem;
+  }
+
+  .post-card p {
+    margin: 0.7rem 0 0;
+  }
+
+  .post-card a {
+    color: var(--text);
+  }
+
+  .post-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  @media (max-width: 1180px) {
+    .blog-header,
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 720px) {
-    .blog-header {
-      grid-template-columns: 1fr;
+    .blog-page {
+      padding-top: 0.85rem;
+    }
+
+    .blog-header,
+    .posts {
+      padding: 1.7rem 0;
+    }
+
+    h1 {
+      max-width: 100%;
+    }
+
+    .archive-note,
+    .post-card {
+      border-radius: var(--radius-lg);
+    }
+
+    .archive-link {
+      width: 100%;
+      justify-content: center;
     }
   }
 </style>

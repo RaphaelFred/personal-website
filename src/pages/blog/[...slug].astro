@@ -20,6 +20,7 @@ const { Content } = await render(post);
 <Layout title={`${post.data.title} | AI & Data`} description={post.data.description}>
   <main class="post-page" id="main-content">
     <SiteHeader current="ai-data" />
+
     <header class="post-header">
       <a class="back-link" href={withBase('/beratung#artikel')}>Zurueck zu AI & Data</a>
       <p class="kicker">AI & Data</p>
@@ -42,9 +43,9 @@ const { Content } = await render(post);
 
 <style>
   .post-page {
-    width: min(820px, calc(100vw - 2rem));
+    width: var(--container-narrow);
     margin: 0 auto;
-    padding: 1.25rem 0 4rem;
+    padding: 1.15rem 0 4rem;
   }
 
   .post-header,
@@ -52,16 +53,46 @@ const { Content } = await render(post);
     border-top: 1px solid var(--line);
   }
 
+  .post-header,
+  .post-body {
+    padding: 2rem 0;
+  }
+
   .post-header {
-    padding: 1rem 0 2rem;
+    border-radius: var(--radius-xl);
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 240, 232, 0.74)),
+      var(--panel);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-card);
+    padding: 1.5rem;
   }
 
   .back-link,
   .lead,
   .post-body :global(p),
-  .post-body :global(li) {
+  .post-body :global(li),
+  .post-body :global(blockquote) {
     color: var(--muted);
-    line-height: 1.75;
+    line-height: 1.78;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.8rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.62);
+  }
+
+  .back-link:hover,
+  .post-body :global(a:hover) {
+    color: var(--accent-strong);
+    border-color: currentColor;
+    transform: translateY(-1px);
   }
 
   .kicker,
@@ -92,27 +123,74 @@ const { Content } = await render(post);
   }
 
   .post-body {
-    padding: 2rem 0;
+    padding-inline: 0.35rem;
   }
 
   .post-body :global(h2) {
-    margin: 2rem 0 0.75rem;
+    margin: 2.4rem 0 0.85rem;
     font-size: var(--title-md);
     line-height: 1.14;
     letter-spacing: -0.02em;
   }
 
+  .post-body :global(h3) {
+    margin: 1.8rem 0 0.65rem;
+    font-size: 1.18rem;
+    line-height: 1.2;
+  }
+
+  .post-body :global(a) {
+    color: var(--accent-strong);
+    text-decoration: underline;
+    text-decoration-color: rgba(140, 61, 34, 0.28);
+    text-underline-offset: 0.18em;
+  }
+
   .post-body :global(img) {
     display: block;
     width: 100%;
-    margin: 1.5rem 0 2rem;
+    margin: 1.8rem 0 2rem;
     border: 1px solid var(--line);
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     background: rgba(255, 255, 255, 0.82);
+    box-shadow: var(--shadow-card);
   }
 
   .post-body :global(ul),
   .post-body :global(ol) {
     padding-left: 1.2rem;
   }
- </style>
+
+  .post-body :global(blockquote) {
+    margin: 1.8rem 0;
+    padding: 1rem 1.15rem;
+    border-left: 3px solid var(--accent-warm);
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    background: rgba(255, 255, 255, 0.62);
+  }
+
+  @media (max-width: 720px) {
+    .post-page {
+      padding-top: 0.85rem;
+    }
+
+    .post-header,
+    .post-body {
+      padding: 1.6rem 0;
+    }
+
+    .post-header {
+      border-radius: var(--radius-lg);
+      padding: 1.2rem;
+    }
+
+    .post-body {
+      padding-inline: 0;
+    }
+
+    .back-link {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

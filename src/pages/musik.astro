@@ -7,14 +7,32 @@ const platformLinks = [
   {
     label: 'SoundCloud',
     href: 'https://soundcloud.com/raphael-fredebeul',
+    detail: 'Der direkteste Einstieg in alle veroeffentlichten Tracks und laufenden Skizzen.',
   },
   {
     label: 'Spotify',
     href: 'https://open.spotify.com/search/Raphael%20Fredebeul',
+    detail: 'Zum Weiterhoeren in Playlists und in gewohnter Streaming-Umgebung.',
   },
   {
     label: 'YouTube',
     href: 'https://www.youtube.com/results?search_query=Raphael+Fredebeul',
+    detail: 'Eine weitere Spur, um Releases, Uploads und visuelle Kontexte zu finden.',
+  },
+];
+
+const practiceAreas = [
+  {
+    title: 'Skizze',
+    detail: 'Ideen, Atmosphaeren und erste rhythmische Strukturen testen, bevor etwas final gedacht wird.',
+  },
+  {
+    title: 'Produktion',
+    detail: 'Klangbild, Arrangement und Energie so verdichten, dass aus Material ein Track mit eigener Form wird.',
+  },
+  {
+    title: 'Veroeffentlichung',
+    detail: 'Tracks an den Punkt bringen, an dem sie gehoert, eingeordnet und weiterentwickelt werden koennen.',
   },
 ];
 ---
@@ -32,35 +50,107 @@ const platformLinks = [
           <p class="kicker">Musik</p>
           <h1>Musik zwischen Skizze, Produktion und Veroeffentlichung.</h1>
           <p class="lead">
-            Hier ist der musikalische Teil meiner Arbeit gebuendelt. Der Fokus liegt bewusst auf dem
-            Hoeren selbst.
+            Hier ist der musikalische Teil meiner Arbeit gebuendelt. Der Fokus liegt bewusst auf
+            dem Hoeren selbst, ohne visuelle Ablenkung und ohne unnötige Umwege.
           </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://soundcloud.com/raphael-fredebeul" target="_blank" rel="noreferrer">
+              Auf SoundCloud hoeren
+            </a>
+            <a class="button button-secondary" href="#player">Direkt zum Player</a>
+          </div>
         </div>
-        <aside class="graphic-panel" aria-label="Grafik">
-          <img src={withBase('/graphics/music-panel.svg')} alt="Abstrakte grafische Komposition fuer Musik" />
+
+        <aside class="artwork-card">
+          <img src={withBase('/music/release-artwork.svg')} alt="Abstraktes Release Artwork" />
+          <div class="artwork-copy">
+            <p class="meta">Schnellzugriff</p>
+            <p>
+              Der eingebettete Player unten buendelt die Tracks direkt auf dieser Seite. Fuer
+              Plattformwechsel oder Weiterhoeren gibt es zusaetzlich SoundCloud, Spotify und
+              YouTube.
+            </p>
+          </div>
         </aside>
       </div>
     </section>
 
-    <section class="player-section">
-      <iframe
-        title="Alle SoundCloud-Tracks von Raphael Fredebeul"
-        width="100%"
-        height="760"
-        scrolling="no"
-        frameborder="no"
-        allow="autoplay"
-        loading="lazy"
-        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/raphael-fredebeul/tracks&color=%238c341d&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true"
-      ></iframe>
+    <section class="section" id="player">
+      <div class="section-head">
+        <div class="section-copy">
+          <p class="kicker">Player</p>
+          <h2>Tracks direkt hier hoeren.</h2>
+          <p class="section-text">
+            Die Seite ist bewusst einfach gehalten: ein direkter Einstieg ueber den Player und
+            daneben kurze Orientierung fuer verschiedene Hoersituationen.
+          </p>
+        </div>
+      </div>
+
+      <div class="listen-layout">
+        <div class="player-card">
+          <iframe
+            title="Alle SoundCloud-Tracks von Raphael Fredebeul"
+            width="100%"
+            height="640"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            loading="lazy"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/raphael-fredebeul/tracks&color=%238c341d&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true"
+          ></iframe>
+        </div>
+
+        <aside class="listen-note">
+          <p class="meta">Hoerlogik</p>
+          <h3>Ein klarer, mobiler Einstieg statt verstreuter Links.</h3>
+          <p>
+            Auf dem Desktop funktioniert der Player als zentrale Hoerflaeche. Auf dem Smartphone
+            bleiben die wichtigsten Plattformen direkt darunter schnell erreichbar.
+          </p>
+
+          <div class="platform-pills">
+            {platformLinks.map((item) => (
+              <a href={item.href} target="_blank" rel="noreferrer">{item.label}</a>
+            ))}
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <section class="links-section">
-      <p class="kicker">Plattformen</p>
-      <div class="platform-links">
+    <section class="section">
+      <div class="section-head">
+        <div class="section-copy">
+          <p class="kicker">Praxis</p>
+          <h2>Wie ich musikalische Arbeit grob denke.</h2>
+        </div>
+      </div>
+
+      <div class="practice-grid">
+        {practiceAreas.map((item) => (
+          <article class="practice-card">
+            <h3>{item.title}</h3>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div class="section-copy">
+          <p class="kicker">Plattformen</p>
+          <h2>Weitere Wege zum Hoeren und Weitergehen.</h2>
+        </div>
+      </div>
+
+      <div class="platform-grid">
         {platformLinks.map((item) => (
-          <a class="platform-link" href={item.href} target="_blank" rel="noreferrer">
-            {item.label}
+          <a class="platform-card" href={item.href} target="_blank" rel="noreferrer">
+            <p class="meta">{item.label}</p>
+            <h3>{item.label}</h3>
+            <p>{item.detail}</p>
           </a>
         ))}
       </div>
@@ -76,29 +166,29 @@ const platformLinks = [
   }
 
   .intro,
-  .player-section,
-  .links-section {
+  .section {
     border-top: 1px solid var(--line);
   }
 
   .intro,
-  .player-section,
-  .links-section {
+  .section {
     padding: 2rem 0;
   }
 
-  .intro-grid {
+  .intro-grid,
+  .listen-layout {
     display: grid;
-    grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
-    gap: 3.25rem;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.9fr);
+    gap: clamp(1.4rem, 3vw, 3rem);
     align-items: start;
   }
 
   .intro-copy {
-    padding-top: 0.25rem;
+    padding-top: 0.35rem;
   }
 
-  .kicker {
+  .kicker,
+  .meta {
     margin: 0;
     font-size: 0.78rem;
     text-transform: uppercase;
@@ -107,6 +197,8 @@ const platformLinks = [
   }
 
   h1,
+  h2,
+  h3,
   p {
     margin-top: 0;
   }
@@ -117,69 +209,265 @@ const platformLinks = [
     font-size: var(--title-xl);
     line-height: 0.96;
     letter-spacing: -0.045em;
-    font-weight: 700;
+  }
+
+  h2 {
+    margin: 0.55rem 0 0;
+    max-width: 15ch;
+    font-size: var(--title-lg);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: var(--title-md);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
   }
 
   .lead,
-  .platform-link {
+  .section-text,
+  .artwork-copy p,
+  .listen-note p,
+  .practice-card p,
+  .platform-card p {
     color: var(--muted);
-    line-height: 1.65;
+    line-height: 1.68;
     font-size: var(--text-md);
   }
 
   .lead {
-    max-width: 36rem;
+    max-width: 38rem;
     font-size: var(--text-lg);
   }
 
-  .player-section iframe {
-    display: block;
-    width: 100%;
-    border: 1px solid var(--line);
-    background: #ffffff;
-  }
-
-  .graphic-panel img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    border: 1px solid var(--line);
-    background: white;
-  }
-
-  .platform-links {
+  .hero-actions,
+  .platform-pills {
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 0.8rem;
   }
 
-  .platform-link {
+  .hero-actions {
+    margin-top: 2rem;
+  }
+
+  .button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     min-height: 3.2rem;
-    padding: 0.85rem 1.15rem;
+    padding: 0.88rem 1.3rem;
     border: 1px solid var(--text);
+    border-radius: var(--radius-pill);
     color: var(--text);
   }
 
-  .platform-link:hover {
+  .button-primary {
+    background: var(--text);
+    color: var(--bg);
+    box-shadow: var(--shadow-card);
+  }
+
+  .button-secondary {
+    background: transparent;
+  }
+
+  .button:hover,
+  .platform-pills a:hover,
+  .platform-card:hover {
     color: var(--accent-strong);
+    border-color: currentColor;
+    transform: translateY(-1px);
+  }
+
+  .button-primary:hover {
+    color: var(--bg);
+    background: var(--accent-strong);
+  }
+
+  .artwork-card,
+  .player-card,
+  .listen-note,
+  .practice-card,
+  .platform-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-xl);
+    background: var(--panel);
+    box-shadow: var(--shadow-card);
+  }
+
+  .artwork-card,
+  .listen-note,
+  .practice-card,
+  .platform-card {
+    padding: 1.2rem;
+  }
+
+  .artwork-card {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 240, 232, 0.75)),
+      var(--panel);
+  }
+
+  .artwork-card img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--line);
+    background: #ffffff;
+  }
+
+  .artwork-copy {
+    margin-top: 1rem;
+  }
+
+  .artwork-copy p:last-child,
+  .listen-note p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-copy {
+    display: grid;
+    gap: 0.2rem;
+  }
+
+  .section-text {
+    margin-top: 0.8rem;
+    max-width: 42rem;
+  }
+
+  .player-card {
+    padding: 0.7rem;
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .player-card iframe {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: var(--radius-lg);
+    background: #ffffff;
+  }
+
+  .listen-note {
+    align-self: stretch;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(235, 238, 228, 0.78)),
+      var(--panel);
+  }
+
+  .listen-note h3 {
+    margin-top: 0.45rem;
+  }
+
+  .listen-note p {
+    margin-top: 0.8rem;
+  }
+
+  .platform-pills {
+    margin-top: 1.2rem;
+  }
+
+  .platform-pills a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.7rem;
+    padding: 0.75rem 0.95rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    color: var(--text);
+  }
+
+  .practice-grid,
+  .platform-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .practice-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .platform-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .practice-card:hover,
+  .platform-card:hover {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .practice-card p,
+  .platform-card p {
+    margin: 0.75rem 0 0;
+  }
+
+  .platform-card {
+    display: block;
+    color: var(--text);
+  }
+
+  @media (max-width: 1180px) {
+    .intro-grid,
+    .listen-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .practice-grid,
+    .platform-grid {
+      grid-template-columns: 1fr;
+    }
   }
 
   @media (max-width: 720px) {
-    .intro-grid {
-      grid-template-columns: 1fr;
+    .intro,
+    .section {
+      padding: 1.7rem 0;
     }
 
-    h1 {
+    h1,
+    h2 {
       max-width: 100%;
-      font-size: clamp(3rem, 14vw, 4.5rem);
     }
 
-    .player-section iframe {
-      height: 640px;
+    .button {
+      width: 100%;
+    }
+
+    .platform-pills a {
+      width: 100%;
+    }
+
+    .player-card iframe {
+      height: 520px;
+    }
+
+    .artwork-card,
+    .player-card,
+    .listen-note,
+    .practice-card,
+    .platform-card {
+      border-radius: var(--radius-lg);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .player-card iframe {
+      height: 460px;
     }
   }
 </style>

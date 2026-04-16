@@ -10,7 +10,6 @@ permissions:
   contents: read
   pages: write
   id-token: write
-  
 
 concurrency:
   group: pages
@@ -38,6 +37,8 @@ jobs:
       - name: Build site
         run: npm run build
         env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+          CI: 'true'
           GITHUB_REPOSITORY: ${{ github.repository }}
           GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
 

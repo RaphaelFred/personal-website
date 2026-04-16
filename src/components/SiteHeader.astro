@@ -20,10 +20,15 @@ const externalLinks = [
 ---
 
 <header class="site-header">
-  <a class="wordmark" href={withBase('/')} aria-label="Startseite Raphael Fredebeul">Raphael Fredebeul</a>
+  <a class="wordmark" href={withBase('/')} aria-label="Startseite Raphael Fredebeul">
+    <span class="wordmark-name">Raphael Fredebeul</span>
+    <span class="wordmark-role">Data Scientist und kreative Praxis</span>
+  </a>
   <nav class="nav" aria-label="Hauptnavigation">
     {navItems.map((item) => (
-      <a href={withBase(item.href)} aria-current={current === item.key ? 'page' : undefined}>{item.label}</a>
+      <a href={withBase(item.href)} aria-current={current === item.key ? 'page' : undefined}>
+        {item.label}
+      </a>
     ))}
   </nav>
   <div class="header-links" aria-label="Externe Links">
@@ -35,52 +40,109 @@ const externalLinks = [
 
 <style>
   .site-header {
+    position: sticky;
+    top: 0.75rem;
+    z-index: 30;
     display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 1.5rem;
+    grid-template-columns: minmax(0, 1.15fr) auto auto;
+    gap: 1rem;
     align-items: center;
-    padding: 0.85rem 0 1rem;
-    border-top: 1px solid var(--line);
+    margin-bottom: clamp(1.25rem, 3vw, 2.4rem);
+    padding: 0.95rem 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-xl);
+    background: var(--panel-strong);
+    box-shadow: var(--shadow-card);
+    backdrop-filter: blur(20px);
   }
 
   .wordmark {
-    font-size: var(--text-md);
+    display: grid;
+    gap: 0.12rem;
+    min-width: 0;
+  }
+
+  .wordmark-name {
+    font-size: 1.02rem;
     font-weight: 600;
     letter-spacing: 0.01em;
+  }
+
+  .wordmark-role {
+    color: var(--muted);
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
   }
 
   .nav,
   .header-links {
     display: flex;
-    gap: 1.25rem;
-    color: var(--muted);
+    flex-wrap: wrap;
+    gap: 0.55rem;
     font-size: var(--text-sm);
-    letter-spacing: 0.08em;
+    min-width: 0;
   }
 
   .nav {
-    text-transform: uppercase;
+    justify-content: center;
   }
 
   .header-links {
     justify-content: flex-end;
-    text-transform: none;
-    letter-spacing: 0;
+  }
+
+  .nav a,
+  .header-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.65rem;
+    padding: 0.7rem 0.95rem;
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.55);
+    color: var(--muted);
+  }
+
+  .nav a {
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .header-links a {
+    background: transparent;
+    border-color: var(--line);
+    color: var(--text);
   }
 
   .nav a[aria-current='page'] {
-    color: var(--text);
+    border-color: var(--text);
+    background: var(--text);
+    color: var(--bg);
   }
 
   .nav a:hover,
   .header-links a:hover {
     color: var(--accent-strong);
+    border-color: currentColor;
+    transform: translateY(-1px);
+  }
+
+  .nav a[aria-current='page']:hover {
+    color: var(--bg);
   }
 
   @media (max-width: 980px) {
     .site-header {
+      position: relative;
+      top: 0;
       grid-template-columns: 1fr;
-      gap: 0.75rem;
+      gap: 0.85rem;
+    }
+
+    .nav {
+      justify-content: flex-start;
     }
 
     .header-links {
@@ -89,9 +151,31 @@ const externalLinks = [
   }
 
   @media (max-width: 720px) {
-    .nav,
+    .site-header {
+      padding: 0.85rem;
+      margin-bottom: 1rem;
+      border-radius: var(--radius-lg);
+    }
+
+    .nav {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 0.15rem;
+      scrollbar-width: none;
+      justify-content: flex-start;
+    }
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav a,
+    .header-links a {
+      white-space: nowrap;
+    }
+
     .header-links {
-      flex-wrap: wrap;
+      gap: 0.45rem;
     }
   }
 </style>
