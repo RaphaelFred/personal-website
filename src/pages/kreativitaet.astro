@@ -1,0 +1,289 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+
+const creativeAreas = [
+  {
+    title: 'Musik',
+    detail: 'Produktion, Rhythmus, Klang und die Arbeit an Form, Energie und Reduktion.',
+  },
+  {
+    title: 'Schreiben',
+    detail: 'Texte ueber Unsicherheit, Struktur, kreative Arbeit und analytisches Denken.',
+  },
+  {
+    title: 'Verbindung',
+    detail: 'Mich interessiert besonders, wie analytische und kreative Arbeit sich gegenseitig schaerfen koennen.',
+  },
+];
+
+const contactMailto =
+  'mailto:?subject=Nachricht%20zu%20Kreativitaet&body=Hallo%20Raphael,%0A%0Aich%20wollte%20dir%20zu%20deiner%20kreativen%20Arbeit%20schreiben.%0A%0AViele%20Gruesse';
+---
+
+<Layout
+  title="Kreativität | Raphael Fredebeul"
+  description="Kreativität von Raphael Fredebeul: Musik, Schreiben und kreative Praxis als Teil seiner Arbeit."
+>
+  <main class="page" id="main-content">
+    <SiteHeader current="creativity" />
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="kicker">Kreativität</p>
+        <h1>Kreative Praxis als zweiter Arbeitsraum.</h1>
+        <p class="lead">
+          Neben meiner Arbeit mit AI und Daten gibt es einen zweiten Bereich, der fuer mich
+          genauso wichtig ist: Musik, Schreiben und die offene Arbeit an Form, Idee und Rhythmus.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-grid">
+        <div class="section-copy">
+          <p class="kicker">Warum das wichtig ist</p>
+          <h2>Dieser Teil meiner Arbeit ist kein Anhang, sondern ein eigener Denkraum.</h2>
+        </div>
+
+        <div class="text-stack">
+          <p>
+            Kreative Arbeit ist fuer mich nicht nur Ausgleich. Sie ist eine andere Weise, Struktur
+            wahrzunehmen, Entscheidungen zu treffen und mit Unschärfe umzugehen.
+          </p>
+          <p>
+            Gerade deshalb gehoert sie auf diese Website: nicht als Hobby-Randnotiz, sondern als
+            Teil meiner Praxis und meiner Perspektive auf Arbeit.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="cards-grid">
+        {creativeAreas.map((item) => (
+          <article class="card">
+            <h3>{item.title}</h3>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section contact-section">
+      <div class="contact-card">
+        <div class="section-copy">
+          <p class="kicker">Kontakt</p>
+          <h2>Wenn du ueber kreative Arbeit, Musik oder ein gemeinsames Projekt sprechen willst, freue ich mich ueber eine Nachricht.</h2>
+        </div>
+
+        <a class="button" href={contactMailto}>E-Mail schreiben</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .page {
+    width: var(--container);
+    margin: 0 auto;
+    padding: 1rem 0 4rem;
+  }
+
+  .hero,
+  .section {
+    border-top: 1px solid var(--line);
+  }
+
+  .section {
+    padding: 2.2rem 0;
+  }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    min-height: 34rem;
+    display: flex;
+    align-items: start;
+    padding: clamp(2.2rem, 5vw, 3rem) 0 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(244, 246, 243, 0.04), rgba(244, 246, 243, 0.12)),
+      url('/images/hero-illustration.jpg') center / cover no-repeat;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 0;
+    filter: saturate(0.66) contrast(0.92);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(244, 246, 243, 0.74) 0%, rgba(244, 246, 243, 0.34) 34%, rgba(244, 246, 243, 0.08) 100%),
+      linear-gradient(180deg, rgba(244, 246, 243, 0.1) 0%, rgba(244, 246, 243, 0.02) 36%, rgba(244, 246, 243, 0.18) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .section-grid,
+  .contact-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .hero-copy {
+    max-width: 46rem;
+    width: min(1120px, calc(100vw - 3rem));
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    padding-top: 0.2rem;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .kicker {
+    margin: 0;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent-strong);
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+
+  h1 {
+    margin: 0.55rem 0 0;
+    max-width: 10ch;
+    font-size: var(--title-xl);
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+  }
+
+  h2 {
+    margin: 0.45rem 0 0;
+    max-width: 14ch;
+    font-size: var(--title-lg);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: var(--title-md);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  .lead,
+  .text-stack p,
+  .card p {
+    color: var(--muted);
+    line-height: 1.68;
+    font-size: var(--text-md);
+  }
+
+  .lead {
+    margin-top: 1.25rem;
+    max-width: 38rem;
+    font-size: var(--text-lg);
+  }
+
+  .text-stack {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .card,
+  .contact-card {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    box-shadow: var(--shadow-card);
+  }
+
+  .card {
+    padding: 1.2rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .card p {
+    margin: 0.7rem 0 0;
+  }
+
+  .contact-card {
+    padding: 1.5rem;
+    border-radius: var(--radius-xl);
+    align-items: end;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.2rem;
+    padding: 0.88rem 1.3rem;
+    border: 1px solid var(--text);
+    border-radius: var(--radius-pill);
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .button:hover {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+  }
+
+  @media (max-width: 900px) {
+    .section-grid,
+    .contact-card,
+    .cards-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .hero::after {
+      background: linear-gradient(180deg, rgba(244, 246, 243, 0.84) 0%, rgba(244, 246, 243, 0.72) 56%, rgba(244, 246, 243, 0.46) 100%);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .page {
+      padding-top: 0.6rem;
+      padding-bottom: 3rem;
+    }
+
+    h1,
+    h2 {
+      max-width: 100%;
+    }
+
+    .hero {
+      min-height: auto;
+      padding-top: 1.6rem;
+    }
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+    }
+  }
+</style>

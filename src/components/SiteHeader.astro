@@ -2,14 +2,15 @@
 import { withBase } from '../utils/paths';
 
 interface Props {
-  current?: 'home' | 'ai-data' | 'musik' | 'blog';
+  current?: 'home' | 'about' | 'ai-data' | 'creativity' | 'blog';
 }
 
 const { current = 'home' } = Astro.props;
 
 const navItems = [
+  { href: '/ueber-mich', label: 'Über Mich', key: 'about' },
   { href: '/beratung', label: 'AI & Data', key: 'ai-data' },
-  { href: '/musik', label: 'Musik', key: 'musik' },
+  { href: '/kreativitaet', label: 'Kreativität', key: 'creativity' },
   { href: '/#kontakt', label: 'Kontakt', key: 'contact' },
 ];
 

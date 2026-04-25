@@ -1,0 +1,431 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import { withBase } from '../utils/paths';
+
+const focusAreas = [
+  'Data Science und analytische Struktur fuer Produktfragen',
+  'Forecasting, Experimentdesign und Entscheidungsunterstuetzung',
+  'Musik als eigenstaendige kreative Praxis',
+  'Texte ueber Unsicherheit, Struktur und kreative Arbeit',
+];
+
+const values = [
+  {
+    title: 'Praezision vor Lautstaerke',
+    detail:
+      'Mich interessieren Fragen, die relevant sind, aber noch nicht vollstaendig geklaert. Gute Arbeit beginnt fuer mich mit sauberem Denken, nicht mit schneller Komplexitaet.',
+  },
+  {
+    title: 'Anschlussfaehigkeit statt Dateninszenierung',
+    detail:
+      'Analyse ist fuer mich dann gut, wenn sie anschlussfaehig wird: fuer Produkt, Strategie, Stakeholder und fuer die Menschen, die damit arbeiten muessen.',
+  },
+  {
+    title: 'Kreative Praxis als Gegenpol und Werkzeug',
+    detail:
+      'Musik ist fuer mich nicht nur ein Ausgleich, sondern eine zweite Denkform. Sie schaerft mein Gefuehl fuer Rhythmus, Form, Reduktion und Spannung.',
+  },
+];
+
+const creativePlatforms = [
+  {
+    label: 'SoundCloud',
+    href: 'https://soundcloud.com/raphael-fredebeul',
+    detail: 'Der direkteste Einstieg in veroeffentlichte Tracks, Skizzen und laufende musikalische Arbeit.',
+  },
+  {
+    label: 'Spotify',
+    href: 'https://open.spotify.com/search/Raphael%20Fredebeul',
+    detail: 'Zum Weiterhoeren in Playlists und in einer gewohnten Streaming-Umgebung.',
+  },
+  {
+    label: 'YouTube',
+    href: 'https://www.youtube.com/results?search_query=Raphael+Fredebeul',
+    detail: 'Weitere Spuren fuer Uploads, Releases und visuelle Kontexte.',
+  },
+];
+
+const creativePractice = [
+  {
+    title: 'Skizze',
+    detail: 'Ideen, Atmosphaeren und rhythmische Strukturen testen, bevor etwas final gedacht wird.',
+  },
+  {
+    title: 'Produktion',
+    detail: 'Klangbild, Arrangement und Energie so verdichten, dass aus Material eine eigene Form entsteht.',
+  },
+  {
+    title: 'Veroeffentlichung',
+    detail: 'Tracks an einen Punkt bringen, an dem sie gehoert, eingeordnet und weiterentwickelt werden koennen.',
+  },
+];
+
+const contactMailto =
+  'mailto:?subject=Nachricht%20ueber%20deine%20Website&body=Hallo%20Raphael,%0A%0Aich%20wollte%20dir%20zu%20deiner%20Arbeit%20schreiben.%0A%0AViele%20Gruesse';
+---
+
+<Layout
+  title="Über Mich | Raphael Fredebeul"
+  description="Über mich: Raphael Fredebeul über Data Science, kreative Praxis, Musik und die Art, wie er arbeitet."
+>
+  <main class="page" id="main-content">
+    <SiteHeader current="about" />
+
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="kicker">Über mich</p>
+        <h1>Ich arbeite zwischen Daten, Struktur und kreativer Praxis.</h1>
+        <p class="lead">
+          Mein Schwerpunkt liegt auf analytischer Arbeit an der Schnittstelle von Produkt,
+          Innovation und Entscheidung. Gleichzeitig ist Musik ein eigenstaendiger Teil meiner
+          Praxis und meines Denkens.
+        </p>
+      </div>
+    </section>
+
+    <section class="section profile-section">
+      <div class="section-grid">
+        <div class="section-copy">
+          <p class="kicker">Profil</p>
+          <h2>Ein kurzer Rahmen fuer die Art von Arbeit, die mich interessiert.</h2>
+        </div>
+
+        <div class="text-stack">
+          <p>
+            Ich mag Projekte, in denen analytische Tiefe und strategische Relevanz gleichzeitig
+            wichtig sind. Besonders spannend wird es fuer mich dort, wo Fragen noch unscharf sind,
+            aber Entscheidungen trotzdem vorbereitet werden muessen.
+          </p>
+          <p>
+            In solchen Situationen helfen Daten nicht nur beim Messen, sondern beim Ordnen,
+            Priorisieren und Verstaendlichmachen. Genau dort sehe ich meinen Beitrag.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-grid">
+        <div class="section-copy">
+          <p class="kicker">Schwerpunkte</p>
+          <h2>Woran ich aktuell besonders interessiert bin.</h2>
+        </div>
+
+        <div class="focus-list">
+          {focusAreas.map((item) => (
+            <div class="focus-item">
+              <p>{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-grid">
+        <div class="section-copy">
+          <p class="kicker">Haltung</p>
+          <h2>Drei Dinge, die meine Arbeit stark praegen.</h2>
+        </div>
+
+        <div class="values-grid">
+          {values.map((item) => (
+            <article class="value-card">
+              <h3>{item.title}</h3>
+              <p>{item.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section creative-section">
+      <div class="section-grid">
+        <div class="section-copy">
+          <p class="kicker">Kreative Praxis</p>
+          <h2>Musik ist der deutlichste, aber nicht der einzige Teil davon.</h2>
+          <p class="section-text">
+            Musik bleibt mein direkter kreativ-praktischer Raum. Dort geht es fuer mich um Form,
+            Rhythmus, Reduktion, Energie und darum, Ideen in etwas Hoerbares zu uebersetzen.
+          </p>
+        </div>
+
+        <div class="text-stack">
+          <p>
+            Diese Seite soll nicht nur analytische Arbeit zeigen, sondern auch den Teil meiner
+            Praxis, der anders funktioniert: experimenteller, klangbezogener und weniger linear.
+          </p>
+          <p>
+            Gerade deshalb gehoert er fuer mich auf diese Seite. Er bildet einen wichtigen
+            Gegenpol zur Data-Arbeit und beeinflusst, wie ich ueber Struktur, Rhythmus und
+            Entscheidungen nachdenke.
+          </p>
+        </div>
+      </div>
+
+      <div class="creative-layout">
+        <div class="player-card">
+          <iframe
+            title="Alle SoundCloud-Tracks von Raphael Fredebeul"
+            width="100%"
+            height="620"
+            scrolling="no"
+            frameborder="no"
+            allow="autoplay"
+            loading="lazy"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/raphael-fredebeul/tracks&color=%234c635a&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true"
+          ></iframe>
+        </div>
+
+        <aside class="listen-note">
+          <p class="kicker">Plattformen</p>
+          <h3>Weitere Wege zum Hoeren und Weitergehen.</h3>
+          <div class="platform-list">
+            {creativePlatforms.map((item) => (
+              <a class="platform-card" href={item.href} target="_blank" rel="noreferrer">
+                <p class="platform-label">{item.label}</p>
+                <p>{item.detail}</p>
+              </a>
+            ))}
+          </div>
+        </aside>
+      </div>
+
+      <div class="creative-practice-grid">
+        {creativePractice.map((item) => (
+          <article class="value-card">
+            <h3>{item.title}</h3>
+            <p>{item.detail}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section contact-section">
+      <div class="contact-card">
+        <div class="section-copy">
+          <p class="kicker">Kontakt</p>
+          <h2>Wenn du ueber ein Projekt, kreative Arbeit oder eine Zusammenarbeit sprechen willst, freue ich mich ueber eine Nachricht.</h2>
+        </div>
+
+        <a class="button" href={contactMailto}>E-Mail schreiben</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .page {
+    width: var(--container);
+    margin: 0 auto;
+    padding: 1rem 0 4rem;
+  }
+
+  .hero,
+  .section {
+    border-top: 1px solid var(--line);
+  }
+
+  .hero {
+    padding: 2.4rem 0 2rem;
+  }
+
+  .section {
+    padding: 2.4rem 0;
+  }
+
+  .hero-copy {
+    max-width: 46rem;
+  }
+
+  .section-grid,
+  .contact-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .kicker {
+    margin: 0;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent-strong);
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-top: 0;
+  }
+
+  h1 {
+    margin: 0.55rem 0 0;
+    max-width: 10ch;
+    font-size: var(--title-xl);
+    line-height: 0.96;
+    letter-spacing: -0.045em;
+  }
+
+  h2 {
+    margin: 0.45rem 0 0;
+    max-width: 14ch;
+    font-size: var(--title-lg);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: var(--title-md);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+  }
+
+  .lead,
+  .section-text,
+  .text-stack p,
+  .focus-item p,
+  .value-card p,
+  .listen-note p,
+  .platform-card p {
+    color: var(--muted);
+    line-height: 1.7;
+    font-size: var(--text-md);
+  }
+
+  .lead {
+    margin-top: 1.25rem;
+    max-width: 38rem;
+    font-size: var(--text-lg);
+  }
+
+  .text-stack,
+  .focus-list,
+  .values-grid,
+  .platform-list {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .focus-item,
+  .value-card,
+  .contact-card,
+  .player-card,
+  .platform-card {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    box-shadow: var(--shadow-card);
+  }
+
+  .focus-item,
+  .value-card {
+    padding: 1.2rem 1.25rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .focus-item p,
+  .value-card p {
+    margin: 0.7rem 0 0;
+  }
+
+  .contact-card {
+    padding: 1.5rem;
+    border-radius: var(--radius-xl);
+    align-items: end;
+  }
+
+  .creative-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    margin-top: 2rem;
+    align-items: start;
+  }
+
+  .player-card {
+    padding: 0.8rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .player-card iframe {
+    display: block;
+    border: 0;
+    border-radius: calc(var(--radius-lg) - 0.35rem);
+  }
+
+  .listen-note h3 {
+    margin-top: 0.4rem;
+  }
+
+  .platform-card {
+    display: block;
+    padding: 1rem 1.1rem;
+    border-radius: var(--radius-lg);
+    color: var(--text);
+  }
+
+  .platform-label {
+    margin: 0;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--accent-strong);
+  }
+
+  .platform-card p:last-child {
+    margin: 0.55rem 0 0;
+  }
+
+  .creative-practice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.2rem;
+    padding: 0.88rem 1.3rem;
+    border: 1px solid var(--text);
+    border-radius: var(--radius-pill);
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .button:hover {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+  }
+
+  @media (max-width: 900px) {
+    .section-grid,
+    .contact-card,
+    .creative-layout,
+    .creative-practice-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .page {
+      padding-top: 0.6rem;
+      padding-bottom: 3rem;
+    }
+
+    h1,
+    h2 {
+      max-width: 100%;
+    }
+
+    .contact-card {
+      border-radius: var(--radius-lg);
+    }
+  }
+</style>

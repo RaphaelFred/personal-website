@@ -4,6 +4,13 @@ import { getCollection, render } from 'astro:content';
 import SiteHeader from '../../components/SiteHeader.astro';
 import { withBase } from '../../utils/paths';
 
+const blogImages = {
+  'building-clarity-from-complexity': '/blog/ai-adoption-organisationen.jpg',
+  'fruehe-produktsignale-erkennen': '/blog/user-innovation-mit-ki.jpg',
+  'experimente-richtig-framen': '/blog/use-case-identifikation-ki.jpg',
+  'forecasting-unter-unsicherheit': '/blog/strategische-datenanalyse-innovation.jpg',
+};
+
 export async function getStaticPaths() {
   const posts = await getCollection('blog');
 
@@ -15,24 +22,27 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const postHeroImage = withBase(blogImages[post.slug] ?? '/images/hero-illustration.jpg');
 ---
 
 <Layout title={`${post.data.title} | AI & Data`} description={post.data.description}>
   <main class="post-page" id="main-content">
     <SiteHeader current="ai-data" />
 
-    <header class="post-header">
-      <a class="back-link" href={withBase('/beratung#artikel')}>Zurueck zu AI & Data</a>
-      <p class="kicker">AI & Data</p>
-      <h1>{post.data.title}</h1>
-      <p class="post-date">
-        {post.data.publishDate.toLocaleDateString('de-DE', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-        })}
-      </p>
-      <p class="lead">{post.data.description}</p>
+    <header class="post-hero" style={`--post-hero-image: url('${postHeroImage}')`}>
+      <div class="post-header">
+        <a class="back-link" href={withBase('/beratung#artikel')}>Zurueck zu AI & Data</a>
+        <p class="kicker">AI & Data</p>
+        <h1>{post.data.title}</h1>
+        <p class="post-date">
+          {post.data.publishDate.toLocaleDateString('de-DE', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          })}
+        </p>
+        <p class="lead">{post.data.description}</p>
+      </div>
     </header>
 
     <article class="post-body">
@@ -48,24 +58,58 @@ const { Content } = await render(post);
     padding: 1.15rem 0 4rem;
   }
 
-  .post-header,
+  .post-hero,
   .post-body {
     border-top: 1px solid var(--line);
   }
 
-  .post-header,
+  .post-hero,
   .post-body {
     padding: 2rem 0;
   }
 
-  .post-header {
-    border-radius: var(--radius-xl);
+  .post-hero {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    min-height: 34rem;
+    display: flex;
+    align-items: start;
+    padding: clamp(2.2rem, 5vw, 3rem) 0 2rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .post-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 240, 232, 0.74)),
-      var(--panel);
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow-card);
-    padding: 1.5rem;
+      linear-gradient(180deg, rgba(244, 246, 243, 0.04), rgba(244, 246, 243, 0.12)),
+      var(--post-hero-image) center / cover no-repeat;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 0;
+    filter: saturate(0.66) contrast(0.92);
+  }
+
+  .post-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(244, 246, 243, 0.74) 0%, rgba(244, 246, 243, 0.34) 34%, rgba(244, 246, 243, 0.08) 100%),
+      linear-gradient(180deg, rgba(244, 246, 243, 0.1) 0%, rgba(244, 246, 243, 0.02) 36%, rgba(244, 246, 243, 0.18) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .post-header {
+    width: min(1120px, calc(100vw - 3rem));
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    padding-top: 0.2rem;
   }
 
   .back-link,
@@ -85,7 +129,7 @@ const { Content } = await render(post);
     padding: 0.75rem 1rem;
     border: 1px solid var(--line);
     border-radius: var(--radius-pill);
-    background: rgba(255, 255, 255, 0.62);
+    background: rgba(255, 255, 255, 0.72);
   }
 
   .back-link:hover,
@@ -111,19 +155,24 @@ const { Content } = await render(post);
 
   h1 {
     margin: 0.5rem 0 1rem;
-    font-size: var(--title-xl);
-    line-height: 0.96;
-    letter-spacing: -0.045em;
+    max-width: 11ch;
+    font-size: clamp(3.3rem, 8.5vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.055em;
   }
 
   .lead {
-    margin-top: 1rem;
-    max-width: 40rem;
-    font-size: var(--text-lg);
+    margin-top: 1.15rem;
+    max-width: 34rem;
+    font-size: clamp(1.08rem, 1.8vw, 1.26rem);
   }
 
   .post-body {
     padding-inline: 0.35rem;
+  }
+
+  .post-body :global(p:first-child) {
+    display: none;
   }
 
   .post-body :global(h2) {
@@ -174,14 +223,22 @@ const { Content } = await render(post);
       padding-top: 0.85rem;
     }
 
-    .post-header,
+    .post-hero,
     .post-body {
       padding: 1.6rem 0;
     }
 
+    .post-hero {
+      min-height: auto;
+      padding-top: 1.6rem;
+    }
+
+    .post-hero::after {
+      background: linear-gradient(180deg, rgba(244, 246, 243, 0.58) 0%, rgba(244, 246, 243, 0.24) 42%, rgba(244, 246, 243, 0.18) 100%);
+    }
+
     .post-header {
-      border-radius: var(--radius-lg);
-      padding: 1.2rem;
+      width: min(1120px, calc(100vw - 1.5rem));
     }
 
     .post-body {

@@ -8,6 +8,25 @@ const blogPosts = (await getCollection('blog'))
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
   .slice(0, 3);
 
+const blogImages = {
+  'building-clarity-from-complexity': {
+    src: '/blog/ai-adoption-organisationen.jpg',
+    alt: 'Abstrakte Szene zu AI Adoption in Organisationen',
+  },
+  'fruehe-produktsignale-erkennen': {
+    src: '/blog/user-innovation-mit-ki.jpg',
+    alt: 'Abstrakte Visualisierung zu User Innovation mit KI',
+  },
+  'experimente-richtig-framen': {
+    src: '/blog/use-case-identifikation-ki.jpg',
+    alt: 'Abstrakte Visualisierung zur Identifikation von KI-Use-Cases',
+  },
+  'forecasting-unter-unsicherheit': {
+    src: '/blog/strategische-datenanalyse-innovation.jpg',
+    alt: 'Abstrakte Visualisierung zu strategischer Datenanalyse und Unsicherheit',
+  },
+};
+
 const workAreas = [
   {
     label: 'AI & Data',
@@ -17,9 +36,9 @@ const workAreas = [
     alt: 'Abstrakte Grafik fuer AI und Datenarbeit',
   },
   {
-    label: 'Musik',
-    detail: 'Ein eigener Raum fuer Produktion, Rhythmus, Klang und kreative Praxis ausserhalb der klassischen Data-Arbeit.',
-    href: '/musik',
+    label: 'Kreativität',
+    detail: 'Ein eigener Raum fuer Musik, Produktion, Rhythmus, Klang und weitere Formen kreativer Praxis.',
+    href: '/kreativitaet',
     image: '/graphics/music-panel.svg',
     alt: 'Abstrakte Grafik fuer Musik und kreative Praxis',
   },
@@ -34,7 +53,7 @@ const workAreas = [
 
 const aboutPoints = [
   'AI- und Datenarbeit fuer Produkt, Innovation und Entscheidungsfindung.',
-  'Musik als eigenstaendige kreative Praxis zwischen Produktion, Rhythmus und Klang.',
+  'Kreative Praxis zwischen Musik, Produktion, Rhythmus und Klang.',
   'Texte ueber Unsicherheit, Struktur, kreative Arbeit und analytisches Denken.',
 ];
 
@@ -54,7 +73,7 @@ const contactMailto =
 
 const contactDestinations = [
   { label: 'AI & Data', href: '/beratung', icon: 'grid' },
-  { label: 'Musik', href: '/musik', icon: 'wave' },
+  { label: 'Kreativität', href: '/kreativitaet', icon: 'wave' },
   { label: 'Texte', href: '/blog', icon: 'pen' },
   { label: 'E-Mail', href: contactMailto, icon: 'mail' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raphael-fredebeul-733605140/', icon: 'linkedin' },
@@ -71,7 +90,9 @@ const contactDestinations = [
 
     <section class="intro-section" aria-label="Einleitung">
       <div class="intro-main">
-        <h1>Data&AI, Innovation, kreative Praxis.</h1>
+        <h1>KI. <br>
+          Innovation. <br>
+          Kreativität.</h1>
         <p class="intro-text">
           
         </p>
@@ -80,13 +101,13 @@ const contactDestinations = [
 
     <section class="list-section" aria-label="Bereiche">
       <div class="about-block">
-        <p class="section-label">Kurz zu mir</p>
+        <p class="section-label">Meine Mission</p>
         <p class="about-text">
-          Ich arbeite an der Schnittstelle von Data Science, Produktdenken und kreativer Praxis.
-          Mich interessieren Fragen, die noch nicht ganz sauber sind, aber bereits relevant genug,
-          um gute Struktur, klare Hypothesen und belastbare Entscheidungen zu verlangen.
-          Neben meiner Arbeit mit AI und Daten ist Musik ein eigenstaendiger Teil meiner Praxis und
-          meines Denkens.
+          Ich arbeite an der Schnittstelle von Künstlicher Intelligenz, Innovation und Kreativität.
+          Mein Fokus liegt darauf, technologische Entwicklungen nicht nur zu verstehen,
+          sondern in klare Strategien, neue Produkte, bessere Prozesse und kreative Möglichkeiten zu übersetzen.
+          Dabei ist mir wichtig nicht nur die Perspektive der Technologie zu beachten, sondern immer auch den Menschen
+          im Blick zu haben.
         </p>
       </div>
 
@@ -107,36 +128,35 @@ const contactDestinations = [
     </section>
 
     <section class="list-section" aria-label="Texte">
-      <div class="section-grid">
-        <div class="section-intro">
-          <p class="section-label">Texte</p>
-          <h2>Aktuelle Notizen und Artikel.</h2>
-        </div>
+      <div class="article-section-head">
+        <p class="section-label">Texte</p>
+        <h2>Aktuelle Notizen und Artikel.</h2>
+      </div>
 
-        <div class="stack-list">
-          {blogPosts.map((post) => (
-            <article class="stack-item article-item">
-              <p class="stack-label">
-                {post.data.publishDate.toLocaleDateString('de-DE', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </p>
-              <h3>
-                <a href={withBase(`/blog/${post.slug}`)}>{post.data.title}</a>
-              </h3>
-              <p class="stack-detail">{post.data.description}</p>
-            </article>
-          ))}
-        </div>
+      <div class="article-grid">
+        {blogPosts.map((post) => (
+          <article class="article-card">
+            <a class="article-image-link" href={withBase(`/blog/${post.slug}`)}>
+              <img
+                src={withBase(blogImages[post.slug]?.src ?? '/graphics/blog-panel.svg')}
+                alt={blogImages[post.slug]?.alt ?? post.data.title}
+                loading="lazy"
+              />
+            </a>
+            <h3>
+              <a href={withBase(`/blog/${post.slug}`)}>{post.data.title}</a>
+            </h3>
+            <p class="article-summary">{post.data.description}</p>
+            <a class="article-link" href={withBase(`/blog/${post.slug}`)}>Read More →</a>
+          </article>
+        ))}
       </div>
     </section>
 
     <section class="visual-work-section" aria-label="Arbeitsbereiche">
       <div class="visual-work-head">
         <p class="section-label">Bereiche</p>
-        <h2>AI & Data, Musik und Texte.</h2>
+        <h2>AI & Data, Kreativität und Texte.</h2>
       </div>
 
       <div class="visual-work-grid">
@@ -447,7 +467,69 @@ const contactDestinations = [
     color: var(--text);
   }
 
+  .article-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.25rem;
+  }
+
+  .article-section-head {
+    margin-bottom: 2rem;
+  }
+
+  .article-section-head h2 {
+    max-width: none;
+  }
+
+  .article-card {
+    display: block;
+  }
+
+  .article-image-link {
+    display: block;
+    color: var(--text);
+  }
+
+  .article-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.72);
+  }
+
+  .article-card h3 {
+    margin-top: 1rem;
+    max-width: none;
+  }
+
+  .article-card h3 a,
+  .article-link {
+    color: var(--text);
+  }
+
+  .article-summary {
+    margin: 0.7rem 0 0;
+    color: var(--muted);
+    line-height: 1.68;
+    font-size: 1rem;
+  }
+
+  .article-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .article-card:hover h3 a,
+  .article-card:hover .article-link {
+    color: var(--accent-strong);
+  }
+
   .contact-showcase {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
     padding: 4.5rem 0 0;
   }
 
@@ -500,10 +582,9 @@ const contactDestinations = [
     display: grid;
     place-items: center;
     padding: 2rem;
-    border-radius: 1rem;
     background:
       linear-gradient(180deg, rgba(244, 246, 243, 0.18), rgba(244, 246, 243, 0.24)),
-      url('/images/hero-illustration.jpg') center / cover no-repeat;
+      url('/images/contact-illustration.jpg') center / cover no-repeat;
   }
 
   .contact-card {
@@ -558,6 +639,9 @@ const contactDestinations = [
   }
 
   .contact-icons {
+    width: min(1120px, calc(100vw - 3rem));
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -632,6 +716,11 @@ const contactDestinations = [
       gap: 2rem;
     }
 
+    .article-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
     .contact-form {
       flex-direction: column;
       align-items: stretch;
@@ -666,6 +755,10 @@ const contactDestinations = [
     .contact-hero {
       min-height: 28rem;
       padding: 1rem;
+    }
+
+    .contact-icons {
+      width: min(1120px, calc(100vw - 1.5rem));
     }
 
     .contact-card {

@@ -77,41 +77,24 @@ const contactMailto =
     <SiteHeader current="ai-data" />
 
     <section class="hero">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <p class="kicker">AI & Data</p>
-          <h1>AI & Data fuer klare Entscheidungen, gute Modelle und belastbare Richtung.</h1>
-          <p class="lead">
-            Ich unterstuetze bei analytischen Fragestellungen rund um Produkt, Innovation,
-            Forecasting und strategische Priorisierung.
-          </p>
+      <div class="hero-copy">
+        <p class="kicker">AI & Data</p>
+        <h1>AI & Data fuer klare Entscheidungen, gute Modelle und belastbare Richtung.</h1>
+        <p class="lead">
+          Ich unterstuetze bei analytischen Fragestellungen rund um Produkt, Innovation,
+          Forecasting und strategische Priorisierung.
+        </p>
 
-          <div class="hero-actions">
-            <a class="button button-primary" href={contactMailto}>E-Mail schreiben</a>
-            <a class="button button-secondary" href="#angebot">Leistungen ansehen</a>
-          </div>
-
-          <div class="tag-row" aria-label="Schwerpunkte">
-            {focusAreas.map((item) => (
-              <span>{item}</span>
-            ))}
-          </div>
+        <div class="hero-actions">
+          <a class="button button-primary" href={contactMailto}>E-Mail schreiben</a>
+          <a class="button button-secondary" href="#angebot">Leistungen ansehen</a>
         </div>
 
-        <aside class="hero-side">
-          <div class="graphic-panel" aria-label="Grafik">
-            <img src={withBase('/graphics/ai-data-panel.svg')} alt="Abstrakte grafische Komposition fuer AI und Daten" />
-          </div>
-
-          <div class="hero-note">
-            <p class="meta">Typische Situationen</p>
-            <ul>
-              <li>Ein Produktteam braucht eine belastbare Analyse statt mehr Dashboards.</li>
-              <li>Eine datengetriebene Initiative muss strategisch eingeordnet werden.</li>
-              <li>AI-Potenziale sollen konkret, realistisch und anschlussfaehig bewertet werden.</li>
-            </ul>
-          </div>
-        </aside>
+        <div class="tag-row" aria-label="Schwerpunkte">
+          {focusAreas.map((item) => (
+            <span>{item}</span>
+          ))}
+        </div>
       </div>
     </section>
 
@@ -243,12 +226,10 @@ const contactMailto =
     border-top: 1px solid var(--line);
   }
 
-  .hero,
   .section {
     padding: 2rem 0;
   }
 
-  .hero-grid,
   .contact-card {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(320px, 0.95fr);
@@ -256,13 +237,49 @@ const contactMailto =
     align-items: start;
   }
 
-  .hero-copy {
-    padding-top: 0.35rem;
+  .hero {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    min-height: 34rem;
+    display: flex;
+    align-items: start;
+    padding: clamp(2.2rem, 5vw, 3rem) 0 2rem;
+    border-bottom: 1px solid var(--line);
   }
 
-  .hero-side {
-    display: grid;
-    gap: 1rem;
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(244, 246, 243, 0.04), rgba(244, 246, 243, 0.12)),
+      url('/images/hero-illustration.jpg') center / cover no-repeat;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 0;
+    filter: saturate(0.66) contrast(0.92);
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(244, 246, 243, 0.74) 0%, rgba(244, 246, 243, 0.34) 34%, rgba(244, 246, 243, 0.08) 100%),
+      linear-gradient(180deg, rgba(244, 246, 243, 0.1) 0%, rgba(244, 246, 243, 0.02) 36%, rgba(244, 246, 243, 0.18) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-copy {
+    max-width: 46rem;
+    width: min(1120px, calc(100vw - 3rem));
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    padding-top: 0.2rem;
   }
 
   .kicker,
@@ -312,8 +329,7 @@ const contactMailto =
   .card li,
   .case-card p,
   .process-item p,
-  .article-card p,
-  .hero-note li {
+  .article-card p {
     color: var(--muted);
     line-height: 1.68;
     font-size: var(--text-md);
@@ -388,8 +404,6 @@ const contactMailto =
     background: var(--accent-strong);
   }
 
-  .graphic-panel img,
-  .hero-note,
   .card,
   .case-card,
   .process-item,
@@ -401,14 +415,6 @@ const contactMailto =
     box-shadow: var(--shadow-card);
   }
 
-  .graphic-panel img {
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    object-fit: cover;
-    background: white;
-  }
-
-  .hero-note,
   .card,
   .case-card,
   .process-item,
@@ -417,19 +423,11 @@ const contactMailto =
     padding: 1.25rem;
   }
 
-  .hero-note {
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(244, 240, 232, 0.75)),
-      var(--panel);
-  }
-
-  .hero-note ul,
   .card ul {
     padding-left: 1.1rem;
     margin-bottom: 0;
   }
 
-  .hero-note li + li,
   .card li + li {
     margin-top: 0.55rem;
   }
@@ -517,7 +515,6 @@ const contactMailto =
   }
 
   @media (max-width: 1180px) {
-    .hero-grid,
     .contact-card {
       grid-template-columns: 1fr;
     }
@@ -545,6 +542,10 @@ const contactMailto =
       align-items: flex-start;
       flex-direction: column;
     }
+
+    .hero::after {
+      background: linear-gradient(180deg, rgba(244, 246, 243, 0.84) 0%, rgba(244, 246, 243, 0.72) 56%, rgba(244, 246, 243, 0.46) 100%);
+    }
   }
 
   @media (max-width: 720px) {
@@ -553,9 +554,13 @@ const contactMailto =
       max-width: 100%;
     }
 
-    .hero,
     .section {
       padding: 1.7rem 0;
+    }
+
+    .hero {
+      min-height: auto;
+      padding-top: 1.6rem;
     }
 
     .button {
@@ -567,8 +572,6 @@ const contactMailto =
       justify-content: center;
     }
 
-    .graphic-panel img,
-    .hero-note,
     .card,
     .case-card,
     .process-item,
