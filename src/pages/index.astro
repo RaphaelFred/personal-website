@@ -6,75 +6,36 @@ import { withBase } from '../utils/paths';
 
 const blogPosts = (await getCollection('blog'))
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
-  .slice(0, 4);
+  .slice(0, 3);
 
-const currentFocus = [
+const workAreas = [
   {
-    title: 'AI & Data fuer Produktfragen',
-    detail: 'Analysen, Modelle und Signale in klare Entscheidungen und realistische Prioritaeten uebersetzen.',
-  },
-  {
-    title: 'Innovation mit Struktur',
-    detail: 'Unscharfe Fragen so aufbauen, dass Teams daraus belastbare Hypothesen und naechste Schritte machen koennen.',
-  },
-  {
-    title: 'Musik als Gegenpol',
-    detail: 'Klang, Rhythmus und Produktion als eigenstaendige kreative Praxis mit eigener Sprache und Energie.',
-  },
-  {
-    title: 'Texte aus der Praxis',
-    detail: 'Artikel ueber Forecasting, Experimentdesign, Unsicherheit und kreative Arbeitsweisen innerhalb von AI & Data.',
-  },
-];
-
-const principles = [
-  {
-    title: 'Praezise Fragen vor schnellen Antworten',
-    detail: 'Gute analytische Arbeit beginnt fuer mich mit sauber gerahmten Problemen, nicht mit vorschneller Komplexitaet.',
-  },
-  {
-    title: 'Entscheidungsrelevanz statt Datendekoration',
-    detail: 'Daten sollen nicht nur messen, sondern Orientierung geben, Spannungen sichtbar machen und Optionen klarer machen.',
-  },
-  {
-    title: 'Klar kommuniziert und anschlussfaehig',
-    detail: 'Insights muessen so aufbereitet sein, dass Produkt, Strategie und Stakeholder damit wirklich weiterarbeiten koennen.',
-  },
-];
-
-const profileHighlights = [
-  {
-    label: 'Profil',
-    title: 'Data Scientist an der Schnittstelle von Analyse, Strategie und Kreativitaet',
-    detail: 'Fokus auf Projekte, bei denen Daten nicht nur korrekt, sondern auch richtungsgebend sein muessen.',
-  },
-  {
-    label: 'Schwerpunkte',
-    title: 'Forecasting, Produktanalyse, Experimentdesign und Data Storytelling',
-    detail: 'Besonders spannend werden Projekte fuer mich dort, wo Unsicherheit, Ambiguitaet und Relevanz gleichzeitig hoch sind.',
-  },
-  {
-    label: 'Interesse',
-    title: 'Innovation, Struktur und eigenstaendige kreative Praxis',
-    detail: 'Ich mag Arbeit, die gleichzeitig analytisch sauber, strategisch brauchbar und menschlich verstaendlich ist.',
-  },
-];
-
-const entryPoints = [
-  {
-    kicker: 'AI & Data',
-    title: 'Analytische Klarheit fuer Produkt, Innovation und Entscheidungen.',
-    body: 'Wenn Daten, Modelle oder AI in eine belastbare Richtung uebersetzt werden sollen, ist das der richtige Einstieg.',
+    label: 'AI & Data',
+    detail: 'Forecasting, Produktanalyse, Experimentdesign und die Uebersetzung von Daten in belastbare Entscheidungen.',
     href: '/beratung',
-    cta: 'AI & Data ansehen',
+    image: '/graphics/ai-data-panel.svg',
+    alt: 'Abstrakte Grafik fuer AI und Datenarbeit',
   },
   {
-    kicker: 'Musik',
-    title: 'Ein eigener Raum fuer Klang, Rhythmus und kreative Arbeit.',
-    body: 'Neben meiner analytischen Arbeit ist Musik ein eigenstaendiger Teil meiner Praxis und meines Denkens.',
+    label: 'Musik',
+    detail: 'Ein eigener Raum fuer Produktion, Rhythmus, Klang und kreative Praxis ausserhalb der klassischen Data-Arbeit.',
     href: '/musik',
-    cta: 'Musik ansehen',
+    image: '/graphics/music-panel.svg',
+    alt: 'Abstrakte Grafik fuer Musik und kreative Praxis',
   },
+  {
+    label: 'Schreiben',
+    detail: 'Texte ueber Unsicherheit, Struktur, kreative Arbeit und die Frage, wie man gute analytische Arbeit lesbar macht.',
+    href: '/blog',
+    image: '/graphics/blog-panel.svg',
+    alt: 'Abstrakte Grafik fuer Texte und Notizen',
+  },
+];
+
+const aboutPoints = [
+  'AI- und Datenarbeit fuer Produkt, Innovation und Entscheidungsfindung.',
+  'Musik als eigenstaendige kreative Praxis zwischen Produktion, Rhythmus und Klang.',
+  'Texte ueber Unsicherheit, Struktur, kreative Arbeit und analytisches Denken.',
 ];
 
 const externalLinks = [
@@ -90,6 +51,15 @@ const externalLinks = [
 
 const contactMailto =
   'mailto:?subject=Anfrage%20zu%20AI%20%26%20Data&body=Hallo%20Raphael,%0A%0Aich%20interessiere%20mich%20fuer%20deine%20Arbeit%20im%20Bereich%20AI%20%26%20Data.%0A%0AViele%20Gruesse';
+
+const contactDestinations = [
+  { label: 'AI & Data', href: '/beratung', icon: 'grid' },
+  { label: 'Musik', href: '/musik', icon: 'wave' },
+  { label: 'Texte', href: '/blog', icon: 'pen' },
+  { label: 'E-Mail', href: contactMailto, icon: 'mail' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raphael-fredebeul-733605140/', icon: 'linkedin' },
+  { label: 'SoundCloud', href: 'https://soundcloud.com/raphael-fredebeul', icon: 'soundcloud' },
+];
 ---
 
 <Layout
@@ -99,203 +69,260 @@ const contactMailto =
   <main class="page" id="main-content">
     <SiteHeader current="home" />
 
-    <section class="intro">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <p class="kicker">Data Scientist</p>
-          <h1>Daten, Strategie und kreative Praxis mit klarer Haltung.</h1>
-          <p class="lead">
-            Ich arbeite an Themen rund um Data Science, Innovation und analytische Orientierung.
-            Diese Website ist als offene Uebersicht ueber meine Arbeit, meine Musik und meine Texte
-            gedacht.
-          </p>
-
-          <div class="hero-actions">
-            <a class="button button-primary" href={withBase('/beratung')}>AI & Data entdecken</a>
-            <a class="button button-secondary" href={withBase('/musik')}>Musik ansehen</a>
-          </div>
-
-          <div class="tag-row" aria-label="Schwerpunkte">
-            <span>Forecasting</span>
-            <span>Produktfragen</span>
-            <span>Innovation</span>
-            <span>Kreative Praxis</span>
-          </div>
-        </div>
-
-        <aside class="hero-panel" aria-label="Aktuelle Schwerpunkte">
-          <div class="panel-head">
-            <p class="panel-kicker">Aktuell im Fokus</p>
-            <a class="mini-link" href={withBase('/beratung#artikel')}>Artikel ansehen</a>
-          </div>
-
-          <div class="focus-stack">
-            {currentFocus.map((item) => (
-              <article class="focus-card">
-                <h2>{item.title}</h2>
-                <p>{item.detail}</p>
-              </article>
-            ))}
-          </div>
-
-          <div class="hero-links">
-            {externalLinks.map((item) => (
-              <a href={item.href} target="_blank" rel="noreferrer">{item.label}</a>
-            ))}
-          </div>
-        </aside>
+    <section class="intro-section" aria-label="Einleitung">
+      <div class="intro-main">
+        <h1>Data&AI, Innovation, kreative Praxis.</h1>
+        <p class="intro-text">
+          
+        </p>
       </div>
     </section>
 
-    <section class="section blog-preview">
-      <div class="section-head">
-        <div class="section-copy">
-          <p class="kicker">AI & Data Artikel</p>
-          <h2>Notizen und Artikel aus meiner analytischen Arbeit.</h2>
-          <p class="section-text">
-            Die letzten Beitraege geben einen schnellen Eindruck davon, wie ich ueber Daten,
-            Unsicherheit, Experimente und Strukturierung nachdenke.
-          </p>
-        </div>
-        <a class="section-link" href={withBase('/beratung#artikel')}>Alle Artikel</a>
+    <section class="list-section" aria-label="Bereiche">
+      <div class="about-block">
+        <p class="section-label">Kurz zu mir</p>
+        <p class="about-text">
+          Ich arbeite an der Schnittstelle von Data Science, Produktdenken und kreativer Praxis.
+          Mich interessieren Fragen, die noch nicht ganz sauber sind, aber bereits relevant genug,
+          um gute Struktur, klare Hypothesen und belastbare Entscheidungen zu verlangen.
+          Neben meiner Arbeit mit AI und Daten ist Musik ein eigenstaendiger Teil meiner Praxis und
+          meines Denkens.
+        </p>
       </div>
 
-      <div class="post-grid">
-        {blogPosts.map((post) => (
-          <article class="post-card">
-            <p class="meta">{post.data.publishDate.toLocaleDateString('de-DE', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}</p>
-            <h3>
-              <a href={withBase(`/blog/${post.slug}`)}>{post.data.title}</a>
-            </h3>
-            <p>{post.data.description}</p>
+      <div class="section-grid">
+        <div class="section-intro">
+          <p class="section-label">Bereiche</p>
+          <h2>Woran ich arbeite.</h2>
+        </div>
+
+        <div class="stack-list">
+          {aboutPoints.map((item) => (
+            <div class="stack-item">
+              <h3 class="stack-detail">{item}</h3>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="list-section" aria-label="Texte">
+      <div class="section-grid">
+        <div class="section-intro">
+          <p class="section-label">Texte</p>
+          <h2>Aktuelle Notizen und Artikel.</h2>
+        </div>
+
+        <div class="stack-list">
+          {blogPosts.map((post) => (
+            <article class="stack-item article-item">
+              <p class="stack-label">
+                {post.data.publishDate.toLocaleDateString('de-DE', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </p>
+              <h3>
+                <a href={withBase(`/blog/${post.slug}`)}>{post.data.title}</a>
+              </h3>
+              <p class="stack-detail">{post.data.description}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="visual-work-section" aria-label="Arbeitsbereiche">
+      <div class="visual-work-head">
+        <p class="section-label">Bereiche</p>
+        <h2>AI & Data, Musik und Texte.</h2>
+      </div>
+
+      <div class="visual-work-grid">
+        {workAreas.map((item) => (
+          <article class="visual-work-card">
+            <a href={withBase(item.href)}>
+              <img src={withBase(item.image)} alt={item.alt} loading="lazy" />
+              <h3>{item.label}</h3>
+              <p>{item.detail}</p>
+            </a>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div class="section-copy">
-          <p class="kicker">Arbeitsweise</p>
-          <h2>Wie ich analytische Arbeit einordne.</h2>
-          <p class="section-text">
-            Mich interessieren Projekte, bei denen Daten helfen sollen, Orientierung herzustellen
-            und nicht nur Aktivitaet zu dokumentieren.
+    <section class="contact-showcase" id="kontakt" aria-label="Kontakt">
+      <div class="contact-hero">
+        <div class="contact-card">
+          <h2>Schreib mir gern.</h2>
+          <p class="contact-copy">
+            Trag hier deine E-Mail ein und oeffne direkt eine vorbereitete Nachricht fuer AI, Daten, Produktfragen und Zusammenarbeit.
           </p>
+
+          <form class="contact-form" id="contact-form">
+            <label class="sr-only" for="contact-email">E-Mail-Adresse</label>
+            <input
+              id="contact-email"
+              name="email"
+              type="email"
+              placeholder="E-Mail-Adresse"
+              autocomplete="email"
+              required
+            />
+            <button type="submit">Kontakt</button>
+          </form>
         </div>
       </div>
 
-      <div class="principles-grid">
-        {principles.map((item) => (
-          <article class="surface-card principle-card">
-            <h3>{item.title}</h3>
-            <p>{item.detail}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <div class="section-copy">
-          <p class="kicker">Bereiche</p>
-          <h2>Zwei unterschiedliche Einstiege in dieselbe Arbeitsweise.</h2>
-        </div>
-      </div>
-
-      <div class="feature-grid">
-        {entryPoints.map((item) => (
-          <article class="feature-card">
-            <p class="kicker">{item.kicker}</p>
-            <h3>{item.title}</h3>
-            <p>{item.body}</p>
-            <a class="section-link" href={withBase(item.href)}>{item.cta}</a>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="section-head">
-        <div class="section-copy">
-          <p class="kicker">Kurzprofil</p>
-          <h2>Ein kompakter Rahmen fuer die Art von Arbeit, die ich suche.</h2>
-        </div>
-      </div>
-
-      <div class="profile-grid">
-        {profileHighlights.map((item) => (
-          <article class="surface-card profile-card">
-            <p class="meta-label">{item.label}</p>
-            <h3>{item.title}</h3>
-            <p>{item.detail}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section" id="kontakt">
-      <div class="contact-card">
-        <div class="section-copy">
-          <p class="kicker">Kontakt</p>
-          <h2>Wenn du ueber ein Projekt oder eine Zusammenarbeit sprechen moechtest, freue ich mich ueber eine Nachricht.</h2>
-          <p class="section-text">
-            Fuer AI & Data kannst du mir direkt schreiben. Fuer Musik findest du unten und im
-            Musikbereich die wichtigsten Plattformen.
-          </p>
-        </div>
-
-        <div class="contact-actions">
-          <a class="button button-primary" href={contactMailto}>AI & Data per E-Mail anfragen</a>
-          <a class="button button-secondary" href="https://soundcloud.com/raphael-fredebeul" target="_blank" rel="noreferrer">
-            SoundCloud
+      <div class="contact-icons" aria-label="Bereiche und Profile">
+        {contactDestinations.map((item) => (
+          <a
+            class="icon-tile"
+            href={item.href}
+            target={item.href.startsWith('http') ? '_blank' : undefined}
+            rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+            aria-label={item.label}
+            title={item.label}
+          >
+            {item.icon === 'grid' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z" />
+              </svg>
+            ) : item.icon === 'wave' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 12c2.4 0 2.4-6 4.8-6s2.4 12 4.8 12S15 9 17.4 9 19.8 15 22 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            ) : item.icon === 'pen' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m4 16.5 9.9-9.9 3.5 3.5-9.9 9.9L4 20l.5-3.5ZM14.9 5.6l1.7-1.7a1.9 1.9 0 0 1 2.7 0l1 1a1.9 1.9 0 0 1 0 2.7l-1.7 1.7-3.7-3.7Z" />
+              </svg>
+            ) : item.icon === 'mail' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16v12H4V6Zm0 1.2 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            ) : item.icon === 'linkedin' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.94 8.5V19H3.5V8.5h3.44ZM7.16 5.26c0 1-.74 1.74-1.94 1.74A1.72 1.72 0 0 1 3.32 5.3c0-1 .76-1.76 1.92-1.76s1.88.74 1.92 1.72ZM20.68 12.58V19h-3.42v-6.02c0-1.52-.54-2.56-1.9-2.56-1.04 0-1.66.7-1.94 1.38-.1.24-.12.58-.12.92V19H9.88s.04-9.74 0-10.5h3.42v1.48c.45-.7 1.26-1.7 3.08-1.7 2.24 0 3.92 1.46 3.92 4.6Z" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4.37 13.44a2.06 2.06 0 0 0 2.05 2.06h11.95a1.58 1.58 0 1 0 0-3.16h-.59a4.24 4.24 0 0 0-8.13-1.66 2.75 2.75 0 0 0-1.08-.22 2.73 2.73 0 0 0-2.63 1.97 2.05 2.05 0 0 0-1.57 2.01Zm14.72 4.1c.24 0 .43.19.43.42v.34a.43.43 0 0 1-.43.43H5.74a.43.43 0 0 1-.43-.43v-.34c0-.23.19-.42.43-.42h13.35Zm-11.4 2.15c.23 0 .42.19.42.42v.35a.42.42 0 0 1-.42.42H5.74a.42.42 0 0 1-.43-.42v-.35c0-.23.19-.42.43-.42h1.95Zm3.04 0c.23 0 .42.19.42.42v.35a.42.42 0 0 1-.42.42H8.78a.42.42 0 0 1-.42-.42v-.35c0-.23.19-.42.42-.42h1.95Zm3.03 0c.24 0 .43.19.43.42v.35a.43.43 0 0 1-.43.42h-1.95a.42.42 0 0 1-.42-.42v-.35c0-.23.19-.42.42-.42h1.95Zm3.03 0c.24 0 .43.19.43.42v.35a.43.43 0 0 1-.43.42h-1.95a.42.42 0 0 1-.42-.42v-.35c0-.23.19-.42.42-.42h1.95Z" />
+              </svg>
+            )}
           </a>
-        </div>
+        ))}
       </div>
     </section>
   </main>
+
+  <script>
+    const contactForm = document.querySelector('#contact-form');
+
+    contactForm?.addEventListener('submit', (event) => {
+      event.preventDefault();
+
+      const form = event.currentTarget;
+      const emailInput = form.querySelector('#contact-email');
+
+      if (!(emailInput instanceof HTMLInputElement) || !emailInput.value.trim()) {
+        return;
+      }
+
+      const email = emailInput.value.trim();
+      const subject = encodeURIComponent('Anfrage zu AI & Data');
+      const body = encodeURIComponent(
+        `Hallo Raphael,\n\nich interessiere mich fuer deine Arbeit im Bereich AI & Data.\n\nMeine E-Mail-Adresse: ${email}\n\nViele Gruesse`
+      );
+
+      window.location.href = `mailto:?subject=${subject}&body=${body}`;
+    });
+  </script>
 </Layout>
 
 <style>
   .page {
-    width: var(--container);
+    width: min(1120px, calc(100vw - 3rem));
     margin: 0 auto;
     padding: 1rem 0 4rem;
   }
 
-  .intro,
-  .section {
+  .intro-section,
+  .list-section,
+  .visual-work-section,
+  .contact-showcase {
     border-top: 1px solid var(--line);
   }
 
-  .intro {
-    padding: 2rem 0 2.4rem;
-  }
-
-  .section {
-    padding: 2.2rem 0;
-  }
-
-  .hero-grid,
-  .contact-card {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.92fr);
-    gap: clamp(1.4rem, 3vw, 3rem);
+  .intro-section {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    min-height: 34rem;
+    display: flex;
     align-items: start;
+    padding: clamp(2.2rem, 5vw, 3rem) 0 2rem;
+    border-bottom: 1px solid var(--line);
   }
 
-  .kicker,
-  .meta,
-  .meta-label,
-  .panel-kicker {
+  .list-section {
+    padding: 4.5rem 0;
+  }
+
+  .intro-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(244, 246, 243, 0.04), rgba(244, 246, 243, 0.12)),
+      url('/images/hero-illustration.jpg') center / cover no-repeat;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 0;
+    filter: saturate(0.66) contrast(0.92);
+  }
+
+  .intro-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(244, 246, 243, 0.74) 0%, rgba(244, 246, 243, 0.34) 34%, rgba(244, 246, 243, 0.08) 100%),
+      linear-gradient(180deg, rgba(244, 246, 243, 0.1) 0%, rgba(244, 246, 243, 0.02) 36%, rgba(244, 246, 243, 0.18) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .section-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  .about-block {
+    width: 100%;
+    max-width: none;
+    margin-bottom: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .intro-main {
+    max-width: 40rem;
+    width: min(1120px, calc(100vw - 3rem));
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    padding-top: 0.2rem;
+  }
+
+  .section-label,
+  .stack-label {
     margin: 0;
-    font-size: 0.78rem;
-    text-transform: uppercase;
+    font-size: 0.76rem;
     letter-spacing: 0.16em;
+    text-transform: uppercase;
     color: var(--accent-strong);
   }
 
@@ -307,310 +334,324 @@ const contactMailto =
   }
 
   h1 {
-    margin: 0.55rem 0 1rem;
+    margin: 0;
     max-width: 11ch;
-    font-size: var(--title-xl);
-    line-height: 0.96;
-    letter-spacing: -0.045em;
+    font-size: clamp(3.3rem, 8.5vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.055em;
   }
 
   h2 {
-    margin: 0.45rem 0 0;
-    max-width: 15ch;
-    font-size: var(--title-lg);
+    margin: 0.3rem 0 0;
+    max-width: 12ch;
+    font-size: clamp(1.9rem, 3.3vw, 3rem);
     line-height: 1.02;
-    letter-spacing: -0.035em;
+    letter-spacing: -0.04em;
   }
 
   h3 {
     margin: 0;
-    font-size: var(--title-md);
+    font-size: clamp(1.25rem, 1.9vw, 1.55rem);
     line-height: 1.12;
     letter-spacing: -0.02em;
   }
 
-  .lead,
-  .section-text,
-  .focus-card p,
-  .surface-card p,
-  .post-card p {
+  .intro-text,
+  .stack-detail,
+  .about-text,
+  .about-list li {
     color: var(--muted);
-    line-height: 1.68;
-    font-size: var(--text-md);
+    line-height: 1.72;
   }
 
-  .lead {
-    max-width: 40rem;
-    font-size: var(--text-lg);
+  .intro-text {
+    margin: 1.45rem 0 0;
+    max-width: 34rem;
+    font-size: clamp(1.08rem, 1.8vw, 1.26rem);
   }
 
-  .hero-actions,
-  .hero-links,
-  .contact-actions,
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-  }
-
-  .hero-actions {
-    margin-top: 2rem;
-  }
-
-  .tag-row {
-    margin-top: 1.2rem;
-  }
-
-  .tag-row span {
-    display: inline-flex;
-    align-items: center;
-    min-height: 2.5rem;
-    padding: 0.65rem 0.9rem;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-pill);
-    background: rgba(255, 255, 255, 0.48);
-    color: var(--muted);
-    font-size: 0.92rem;
-  }
-
-  .button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 3.2rem;
-    padding: 0.88rem 1.3rem;
-    border: 1px solid var(--text);
-    border-radius: var(--radius-pill);
-  }
-
-  .button-primary {
-    background: var(--text);
-    color: var(--bg);
-    box-shadow: var(--shadow-card);
-  }
-
-  .button-secondary {
-    background: transparent;
+  .about-text {
+    margin: 0.9rem 0 0;
+    max-width: 58rem;
+    font-size: clamp(1.35rem, 2.6vw, 2rem);
+    line-height: 1.55;
+    letter-spacing: -0.02em;
     color: var(--text);
   }
 
-  .button:hover,
-  .section-link:hover,
-  .mini-link:hover,
-  .post-card a:hover,
-  .hero-links a:hover {
+  .about-list {
+    margin-top: 2.4rem;
+    max-width: 54rem;
+  }
+
+  .about-list h2 {
+    max-width: none;
+    font-size: clamp(1.5rem, 2.2vw, 2rem);
+  }
+
+  .about-list ul {
+    margin: 1rem 0 0;
+    padding-left: 1.2rem;
+  }
+
+  .about-list li + li {
+    margin-top: 0.7rem;
+  }
+
+  .stack-list {
+    display: grid;
+    gap: 0;
+  }
+
+  .stack-item:hover h3 a,
+  .stack-item:hover .stack-label {
+    color: var(--accent-strong);
+  }
+
+  .section-intro {
+    max-width: 22rem;
+  }
+
+  .stack-item {
+    display: block;
+    padding: 1rem 0 1.1rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .stack-item:first-child {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  .stack-detail {
+    margin: 0.55rem 0 0;
+    max-width: 38rem;
+    font-size: 1rem;
+  }
+
+  .list-section[aria-label='Bereiche'] .stack-list .stack-detail {
+    margin-top: 0;
+    max-width: 24rem;
+    font-size: clamp(1.25rem, 1.9vw, 1.55rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+
+  .article-item h3 {
+    margin-top: 0.3rem;
+    max-width: 24rem;
+  }
+
+  .article-item h3 a {
+    color: var(--text);
+  }
+
+  .contact-showcase {
+    padding: 4.5rem 0 0;
+  }
+
+  .visual-work-section {
+    padding: 4.5rem 0;
+  }
+
+  .visual-work-head {
+    margin-bottom: 2rem;
+  }
+
+  .visual-work-head h2 {
+    max-width: none;
+  }
+
+  .visual-work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 2.25rem;
+  }
+
+  .visual-work-card a {
+    display: block;
+    color: var(--text);
+  }
+
+  .visual-work-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .visual-work-card h3 {
+    margin-top: 1rem;
+  }
+
+  .visual-work-card p {
+    margin: 0.7rem 0 0;
+    color: var(--muted);
+    line-height: 1.68;
+    font-size: 1rem;
+  }
+
+  .contact-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 34rem;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+    border-radius: 1rem;
+    background:
+      linear-gradient(180deg, rgba(244, 246, 243, 0.18), rgba(244, 246, 243, 0.24)),
+      url('/images/hero-illustration.jpg') center / cover no-repeat;
+  }
+
+  .contact-card {
+    width: min(100%, 46rem);
+    padding: clamp(2rem, 5vw, 4rem);
+    background: rgba(248, 249, 246, 0.93);
+    border: 1px solid rgba(23, 25, 20, 0.08);
+    box-shadow: 0 20px 50px rgba(23, 25, 20, 0.08);
+    text-align: center;
+  }
+
+  .contact-card h2 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 13ch;
+  }
+
+  .contact-copy {
+    margin: 1rem auto 0;
+    max-width: 30rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .contact-form {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .contact-form input {
+    width: min(100%, 22rem);
+    min-height: 3.7rem;
+    padding: 0 1rem;
+    border: 1px solid rgba(23, 25, 20, 0.12);
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  .contact-form button {
+    min-height: 3.7rem;
+    padding: 0 1.5rem;
+    border: 1px solid var(--text);
+    background: var(--text);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .contact-form button:hover {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+  }
+
+  .contact-icons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 1.35rem;
+    padding: 1.35rem 0 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .icon-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text);
+  }
+
+  .icon-tile svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    fill: currentColor;
+  }
+
+  .icon-tile:hover {
     color: var(--accent-strong);
     border-color: currentColor;
     transform: translateY(-1px);
   }
 
-  .button-primary:hover {
-    color: var(--bg);
-    background: var(--accent-strong);
-  }
-
-  .hero-panel,
-  .surface-card,
-  .post-card,
-  .feature-card,
-  .contact-card {
-    border: 1px solid var(--line);
-    border-radius: var(--radius-xl);
-    background: var(--panel);
-    box-shadow: var(--shadow-card);
-    backdrop-filter: blur(14px);
-  }
-
-  .hero-panel {
-    padding: 1.2rem;
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(244, 240, 232, 0.78)),
-      var(--panel);
-  }
-
-  .panel-head,
-  .section-head {
-    display: flex;
-    align-items: end;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-
-  .section-copy {
-    display: grid;
-    gap: 0.2rem;
-  }
-
-  .mini-link,
-  .section-link,
-  .post-card a {
-    color: var(--text);
-  }
-
-  .mini-link,
-  .section-link {
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
     white-space: nowrap;
+    border: 0;
   }
 
-  .focus-stack,
-  .post-grid,
-  .principles-grid,
-  .feature-grid,
-  .profile-grid {
-    display: grid;
-    gap: 1rem;
-    margin-top: 1.4rem;
-  }
-
-  .focus-stack,
-  .profile-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .post-grid,
-  .principles-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .feature-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .focus-card,
-  .surface-card,
-  .post-card,
-  .feature-card {
-    padding: 1.25rem;
-  }
-
-  .focus-card {
-    border: 1px solid var(--line);
-    border-radius: var(--radius-lg);
-    background: rgba(255, 255, 255, 0.54);
-  }
-
-  .focus-card h2 {
-    margin: 0;
-    max-width: 100%;
-    font-size: 1.36rem;
-    line-height: 1.14;
-  }
-
-  .focus-card p,
-  .surface-card p,
-  .post-card p,
-  .feature-card p {
-    margin: 0.7rem 0 0;
-  }
-
-  .hero-links {
-    margin-top: 1rem;
-  }
-
-  .hero-links a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 2.6rem;
-    padding: 0.7rem 0.95rem;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-pill);
-    color: var(--text);
-  }
-
-  .section-text {
-    margin-top: 0.8rem;
-    max-width: 42rem;
-  }
-
-  .post-card {
-    display: grid;
-    align-content: start;
-  }
-
-  .post-card h3 {
-    margin-top: 0.4rem;
-  }
-
-  .post-card:hover,
-  .surface-card:hover,
-  .feature-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-soft);
-  }
-
-  .feature-card {
-    background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(235, 238, 228, 0.78)),
-      var(--panel);
-  }
-
-  .meta-label {
-    margin-bottom: 0.8rem;
-  }
-
-  .contact-card {
-    padding: 1.5rem;
-    background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(235, 238, 228, 0.74)),
-      var(--panel);
-  }
-
-  .contact-actions {
-    align-self: end;
-    justify-content: flex-end;
-  }
-
-  @media (max-width: 1180px) {
-    .hero-grid,
-    .contact-card,
-    .feature-grid,
-    .profile-grid,
-    .focus-stack {
+  @media (max-width: 900px) {
+    .section-grid {
       grid-template-columns: 1fr;
+      gap: 1.75rem;
     }
 
-    .contact-actions {
-      align-self: start;
-      justify-content: flex-start;
+    .intro-section {
+      min-height: auto;
+      align-items: start;
     }
-  }
 
-  @media (max-width: 1100px) {
-    .post-grid,
-    .principles-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+    .intro-section::before {
+      opacity: 1;
     }
-  }
 
-  @media (max-width: 980px) {
-    .post-grid,
-    .principles-grid {
+    .intro-section::after {
+      background: linear-gradient(180deg, rgba(244, 246, 243, 0.58) 0%, rgba(244, 246, 243, 0.24) 42%, rgba(244, 246, 243, 0.18) 100%);
+    }
+
+    .section-intro,
+    .intro-main {
+      max-width: none;
+    }
+
+    .visual-work-grid {
       grid-template-columns: 1fr;
+      gap: 2rem;
     }
 
-    .section-head {
-      align-items: flex-start;
+    .contact-form {
       flex-direction: column;
+      align-items: stretch;
     }
 
-    .contact-actions {
-      justify-content: flex-start;
+    .contact-form input,
+    .contact-form button {
+      width: 100%;
     }
   }
 
   @media (max-width: 720px) {
     .page {
-      padding-top: 0.7rem;
+      width: min(1120px, calc(100vw - 1.5rem));
+      padding-top: 0.6rem;
+      padding-bottom: 3rem;
     }
 
-    .intro {
-      padding-top: 1.35rem;
-    }
-
-    .section,
-    .intro {
-      padding-bottom: 1.8rem;
+    .intro-main {
+      width: min(1120px, calc(100vw - 1.5rem));
     }
 
     h1,
@@ -618,27 +659,17 @@ const contactMailto =
       max-width: 100%;
     }
 
-    .panel-head {
-      align-items: flex-start;
-      flex-direction: column;
+    .intro-section {
+      padding-top: 1.6rem;
     }
 
-    .hero-panel,
-    .surface-card,
-    .post-card,
-    .feature-card,
+    .contact-hero {
+      min-height: 28rem;
+      padding: 1rem;
+    }
+
     .contact-card {
-      border-radius: var(--radius-lg);
-    }
-
-    .button,
-    .hero-links a {
-      width: 100%;
-    }
-
-    .tag-row span {
-      width: 100%;
-      justify-content: center;
+      padding: 1.5rem;
     }
   }
 </style>
