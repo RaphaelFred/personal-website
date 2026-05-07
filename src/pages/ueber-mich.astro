@@ -1,120 +1,81 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
-import { withBase } from '../utils/paths';
 
-const focusAreas = [
-  'Data Science und analytische Struktur fuer Produktfragen',
-  'Forecasting, Experimentdesign und Entscheidungsunterstuetzung',
-  'Musik als eigenstaendige kreative Praxis',
-  'Texte ueber Unsicherheit, Struktur und kreative Arbeit',
+const cvPoints = [
+  'Data Scientist mit Fokus auf AI, Datenanalyse und Innovation.',
+  'Arbeit an der Schnittstelle von analytischer Praezision, strategischer Einordnung und praktischer Umsetzbarkeit.',
+  'Interesse an Projekten, in denen neue Technologien sinnvoll in reale Arbeitsprozesse uebersetzt werden.',
 ];
 
-const values = [
+const serviceDetails = [
   {
-    title: 'Praezision vor Lautstaerke',
+    id: 'tool-exploration',
+    title: 'Tool-Exploration',
     detail:
-      'Mich interessieren Fragen, die relevant sind, aber noch nicht vollstaendig geklaert. Gute Arbeit beginnt fuer mich mit sauberem Denken, nicht mit schneller Komplexitaet.',
+      'Ich unterstuetze dabei, geeignete Daten- und KI-Tools fuer konkrete Geschaefts- und Innovationsprozesse einzuordnen. Im Mittelpunkt steht eine Auswahl, die zu Aufgaben, Team und organisatorischem Reifegrad passt.',
   },
   {
-    title: 'Anschlussfaehigkeit statt Dateninszenierung',
+    id: 'use-cases',
+    title: 'Use Cases',
     detail:
-      'Analyse ist fuer mich dann gut, wenn sie anschlussfaehig wird: fuer Produkt, Strategie, Stakeholder und fuer die Menschen, die damit arbeiten muessen.',
+      'Gemeinsam identifiziere ich Anwendungsfaelle, bei denen KI echten Mehrwert schaffen kann. Entscheidend sind dabei nicht nur Ideen, sondern Klarheit ueber Nutzen, Risiko, Priorisierung und die konkrete Umsetzung im Alltag.',
   },
   {
-    title: 'Kreative Praxis als Gegenpol und Werkzeug',
+    id: 'ki-schulungen',
+    title: 'KI-Schulungen',
     detail:
-      'Musik ist fuer mich nicht nur ein Ausgleich, sondern eine zweite Denkform. Sie schaerft mein Gefuehl fuer Rhythmus, Form, Reduktion und Spannung.',
-  },
-];
-
-const creativePlatforms = [
-  {
-    label: 'SoundCloud',
-    href: 'https://soundcloud.com/raphael-fredebeul',
-    detail: 'Der direkteste Einstieg in veroeffentlichte Tracks, Skizzen und laufende musikalische Arbeit.',
+      'Ich entwickle Schulungen, die Mitarbeitenden einen praktischen und sicheren Zugang zu KI-Tools ermoeglichen. Ziel ist eine bessere Nutzung im Arbeitsalltag, nicht nur ein abstraktes Verstaendnis der Technologie.',
   },
   {
-    label: 'Spotify',
-    href: 'https://open.spotify.com/search/Raphael%20Fredebeul',
-    detail: 'Zum Weiterhoeren in Playlists und in einer gewohnten Streaming-Umgebung.',
-  },
-  {
-    label: 'YouTube',
-    href: 'https://www.youtube.com/results?search_query=Raphael+Fredebeul',
-    detail: 'Weitere Spuren fuer Uploads, Releases und visuelle Kontexte.',
-  },
-];
-
-const creativePractice = [
-  {
-    title: 'Skizze',
-    detail: 'Ideen, Atmosphaeren und rhythmische Strukturen testen, bevor etwas final gedacht wird.',
-  },
-  {
-    title: 'Produktion',
-    detail: 'Klangbild, Arrangement und Energie so verdichten, dass aus Material eine eigene Form entsteht.',
-  },
-  {
-    title: 'Veroeffentlichung',
-    detail: 'Tracks an einen Punkt bringen, an dem sie gehoert, eingeordnet und weiterentwickelt werden koennen.',
+    id: 'datenanalysen',
+    title: 'Datenanalysen',
+    detail:
+      'Ich fuehre Datenanalysen so durch, dass daraus konkrete Handlungsempfehlungen entstehen. Gute Analyse soll nicht nur Erkenntnisse liefern, sondern Entscheidungen, Prioritaeten und naechste Schritte belastbar machen.',
   },
 ];
 
 const contactMailto =
-  'mailto:?subject=Nachricht%20ueber%20deine%20Website&body=Hallo%20Raphael,%0A%0Aich%20wollte%20dir%20zu%20deiner%20Arbeit%20schreiben.%0A%0AViele%20Gruesse';
+  'mailto:raphaeldc@gmx.de?subject=Anfrage%20zu%20AI%20%26%20Data&body=Hallo%20Raphael,%0A%0Aich%20interessiere%20mich%20fuer%20deine%20Arbeit%20im%20Bereich%20AI%20%26%20Data.%0A%0AViele%20Gruesse';
+
+const contactDestinations = [
+  { label: 'AI & Data', href: '/beratung', icon: 'grid' },
+  { label: 'Kreativität', href: '/kreativitaet', icon: 'wave' },
+  { label: 'Texte', href: '/blog', icon: 'pen' },
+  { label: 'E-Mail', href: contactMailto, icon: 'mail' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raphael-fredebeul-733605140/', icon: 'linkedin' },
+  { label: 'SoundCloud', href: 'https://soundcloud.com/raphael-fredebeul', icon: 'soundcloud' },
+];
 ---
 
 <Layout
   title="Über Mich | Raphael Fredebeul"
-  description="Über mich: Raphael Fredebeul über Data Science, kreative Praxis, Musik und die Art, wie er arbeitet."
+  description="Über mich: Raphael Fredebeul über AI, Datenanalyse, Innovation und die Bereiche, in denen er Unternehmen unterstuetzt."
 >
   <main class="page" id="main-content">
     <SiteHeader current="about" />
 
-    <section class="hero">
-      <div class="hero-copy">
+    <section class="intro-section" aria-label="Einleitung">
+      <div class="intro-main">
         <p class="kicker">Über mich</p>
-        <h1>Ich arbeite zwischen Daten, Struktur und kreativer Praxis.</h1>
-        <p class="lead">
-          Mein Schwerpunkt liegt auf analytischer Arbeit an der Schnittstelle von Produkt,
-          Innovation und Entscheidung. Gleichzeitig ist Musik ein eigenstaendiger Teil meiner
-          Praxis und meines Denkens.
-        </p>
+        <h1>Ich arbeite an der Schnittstelle von KI, Daten und Innovation.</h1>
       </div>
     </section>
 
-    <section class="section profile-section">
+    <section class="section" aria-label="Kurzprofil">
       <div class="section-grid">
         <div class="section-copy">
-          <p class="kicker">Profil</p>
-          <h2>Ein kurzer Rahmen fuer die Art von Arbeit, die mich interessiert.</h2>
-        </div>
-
-        <div class="text-stack">
-          <p>
-            Ich mag Projekte, in denen analytische Tiefe und strategische Relevanz gleichzeitig
-            wichtig sind. Besonders spannend wird es fuer mich dort, wo Fragen noch unscharf sind,
-            aber Entscheidungen trotzdem vorbereitet werden muessen.
-          </p>
-          <p>
-            In solchen Situationen helfen Daten nicht nur beim Messen, sondern beim Ordnen,
-            Priorisieren und Verstaendlichmachen. Genau dort sehe ich meinen Beitrag.
+          <p class="kicker">Kurz-CV</p>
+          <h2>Ein kurzer Hintergrund zu meiner Arbeit.</h2>
+          <p class="section-text">
+            Mein Fokus liegt darauf, technologische Entwicklungen in klare Anwendungen,
+            nachvollziehbare Entscheidungen und sinnvolle naechste Schritte zu uebersetzen.
           </p>
         </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="section-grid">
-        <div class="section-copy">
-          <p class="kicker">Schwerpunkte</p>
-          <h2>Woran ich aktuell besonders interessiert bin.</h2>
-        </div>
-
-        <div class="focus-list">
-          {focusAreas.map((item) => (
-            <div class="focus-item">
+        <div class="cv-list">
+          {cvPoints.map((item) => (
+            <div class="cv-item">
               <p>{item}</p>
             </div>
           ))}
@@ -122,16 +83,16 @@ const contactMailto =
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" aria-label="Was ich biete">
       <div class="section-grid">
         <div class="section-copy">
-          <p class="kicker">Haltung</p>
-          <h2>Drei Dinge, die meine Arbeit stark praegen.</h2>
+          <p class="kicker">Was ich biete</p>
+          <h2>Vier Bereiche, in denen ich Unternehmen besonders konkret unterstuetze.</h2>
         </div>
 
-        <div class="values-grid">
-          {values.map((item) => (
-            <article class="value-card">
+        <div class="services-grid">
+          {serviceDetails.map((item) => (
+            <article class="service-card" id={item.id}>
               <h3>{item.title}</h3>
               <p>{item.detail}</p>
             </article>
@@ -140,76 +101,55 @@ const contactMailto =
       </div>
     </section>
 
-    <section class="section creative-section">
-      <div class="section-grid">
-        <div class="section-copy">
-          <p class="kicker">Kreative Praxis</p>
-          <h2>Musik ist der deutlichste, aber nicht der einzige Teil davon.</h2>
-          <p class="section-text">
-            Musik bleibt mein direkter kreativ-praktischer Raum. Dort geht es fuer mich um Form,
-            Rhythmus, Reduktion, Energie und darum, Ideen in etwas Hoerbares zu uebersetzen.
+    <section class="contact-showcase" id="kontakt" aria-label="Kontakt">
+      <div class="contact-hero">
+        <div class="contact-card">
+          <h2>Schreib mir gern.</h2>
+          <p class="contact-copy">
+            Wenn du ueber ein Projekt, eine Zusammenarbeit oder eine konkrete Fragestellung
+            sprechen moechtest, oeffnet sich per Klick direkt dein Mailprogramm.
           </p>
-        </div>
-
-        <div class="text-stack">
-          <p>
-            Diese Seite soll nicht nur analytische Arbeit zeigen, sondern auch den Teil meiner
-            Praxis, der anders funktioniert: experimenteller, klangbezogener und weniger linear.
-          </p>
-          <p>
-            Gerade deshalb gehoert er fuer mich auf diese Seite. Er bildet einen wichtigen
-            Gegenpol zur Data-Arbeit und beeinflusst, wie ich ueber Struktur, Rhythmus und
-            Entscheidungen nachdenke.
-          </p>
+          <a class="contact-mail-link" href={contactMailto}>Kontakt</a>
         </div>
       </div>
 
-      <div class="creative-layout">
-        <div class="player-card">
-          <iframe
-            title="Alle SoundCloud-Tracks von Raphael Fredebeul"
-            width="100%"
-            height="620"
-            scrolling="no"
-            frameborder="no"
-            allow="autoplay"
-            loading="lazy"
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/raphael-fredebeul/tracks&color=%234c635a&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false&show_artwork=true"
-          ></iframe>
-        </div>
-
-        <aside class="listen-note">
-          <p class="kicker">Plattformen</p>
-          <h3>Weitere Wege zum Hoeren und Weitergehen.</h3>
-          <div class="platform-list">
-            {creativePlatforms.map((item) => (
-              <a class="platform-card" href={item.href} target="_blank" rel="noreferrer">
-                <p class="platform-label">{item.label}</p>
-                <p>{item.detail}</p>
-              </a>
-            ))}
-          </div>
-        </aside>
-      </div>
-
-      <div class="creative-practice-grid">
-        {creativePractice.map((item) => (
-          <article class="value-card">
-            <h3>{item.title}</h3>
-            <p>{item.detail}</p>
-          </article>
+      <div class="contact-icons" aria-label="Bereiche und Profile">
+        {contactDestinations.map((item) => (
+          <a
+            class="icon-tile"
+            href={item.href}
+            target={item.href.startsWith('http') ? '_blank' : undefined}
+            rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+            aria-label={item.label}
+            title={item.label}
+          >
+            {item.icon === 'grid' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z" />
+              </svg>
+            ) : item.icon === 'wave' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M3 12c2.4 0 2.4-6 4.8-6s2.4 12 4.8 12S15 9 17.4 9 19.8 15 22 15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            ) : item.icon === 'pen' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m4 16.5 9.9-9.9 3.5 3.5-9.9 9.9L4 20l.5-3.5ZM14.9 5.6l1.7-1.7a1.9 1.9 0 0 1 2.7 0l1 1a1.9 1.9 0 0 1 0 2.7l-1.7 1.7-3.7-3.7Z" />
+              </svg>
+            ) : item.icon === 'mail' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16v12H4V6Zm0 1.2 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            ) : item.icon === 'linkedin' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.94 8.5V19H3.5V8.5h3.44ZM7.16 5.26c0 1-.74 1.74-1.94 1.74A1.72 1.72 0 0 1 3.32 5.3c0-1 .76-1.76 1.92-1.76s1.88.74 1.92 1.72ZM20.68 12.58V19h-3.42v-6.02c0-1.52-.54-2.56-1.9-2.56-1.04 0-1.66.7-1.94 1.38-.1.24-.12.58-.12.92V19H9.88s.04-9.74 0-10.5h3.42v1.48c.45-.7 1.26-1.7 3.08-1.7 2.24 0 3.92 1.46 3.92 4.6Z" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4.37 13.44a2.06 2.06 0 0 0 2.05 2.06h11.95a1.58 1.58 0 1 0 0-3.16h-.59a4.24 4.24 0 0 0-8.13-1.66 2.75 2.75 0 0 0-1.08-.22 2.73 2.73 0 0 0-2.63 1.97 2.05 2.05 0 0 0-1.57 2.01Zm14.72 4.1c.24 0 .43.19.43.42v.34a.43.43 0 0 1-.43.43H5.74a.43.43 0 0 1-.43-.43v-.34c0-.23.19-.42.43-.42h13.35Zm-11.4 2.15c.23 0 .42.19.42.42v.35a.42.42 0 0 1-.42.42H5.74a.42.42 0 0 1-.43-.42v-.35c0-.23.19-.42.43-.42h1.95Zm3.04 0c.23 0 .42.19.42.42v.35a.42.42 0 0 1-.42.42H8.78a.42.42 0 0 1-.42-.42v-.35c0-.23.19-.42.42-.42h1.95Zm3.03 0c.24 0 .43.19.43.42v.35a.43.43 0 0 1-.43.42h-1.95a.42.42 0 0 1-.42-.42v-.35c0-.23.19-.42.42-.42h1.95Zm3.03 0c.24 0 .43.19.43.42v.35a.43.43 0 0 1-.43.42h-1.95a.42.42 0 0 1-.42-.42v-.35c0-.23.19-.42.42-.42h1.95Z" />
+              </svg>
+            )}
+          </a>
         ))}
-      </div>
-    </section>
-
-    <section class="section contact-section">
-      <div class="contact-card">
-        <div class="section-copy">
-          <p class="kicker">Kontakt</p>
-          <h2>Wenn du ueber ein Projekt, kreative Arbeit oder eine Zusammenarbeit sprechen willst, freue ich mich ueber eine Nachricht.</h2>
-        </div>
-
-        <a class="button" href={contactMailto}>E-Mail schreiben</a>
       </div>
     </section>
   </main>
@@ -217,30 +157,67 @@ const contactMailto =
 
 <style>
   .page {
-    width: var(--container);
+    width: min(1120px, calc(100vw - 3rem));
     margin: 0 auto;
     padding: 1rem 0 4rem;
   }
 
-  .hero,
-  .section {
+  .intro-section,
+  .section,
+  .contact-showcase {
     border-top: 1px solid var(--line);
   }
 
-  .hero {
-    padding: 2.4rem 0 2rem;
-  }
-
   .section {
-    padding: 2.4rem 0;
+    padding: 4.5rem 0;
   }
 
-  .hero-copy {
-    max-width: 46rem;
+  .intro-section {
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    min-height: 34rem;
+    display: flex;
+    align-items: start;
+    padding: clamp(2.2rem, 5vw, 3rem) 0 2rem;
+    border-bottom: 1px solid var(--line);
   }
 
-  .section-grid,
-  .contact-card {
+  .intro-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(244, 246, 243, 0.04), rgba(244, 246, 243, 0.12)),
+      url('/images/hero-illustration.jpg') center / cover no-repeat;
+    opacity: 1;
+    pointer-events: none;
+    z-index: 0;
+    filter: saturate(0.66) contrast(0.92);
+  }
+
+  .intro-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(244, 246, 243, 0.74) 0%, rgba(244, 246, 243, 0.34) 34%, rgba(244, 246, 243, 0.08) 100%),
+      linear-gradient(180deg, rgba(244, 246, 243, 0.1) 0%, rgba(244, 246, 243, 0.02) 36%, rgba(244, 246, 243, 0.18) 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .intro-main {
+    max-width: 40rem;
+    width: min(1120px, calc(100vw - 3rem));
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    padding-top: 0.2rem;
+  }
+
+  .section-grid {
     display: grid;
     grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
     gap: clamp(1.5rem, 4vw, 4rem);
@@ -264,7 +241,7 @@ const contactMailto =
 
   h1 {
     margin: 0.55rem 0 0;
-    max-width: 10ch;
+    max-width: 11ch;
     font-size: var(--title-xl);
     line-height: 0.96;
     letter-spacing: -0.045em;
@@ -285,138 +262,167 @@ const contactMailto =
     letter-spacing: -0.02em;
   }
 
-  .lead,
   .section-text,
-  .text-stack p,
-  .focus-item p,
-  .value-card p,
-  .listen-note p,
-  .platform-card p {
+  .cv-item p,
+  .service-card p,
+  .contact-copy {
     color: var(--muted);
     line-height: 1.7;
     font-size: var(--text-md);
   }
 
-  .lead {
-    margin-top: 1.25rem;
-    max-width: 38rem;
-    font-size: var(--text-lg);
+  .section-text {
+    margin: 1rem 0 0;
+    max-width: 34rem;
   }
 
-  .text-stack,
-  .focus-list,
-  .values-grid,
-  .platform-list {
+  .cv-list,
+  .services-grid {
     display: grid;
     gap: 1rem;
   }
 
-  .focus-item,
-  .value-card,
-  .contact-card,
-  .player-card,
-  .platform-card {
+  .cv-item,
+  .service-card {
+    padding: 1.2rem 1.25rem;
     border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
     background: var(--panel);
     box-shadow: var(--shadow-card);
   }
 
-  .focus-item,
-  .value-card {
-    padding: 1.2rem 1.25rem;
-    border-radius: var(--radius-lg);
-  }
-
-  .focus-item p,
-  .value-card p {
+  .cv-item p,
+  .service-card p {
     margin: 0.7rem 0 0;
   }
 
+  .contact-showcase {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 4.5rem 0 0;
+  }
+
+  .contact-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 34rem;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+    background:
+      linear-gradient(180deg, rgba(244, 246, 243, 0.18), rgba(244, 246, 243, 0.24)),
+      url('/images/contact-illustration.jpg') center / cover no-repeat;
+  }
+
   .contact-card {
-    padding: 1.5rem;
-    border-radius: var(--radius-xl);
-    align-items: end;
+    width: min(100%, 46rem);
+    padding: clamp(2rem, 5vw, 4rem);
+    background: rgba(248, 249, 246, 0.93);
+    border: 1px solid rgba(23, 25, 20, 0.08);
+    box-shadow: 0 20px 50px rgba(23, 25, 20, 0.08);
+    text-align: center;
   }
 
-  .creative-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
-    gap: clamp(1.5rem, 4vw, 3rem);
-    margin-top: 2rem;
-    align-items: start;
+  .contact-card h2 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 13ch;
   }
 
-  .player-card {
-    padding: 0.8rem;
-    border-radius: var(--radius-lg);
+  .contact-copy {
+    margin: 1rem auto 0;
+    max-width: 30rem;
   }
 
-  .player-card iframe {
-    display: block;
-    border: 0;
-    border-radius: calc(var(--radius-lg) - 0.35rem);
-  }
-
-  .listen-note h3 {
-    margin-top: 0.4rem;
-  }
-
-  .platform-card {
-    display: block;
-    padding: 1rem 1.1rem;
-    border-radius: var(--radius-lg);
-    color: var(--text);
-  }
-
-  .platform-label {
-    margin: 0;
-    font-size: 0.78rem;
-    text-transform: uppercase;
-    letter-spacing: 0.16em;
-    color: var(--accent-strong);
-  }
-
-  .platform-card p:last-child {
-    margin: 0.55rem 0 0;
-  }
-
-  .creative-practice-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-
-  .button {
+  .contact-mail-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 3.2rem;
-    padding: 0.88rem 1.3rem;
+    min-height: 3.7rem;
+    margin-top: 2rem;
+    padding: 0 1.5rem;
     border: 1px solid var(--text);
-    border-radius: var(--radius-pill);
     background: var(--text);
-    color: var(--bg);
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
   }
 
-  .button:hover {
+  .contact-mail-link:hover {
     background: var(--accent-strong);
     border-color: var(--accent-strong);
   }
 
+  .contact-icons {
+    width: min(1120px, calc(100vw - 3rem));
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 1.35rem;
+    padding: 1.35rem 0 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .icon-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text);
+  }
+
+  .icon-tile svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    fill: currentColor;
+  }
+
+  .icon-tile:hover {
+    color: var(--accent-strong);
+    border-color: currentColor;
+    transform: translateY(-1px);
+  }
+
   @media (max-width: 900px) {
-    .section-grid,
-    .contact-card,
-    .creative-layout,
-    .creative-practice-grid {
+    .section-grid {
       grid-template-columns: 1fr;
+    }
+
+    .intro-section {
+      min-height: auto;
+      align-items: start;
+    }
+
+    .intro-section::before {
+      opacity: 1;
+    }
+
+    .intro-section::after {
+      background: linear-gradient(180deg, rgba(244, 246, 243, 0.58) 0%, rgba(244, 246, 243, 0.24) 42%, rgba(244, 246, 243, 0.18) 100%);
+    }
+
+    .contact-mail-link {
+      width: 100%;
     }
   }
 
   @media (max-width: 720px) {
     .page {
+      width: min(1120px, calc(100vw - 1.5rem));
       padding-top: 0.6rem;
       padding-bottom: 3rem;
+    }
+
+    .intro-main {
+      width: min(1120px, calc(100vw - 1.5rem));
     }
 
     h1,
@@ -424,8 +430,21 @@ const contactMailto =
       max-width: 100%;
     }
 
+    .intro-section {
+      padding-top: 1.6rem;
+    }
+
+    .contact-hero {
+      min-height: 28rem;
+      padding: 1rem;
+    }
+
+    .contact-icons {
+      width: min(1120px, calc(100vw - 1.5rem));
+    }
+
     .contact-card {
-      border-radius: var(--radius-lg);
+      padding: 1.5rem;
     }
   }
 </style>
