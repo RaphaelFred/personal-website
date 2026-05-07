@@ -4,6 +4,25 @@ import { getCollection } from 'astro:content';
 import SiteHeader from '../components/SiteHeader.astro';
 import { withBase } from '../utils/paths';
 
+const blogImages = {
+  'building-clarity-from-complexity': {
+    src: '/blog/ai-adoption-organisationen.jpg',
+    alt: 'Abstrakte Szene zu AI Adoption in Organisationen',
+  },
+  'fruehe-produktsignale-erkennen': {
+    src: '/blog/user-innovation-mit-ki.jpg',
+    alt: 'Abstrakte Visualisierung zu User Innovation mit KI',
+  },
+  'experimente-richtig-framen': {
+    src: '/blog/use-case-identifikation-ki.jpg',
+    alt: 'Abstrakte Visualisierung zur Identifikation von KI-Use-Cases',
+  },
+  'forecasting-unter-unsicherheit': {
+    src: '/blog/strategische-datenanalyse-innovation.jpg',
+    alt: 'Abstrakte Visualisierung zu strategischer Datenanalyse und Unsicherheit',
+  },
+};
+
 const offers = [
   {
     title: 'AI & Data',
@@ -25,48 +44,19 @@ const offers = [
   },
 ];
 
-const collaborationCases = [
-  {
-    title: 'Viele Daten, wenig Richtung',
-    detail: 'Wenn Signale vorhanden sind, aber noch keine klare Priorisierung oder belastbare Entscheidungslogik.',
-  },
-  {
-    title: 'Ein Produktproblem braucht Struktur',
-    detail: 'Wenn Teams zwischen Hypothesen, Datenlage und strategischem Druck eine klare analytische Form brauchen.',
-  },
-  {
-    title: 'AI soll sinnvoll eingeordnet werden',
-    detail: 'Wenn Potenziale sichtbar sind, aber Nutzen, Grenzen und naechste Schritte noch sauber geklaert werden muessen.',
-  },
-];
-
-const process = [
-  {
-    title: 'Fragestellung schaerfen',
-    detail: 'Gemeinsam klaeren wir, welche Entscheidung eigentlich vorbereitet werden soll und wo Unsicherheit herkommt.',
-  },
-  {
-    title: 'Daten und Signale strukturieren',
-    detail: 'Relevante Muster, Grenzen und blinde Flecken werden sichtbar gemacht, bevor Modelle zu frueh festgezurrt werden.',
-  },
-  {
-    title: 'Hypothesen und Modelle entwickeln',
-    detail: 'Analytische Loesungen werden so aufgebaut, dass sie belastbar und fuer das Team nachvollziehbar bleiben.',
-  },
-  {
-    title: 'Ergebnisse in Handlung uebersetzen',
-    detail: 'Am Ende steht keine Modellshow, sondern eine Richtung, mit der Produkt, Strategie oder Innovation weitergehen koennen.',
-  },
-];
-
-const focusAreas = ['Forecasting', 'Produktanalyse', 'Experimentdesign', 'AI-Orientierung'];
-
 const posts = (await getCollection('blog'))
-  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
-  .slice(0, 4);
+  .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
 const contactMailto =
-  'mailto:?subject=Anfrage%20zu%20AI%20%26%20Data&body=Hallo%20Raphael,%0A%0Aich%20interessiere%20mich%20fuer%20eine%20Zusammenarbeit%20im%20Bereich%20AI%20%26%20Data.%0A%0AViele%20Gruesse';
+  'mailto:raphaeldc@gmx.de?subject=Anfrage%20zu%20AI%20%26%20Data&body=Hallo%20Raphael,%0A%0Aich%20interessiere%20mich%20fuer%20eine%20Zusammenarbeit%20im%20Bereich%20AI%20%26%20Data.%0A%0AViele%20Gruesse';
+
+const contactDestinations = [
+  { label: 'AI & Data', href: '/beratung', icon: 'grid' },
+  { label: 'Texte', href: '/blog', icon: 'pen' },
+  { label: 'E-Mail', href: contactMailto, icon: 'mail' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raphael-fredebeul-733605140/', icon: 'linkedin' },
+  { label: 'SoundCloud', href: 'https://soundcloud.com/raphael-fredebeul', icon: 'soundcloud' },
+];
 ---
 
 <Layout
@@ -77,24 +67,11 @@ const contactMailto =
     <SiteHeader current="ai-data" />
 
     <section class="hero">
-      <div class="hero-copy">
-        <p class="kicker">AI & Data</p>
-        <h1>AI & Data fuer klare Entscheidungen, gute Modelle und belastbare Richtung.</h1>
-        <p class="lead">
-          Ich unterstuetze bei analytischen Fragestellungen rund um Produkt, Innovation,
-          Forecasting und strategische Priorisierung.
-        </p>
-
-        <div class="hero-actions">
-          <a class="button button-primary" href={contactMailto}>E-Mail schreiben</a>
-          <a class="button button-secondary" href="#angebot">Leistungen ansehen</a>
-        </div>
-
-        <div class="tag-row" aria-label="Schwerpunkte">
-          {focusAreas.map((item) => (
-            <span>{item}</span>
-          ))}
-        </div>
+      <div class="intro-main">
+        <p class="kicker">Raphael Fredebeul</p>
+        <h1>AI & <br>
+          Data<br>
+  </h1>
       </div>
     </section>
 
@@ -125,47 +102,6 @@ const contactMailto =
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-head">
-        <div class="section-copy">
-          <p class="kicker">Zusammenarbeit</p>
-          <h2>In welchen Situationen diese Art von Arbeit besonders hilfreich wird.</h2>
-        </div>
-      </div>
-
-      <div class="cases-grid">
-        {collaborationCases.map((item) => (
-          <article class="case-card">
-            <h3>{item.title}</h3>
-            <p>{item.detail}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="section split">
-      <div class="section-copy">
-        <p class="kicker">Arbeitsweise</p>
-        <h2>Analytisch praezise, strategisch anschlussfaehig und offen fuer neue Perspektiven.</h2>
-        <p class="section-text">
-          Mir ist wichtig, dass analytische Tiefe nicht zu Distanz fuehrt. Die Arbeit soll fuer
-          Teams greifbar bleiben und in Entscheidungen muenden.
-        </p>
-      </div>
-
-      <div class="process-list">
-        {process.map((item, index) => (
-          <article class="process-item">
-            <p class="step">{String(index + 1).padStart(2, '0')}</p>
-            <div>
-              <h3>{item.title}</h3>
-              <p>{item.detail}</p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-
     <section class="section" id="artikel">
       <div class="section-head">
         <div class="section-copy">
@@ -178,37 +114,77 @@ const contactMailto =
       <div class="article-grid">
         {posts.map((post) => (
           <article class="article-card">
-            <p class="meta">
-              {post.data.publishDate.toLocaleDateString('de-DE', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-              })}
-            </p>
-            <h3>
-              <a href={withBase(`/blog/${post.slug}`)}>{post.data.title}</a>
-            </h3>
-            <p>{post.data.description}</p>
+            <a class="article-image-link" href={withBase(`/blog/${post.slug}`)}>
+              <img
+                src={withBase(blogImages[post.slug]?.src ?? '/graphics/blog-panel.svg')}
+                alt={blogImages[post.slug]?.alt ?? post.data.title}
+                loading="lazy"
+              />
+            </a>
+            <div class="article-copy">
+              <p class="meta">
+                {post.data.publishDate.toLocaleDateString('de-DE', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                })}
+              </p>
+              <h3>
+                <a href={withBase(`/blog/${post.slug}`)}>{post.data.title}</a>
+              </h3>
+              <p>{post.data.description}</p>
+              <a class="article-link" href={withBase(`/blog/${post.slug}`)}>Artikel lesen</a>
+            </div>
           </article>
         ))}
       </div>
     </section>
 
-    <section class="section" id="kontakt">
-      <div class="contact-card">
-        <div class="section-copy">
-          <p class="kicker">Kontakt</p>
-          <h2>Wenn du ueber ein Projekt oder eine Zusammenarbeit sprechen moechtest, freue ich mich ueber eine Nachricht.</h2>
-          <p class="section-text">
-            Ich mag Projekte mit echter Entscheidungsrelevanz, offenem Denkraum und einem klaren
-            Willen zu guter analytischer Arbeit.
+    <section class="contact-showcase" id="kontakt" aria-label="Kontakt">
+      <div class="contact-hero">
+        <div class="contact-card">
+          <h2>Schreib mir gern.</h2>
+          <p class="contact-copy">
+            Wenn du ueber ein Projekt, eine Zusammenarbeit oder eine konkrete Fragestellung
+            sprechen moechtest, oeffnet sich per Klick direkt dein Mailprogramm.
           </p>
+          <a class="contact-mail-link" href={contactMailto}>Kontakt</a>
         </div>
+      </div>
 
-        <div class="contact-links">
-          <a class="button button-primary" href={contactMailto}>AI & Data per E-Mail anfragen</a>
-          <a class="button button-secondary" href="#artikel">Artikel ansehen</a>
-        </div>
+      <div class="contact-icons" aria-label="Bereiche und Profile">
+        {contactDestinations.map((item) => (
+          <a
+            class="icon-tile"
+            href={item.href}
+            target={item.href.startsWith('http') ? '_blank' : undefined}
+            rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
+            aria-label={item.label}
+            title={item.label}
+          >
+            {item.icon === 'grid' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z" />
+              </svg>
+            ) : item.icon === 'pen' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m4 16.5 9.9-9.9 3.5 3.5-9.9 9.9L4 20l.5-3.5ZM14.9 5.6l1.7-1.7a1.9 1.9 0 0 1 2.7 0l1 1a1.9 1.9 0 0 1 0 2.7l-1.7 1.7-3.7-3.7Z" />
+              </svg>
+            ) : item.icon === 'mail' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 6h16v12H4V6Zm0 1.2 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            ) : item.icon === 'linkedin' ? (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M6.94 8.5V19H3.5V8.5h3.44ZM7.16 5.26c0 1-.74 1.74-1.94 1.74A1.72 1.72 0 0 1 3.32 5.3c0-1 .76-1.76 1.92-1.76s1.88.74 1.92 1.72ZM20.68 12.58V19h-3.42v-6.02c0-1.52-.54-2.56-1.9-2.56-1.04 0-1.66.7-1.94 1.38-.1.24-.12.58-.12.92V19H9.88s.04-9.74 0-10.5h3.42v1.48c.45-.7 1.26-1.7 3.08-1.7 2.24 0 3.92 1.46 3.92 4.6Z" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4.37 13.44a2.06 2.06 0 0 0 2.05 2.06h11.95a1.58 1.58 0 1 0 0-3.16h-.59a4.24 4.24 0 0 0-8.13-1.66 2.75 2.75 0 0 0-1.08-.22 2.73 2.73 0 0 0-2.63 1.97 2.05 2.05 0 0 0-1.57 2.01Zm14.72 4.1c.24 0 .43.19.43.42v.34a.43.43 0 0 1-.43.43H5.74a.43.43 0 0 1-.43-.43v-.34c0-.23.19-.42.43-.42h13.35Zm-11.4 2.15c.23 0 .42.19.42.42v.35a.42.42 0 0 1-.42.42H5.74a.42.42 0 0 1-.43-.42v-.35c0-.23.19-.42.43-.42h1.95Zm3.04 0c.23 0 .42.19.42.42v.35a.42.42 0 0 1-.42.42H8.78a.42.42 0 0 1-.42-.42v-.35c0-.23.19-.42.42-.42h1.95Zm3.03 0c.24 0 .43.19.43.42v.35a.43.43 0 0 1-.43.42h-1.95a.42.42 0 0 1-.42-.42v-.35c0-.23.19-.42.42-.42h1.95Zm3.03 0c.24 0 .43.19.43.42v.35a.43.43 0 0 1-.43.42h-1.95a.42.42 0 0 1-.42-.42v-.35c0-.23.19-.42.42-.42h1.95Z" />
+              </svg>
+            )}
+          </a>
+        ))}
       </div>
     </section>
   </main>
@@ -222,7 +198,8 @@ const contactMailto =
   }
 
   .hero,
-  .section {
+  .section,
+  .contact-showcase {
     border-top: 1px solid var(--line);
   }
 
@@ -230,19 +207,12 @@ const contactMailto =
     padding: 2rem 0;
   }
 
-  .contact-card {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.95fr);
-    gap: clamp(1.4rem, 3vw, 3rem);
-    align-items: start;
-  }
-
   .hero {
     position: relative;
     overflow: hidden;
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    min-height: 34rem;
+    min-height: var(--hero-min-height);
     display: flex;
     align-items: start;
     padding: clamp(2.2rem, 5vw, 3rem) 0 2rem;
@@ -273,8 +243,8 @@ const contactMailto =
     z-index: 0;
   }
 
-  .hero-copy {
-    max-width: 46rem;
+  .intro-main {
+    max-width: 40rem;
     width: min(1120px, calc(100vw - 3rem));
     margin: 0 auto;
     position: relative;
@@ -283,8 +253,7 @@ const contactMailto =
   }
 
   .kicker,
-  .meta,
-  .step {
+  .meta {
     margin: 0;
     font-size: 0.78rem;
     text-transform: uppercase;
@@ -301,11 +270,11 @@ const contactMailto =
   }
 
   h1 {
-    margin: 0.5rem 0 1rem;
+    margin: 0;
     max-width: 11ch;
-    font-size: var(--title-xl);
-    line-height: 0.96;
-    letter-spacing: -0.045em;
+    font-size: clamp(3.3rem, 8.5vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.055em;
   }
 
   h2 {
@@ -323,47 +292,13 @@ const contactMailto =
     letter-spacing: -0.02em;
   }
 
-  .lead,
   .section-text,
   .card p,
   .card li,
-  .case-card p,
-  .process-item p,
   .article-card p {
     color: var(--muted);
     line-height: 1.68;
     font-size: var(--text-md);
-  }
-
-  .lead {
-    max-width: 38rem;
-    font-size: var(--text-lg);
-  }
-
-  .hero-actions,
-  .tag-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.8rem;
-  }
-
-  .hero-actions {
-    margin-top: 2rem;
-  }
-
-  .tag-row {
-    margin-top: 1.15rem;
-  }
-
-  .tag-row span {
-    display: inline-flex;
-    align-items: center;
-    min-height: 2.5rem;
-    padding: 0.65rem 0.9rem;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-pill);
-    background: rgba(255, 255, 255, 0.48);
-    color: var(--muted);
   }
 
   .button,
@@ -393,7 +328,8 @@ const contactMailto =
 
   .button:hover,
   .section-link:hover,
-  .article-card a:hover {
+  .article-copy h3 a:hover,
+  .article-link:hover {
     color: var(--accent-strong);
     border-color: currentColor;
     transform: translateY(-1px);
@@ -405,10 +341,7 @@ const contactMailto =
   }
 
   .card,
-  .case-card,
-  .process-item,
-  .article-card,
-  .contact-card {
+  .article-card {
     border: 1px solid var(--line);
     border-radius: var(--radius-xl);
     background: var(--panel);
@@ -416,10 +349,7 @@ const contactMailto =
   }
 
   .card,
-  .case-card,
-  .process-item,
-  .article-card,
-  .contact-card {
+  .article-card {
     padding: 1.25rem;
   }
 
@@ -451,7 +381,6 @@ const contactMailto =
   }
 
   .card-grid,
-  .cases-grid,
   .article-grid {
     display: grid;
     gap: 1rem;
@@ -461,80 +390,169 @@ const contactMailto =
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .cases-grid,
   .article-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .card:hover,
-  .case-card:hover,
   .article-card:hover,
-  .process-item:hover {
+  .article-image-link:hover img {
     transform: translateY(-3px);
     box-shadow: var(--shadow-soft);
   }
 
   .card p,
-  .case-card p,
-  .article-card p,
-  .process-item p {
+  .article-card p {
     margin: 0.7rem 0 0;
   }
 
-  .split {
+  .article-card {
     display: grid;
-    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
-    gap: 2rem;
+    grid-template-columns: minmax(260px, 0.9fr) minmax(0, 1.1fr);
+    gap: 1.4rem;
     align-items: start;
   }
 
-  .process-list {
-    display: grid;
-    gap: 1rem;
+  .article-image-link {
+    display: block;
   }
 
-  .process-item {
+  .article-image-link img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border: 1px solid var(--line);
+    border-radius: calc(var(--radius-xl) - 0.35rem);
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  .article-copy {
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 1rem;
-    align-items: start;
+    align-content: start;
+  }
+
+  .article-link {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 1.1rem;
+    color: var(--text);
+  }
+
+  .article-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .contact-showcase {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: 4.5rem 0 0;
+  }
+
+  .contact-hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 34rem;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+    background:
+      linear-gradient(180deg, rgba(244, 246, 243, 0.18), rgba(244, 246, 243, 0.24)),
+      url('/images/contact-illustration.jpg') center / cover no-repeat;
   }
 
   .contact-card {
-    background:
-      linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(235, 238, 228, 0.74)),
-      var(--panel);
+    width: min(100%, 46rem);
+    padding: clamp(2rem, 5vw, 4rem);
+    background: rgba(248, 249, 246, 0.93);
+    border: 1px solid rgba(23, 25, 20, 0.08);
+    box-shadow: 0 20px 50px rgba(23, 25, 20, 0.08);
+    text-align: center;
   }
 
-  .contact-links {
+  .contact-card h2 {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 13ch;
+  }
+
+  .contact-copy {
+    margin: 1rem auto 0;
+    max-width: 30rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .contact-mail-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3.7rem;
+    margin-top: 2rem;
+    padding: 0 1.5rem;
+    border: 1px solid var(--text);
+    background: var(--text);
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .contact-mail-link:hover {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+  }
+
+  .contact-icons {
+    width: min(1120px, calc(100vw - 3rem));
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.75rem;
-    align-self: end;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    margin-top: 1.35rem;
+    padding: 1.35rem 0 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .icon-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--text);
+  }
+
+  .icon-tile svg {
+    width: 1.15rem;
+    height: 1.15rem;
+    fill: currentColor;
+  }
+
+  .icon-tile:hover {
+    color: var(--accent-strong);
+    border-color: currentColor;
+    transform: translateY(-1px);
   }
 
   @media (max-width: 1180px) {
-    .contact-card {
-      grid-template-columns: 1fr;
-    }
-
-    .contact-links {
-      align-items: flex-start;
-      align-self: start;
-    }
-  }
-
-  @media (max-width: 1100px) {
     .card-grid {
       grid-template-columns: 1fr;
     }
   }
 
   @media (max-width: 980px) {
-    .split,
-    .cases-grid,
     .article-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .article-card {
       grid-template-columns: 1fr;
     }
 
@@ -554,12 +572,16 @@ const contactMailto =
       max-width: 100%;
     }
 
+    .intro-main {
+      width: min(1120px, calc(100vw - 1.5rem));
+    }
+
     .section {
       padding: 1.7rem 0;
     }
 
     .hero {
-      min-height: auto;
+      min-height: var(--hero-min-height-mobile);
       padding-top: 1.6rem;
     }
 
@@ -567,16 +589,28 @@ const contactMailto =
       width: 100%;
     }
 
-    .tag-row span {
+    .contact-mail-link {
       width: 100%;
-      justify-content: center;
     }
 
     .card,
-    .case-card,
-    .process-item,
-    .article-card,
+    .article-card {
+      border-radius: var(--radius-lg);
+    }
+  }
+
+  @media (max-width: 720px) {
+    .contact-hero {
+      min-height: 28rem;
+      padding: 1rem;
+    }
+
+    .contact-icons {
+      width: min(1120px, calc(100vw - 1.5rem));
+    }
+
     .contact-card {
+      padding: 1.5rem;
       border-radius: var(--radius-lg);
     }
   }

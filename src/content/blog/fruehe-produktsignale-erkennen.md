@@ -1,6 +1,7 @@
 ---
 title: User Innovation mit KI erkennen und nutzen
 description: KI hilft dabei, verstreute Nutzersignale systematisch lesbar zu machen und daraus relevante Innovationsimpulse abzuleiten.
+coreThesis: KI ist besonders wertvoll, wenn sie verstreute Nutzersignale nicht ersetzt, sondern in Muster uebersetzt, die Menschen strategisch bewerten und weiterentwickeln koennen.
 publishDate: 2026-04-24
 ---
 
@@ -49,7 +50,3 @@ Damit User Innovation nicht dem Zufall ueberlassen bleibt, lohnt sich ein wieder
 Wichtig ist auch, die Ergebnisse nicht nur als Forschungsausgabe zu dokumentieren, sondern in Entscheidungen zu ueberfuehren. Welche Themen gehen in Discovery? Wo lohnt sich ein Experiment? Welche Hypothesen sollten im Produktteam vertieft werden? Und wo zeigt sich eher ein Randphaenomen ohne strategisches Gewicht?
 
 So wird aus einem diffusen Suchprozess ein belastbarer Innovationsinput.
-
-## Kernthese
-
-> KI ist besonders wertvoll, wenn sie verstreute Nutzersignale nicht ersetzt, sondern in Muster uebersetzt, die Menschen strategisch bewerten und weiterentwickeln koennen.

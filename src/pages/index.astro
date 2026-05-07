@@ -38,21 +38,29 @@ const serviceCards = [
     title: 'Tool-Exploration',
     detail: 'Exploration geeigneter Daten- und KI-Tools im Geschaefts- und Innovationsprozess.',
     href: '/ueber-mich#tool-exploration',
+    image: '/services/tool-exploration.png',
+    alt: 'Abstrakte Visualisierung fuer Tool-Exploration in Daten- und KI-Prozessen',
   },
   {
     title: 'Use Cases',
     detail: 'Identifikation geeigneter Use Cases fuer KI.',
     href: '/ueber-mich#use-cases',
+    image: '/services/use-cases.png',
+    alt: 'Abstrakte Visualisierung fuer die Identifikation von KI-Use-Cases',
   },
   {
     title: 'KI-Schulungen',
     detail: 'Mitarbeiterschulungen zur besseren Nutzung von KI-Tools.',
     href: '/ueber-mich#ki-schulungen',
+    image: '/services/ki-schulungen.png',
+    alt: 'Abstrakte Visualisierung fuer KI-Schulungen und Enablement',
   },
   {
     title: 'Datenanalysen',
     detail: 'Durchfuehrung von Datenanalysen mit resultierenden Handlungsempfehlungen.',
     href: '/ueber-mich#datenanalysen',
+    image: '/services/datenanalysen.png',
+    alt: 'Abstrakte Visualisierung fuer Datenanalyse und Handlungsempfehlungen',
   },
 ];
 
@@ -72,7 +80,6 @@ const contactMailto =
 
 const contactDestinations = [
   { label: 'AI & Data', href: '/beratung', icon: 'grid' },
-  { label: 'Kreativität', href: '/kreativitaet', icon: 'wave' },
   { label: 'Texte', href: '/blog', icon: 'pen' },
   { label: 'E-Mail', href: contactMailto, icon: 'mail' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raphael-fredebeul-733605140/', icon: 'linkedin' },
@@ -89,6 +96,7 @@ const contactDestinations = [
 
     <section class="intro-section" aria-label="Einleitung">
       <div class="intro-main">
+        <p class="kicker">Raphael Fredebeul</p>
         <h1>KI. <br>
           Innovation. <br>
           Kreativität.</h1>
@@ -162,7 +170,12 @@ const contactDestinations = [
         {serviceCards.map((item) => (
           <article class="service-card">
             <a class="service-card-link" href={withBase(item.href)}>
-              <div class="service-card-art" aria-hidden="true"></div>
+              <img
+                class="service-card-image"
+                src={withBase(item.image)}
+                alt={item.alt}
+                loading="lazy"
+              />
               <h3>{item.title}</h3>
               <p>{item.detail}</p>
             </a>
@@ -245,7 +258,7 @@ const contactDestinations = [
     overflow: hidden;
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    min-height: 34rem;
+    min-height: var(--hero-min-height);
     display: flex;
     align-items: start;
     padding: clamp(2.2rem, 5vw, 3rem) 0 2rem;
@@ -303,10 +316,11 @@ const contactDestinations = [
     padding-top: 0.2rem;
   }
 
+  .kicker,
   .section-label,
   .stack-label {
     margin: 0;
-    font-size: 0.76rem;
+    font-size: 0.78rem;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--accent-strong);
@@ -522,14 +536,12 @@ const contactDestinations = [
     color: var(--text);
   }
 
-  .service-card-art {
+  .service-card-image {
     width: 100%;
     aspect-ratio: 16 / 10;
+    object-fit: cover;
     border: 1px solid var(--line);
-    background:
-      radial-gradient(circle at 20% 20%, rgba(176, 202, 194, 0.9), transparent 36%),
-      radial-gradient(circle at 78% 34%, rgba(214, 222, 198, 0.85), transparent 28%),
-      linear-gradient(135deg, rgba(244, 246, 243, 0.95), rgba(223, 231, 226, 0.92));
+    background: rgba(255, 255, 255, 0.7);
   }
 
   .service-card h3 {
@@ -656,7 +668,7 @@ const contactDestinations = [
     }
 
     .intro-section {
-      min-height: auto;
+      min-height: var(--hero-min-height-mobile);
       align-items: start;
     }
 

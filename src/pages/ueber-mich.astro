@@ -40,7 +40,6 @@ const contactMailto =
 
 const contactDestinations = [
   { label: 'AI & Data', href: '/beratung', icon: 'grid' },
-  { label: 'Kreativität', href: '/kreativitaet', icon: 'wave' },
   { label: 'Texte', href: '/blog', icon: 'pen' },
   { label: 'E-Mail', href: contactMailto, icon: 'mail' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raphael-fredebeul-733605140/', icon: 'linkedin' },
@@ -57,8 +56,9 @@ const contactDestinations = [
 
     <section class="intro-section" aria-label="Einleitung">
       <div class="intro-main">
-        <p class="kicker">Über mich</p>
-        <h1>Ich arbeite an der Schnittstelle von KI, Daten und Innovation.</h1>
+        <p class="kicker">Raphael Fredebeul</p>
+        <h1>Über <br>
+          mich</h1>
       </div>
     </section>
 
@@ -177,7 +177,7 @@ const contactDestinations = [
     overflow: hidden;
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    min-height: 34rem;
+    min-height: var(--hero-min-height);
     display: flex;
     align-items: start;
     padding: clamp(2.2rem, 5vw, 3rem) 0 2rem;
@@ -397,7 +397,7 @@ const contactDestinations = [
     }
 
     .intro-section {
-      min-height: auto;
+      min-height: var(--hero-min-height-mobile);
       align-items: start;
     }
 
