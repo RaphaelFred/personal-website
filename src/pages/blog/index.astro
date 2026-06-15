@@ -56,9 +56,9 @@ const posts = (await getCollection('blog')).sort(
 
 <style>
   .blog-page {
-    width: var(--container);
+    width: var(--page-container);
     margin: 0 auto;
-    padding: 1.15rem 0 4rem;
+    padding: 1rem 0 4rem;
   }
 
   .blog-header,
@@ -193,7 +193,7 @@ const posts = (await getCollection('blog')).sort(
 
   @media (max-width: 720px) {
     .blog-page {
-      padding-top: 0.85rem;
+      padding-top: 0.6rem;
     }
 
     .blog-header,

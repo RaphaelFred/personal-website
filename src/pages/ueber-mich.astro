@@ -157,7 +157,7 @@ const contactDestinations = [
 
 <style>
   .page {
-    width: min(1120px, calc(100vw - 3rem));
+    width: var(--page-container);
     margin: 0 auto;
     padding: 1rem 0 4rem;
   }
@@ -210,7 +210,7 @@ const contactDestinations = [
 
   .intro-main {
     max-width: 40rem;
-    width: min(1120px, calc(100vw - 3rem));
+    width: var(--page-container);
     margin: 0 auto;
     position: relative;
     z-index: 1;
@@ -355,7 +355,7 @@ const contactDestinations = [
   }
 
   .contact-icons {
-    width: min(1120px, calc(100vw - 3rem));
+    width: var(--page-container);
     margin-left: auto;
     margin-right: auto;
     display: flex;
@@ -416,13 +416,12 @@ const contactDestinations = [
 
   @media (max-width: 720px) {
     .page {
-      width: min(1120px, calc(100vw - 1.5rem));
       padding-top: 0.6rem;
       padding-bottom: 3rem;
     }
 
     .intro-main {
-      width: min(1120px, calc(100vw - 1.5rem));
+      width: var(--page-container);
     }
 
     h1,
@@ -440,7 +439,7 @@ const contactDestinations = [
     }
 
     .contact-icons {
-      width: min(1120px, calc(100vw - 1.5rem));
+      width: var(--page-container);
     }
 
     .contact-card {
