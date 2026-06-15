@@ -1,19 +1,15 @@
 ---
 title: "KI und menschliche Perspektiven: Welche Wirklichkeit bildet sie ab?"
-description: Daten sind nie die ganze Wirklichkeit. Für eine menschlichere KI müssen wir fragen, welche Perspektiven sichtbar werden und welche fehlen.
+description: "Daten sind nie die ganze Wirklichkeit. Für eine menschlichere KI müssen wir fragen, welche Perspektiven sichtbar werden und welche fehlen."
+abstract: >-
+  Daten stellen eine Perspektive dar. Dieser Satz klingt zunächst einfach, verändert aber, wie wir über KI sprechen. Wenn Daten nicht die Welt selbst sind, sondern eine bestimmte Sicht auf die Welt, dann ist auch jede KI-Antwort das Ergebnis von Auswahl, Gewichtung und Interpretation.
 coreThesis: Daten sind immer eine Auswahl und damit eine Perspektive; eine zukunftsfähige KI sollte sichtbar machen, welche menschlichen Erfahrungen sie abbildet und welche nicht.
 publishDate: 2026-06-13
 ---
 
 ![Abstrakte Visualisierung unterschiedlicher menschlicher Perspektiven in KI-Systemen](/blog/ki-und-menschliche-perspektiven.jpg)
 
-Daten stellen eine Perspektive dar.
 
-Dieser Satz klingt zunächst einfach. Fast selbstverständlich. Und doch verändert er, wie wir über KI sprechen. Denn wenn Daten nicht die Welt selbst sind, sondern eine bestimmte Sicht auf die Welt, dann ist auch jede KI-Antwort mehr als nur eine technische Ausgabe. Sie ist das Ergebnis von Auswahl, Gewichtung und Interpretation.
-
-Mich beschäftigt daran vor allem eine Frage: Wie kann eine zukünftige Welt mit KI die Perspektiven einzelner Menschen wiedergeben, statt sie in statistischen Mustern verschwinden zu lassen?
-
-**Tags:** KI, Daten, Perspektiven, Zukunft, Gesellschaft
 
 ## Daten sind keine neutrale Oberfläche der Welt
 

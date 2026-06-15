@@ -48,6 +48,8 @@ const offers = [
   },
 ];
 
+const trustItems = ['Industrieerfahrung bei Miele', 'Datenkontext bei Arvato / Bertelsmann', 'Universitaet Bielefeld & Nova Universidade', '4. Platz SORDI.ai Wettbewerb'];
+
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
@@ -76,6 +78,15 @@ const contactDestinations = [
         <h1>AI & <br>
           Data<br>
   </h1>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Erfahrung und Nachweise">
+      <p class="kicker">Kompetenznachweise</p>
+      <div class="trust-list">
+        {trustItems.map((item) => (
+          <span>{item}</span>
+        ))}
       </div>
     </section>
 
@@ -202,6 +213,7 @@ const contactDestinations = [
   }
 
   .hero,
+  .trust-strip,
   .section,
   .contact-showcase {
     border-top: 1px solid var(--line);
@@ -209,6 +221,12 @@ const contactDestinations = [
 
   .section {
     padding: 2rem 0;
+  }
+
+  .trust-strip {
+    display: grid;
+    gap: 1rem;
+    padding: 1.35rem 0;
   }
 
   .hero {
@@ -382,6 +400,24 @@ const contactDestinations = [
   .section-text {
     margin-top: 0.8rem;
     max-width: 42rem;
+  }
+
+  .trust-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+
+  .trust-list span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.35rem;
+    padding: 0.55rem 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    background: rgba(255, 255, 255, 0.62);
+    color: var(--muted);
+    font-size: 0.9rem;
   }
 
   .card-grid,

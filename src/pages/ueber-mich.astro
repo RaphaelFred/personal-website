@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import { withBase } from '../utils/paths';
 
 const cvPoints = [
   'Data Scientist mit Fokus auf AI, Datenanalyse und Innovation.',
@@ -35,6 +36,49 @@ const serviceDetails = [
   },
 ];
 
+const evidenceGroups = [
+  {
+    label: 'Praxis',
+    title: 'Wirtschaft & Industrie',
+    items: [
+      {
+        title: 'Miele',
+        detail:
+          'Daten- und AI-Fragestellungen in einem industriellen Kontext, in dem analytische Arbeit anschlussfaehig und praktisch nutzbar sein muss.',
+      },
+      {
+        title: 'Arvato / Bertelsmann',
+        detail:
+          'Erfahrung mit datengetriebenen Themen in Konzern- und Organisationsumfeldern, in denen Analyse, Umsetzung und Kommunikation zusammenkommen.',
+      },
+    ],
+  },
+  {
+    label: 'Forschung',
+    title: 'Akademischer Hintergrund',
+    items: [
+      {
+        title: 'Universitaet Bielefeld',
+        detail: 'Analytische Ausbildung und wissenschaftliches Arbeiten als Grundlage fuer strukturierte Datenarbeit.',
+      },
+      {
+        title: 'Nova Universidade',
+        detail: 'Internationale Perspektive auf Technologie, Organisation und die Einordnung komplexer Fragestellungen.',
+      },
+    ],
+  },
+  {
+    label: 'Wettbewerb',
+    title: 'SORDI.ai',
+    items: [
+      {
+        title: '4. Platz im AI Wettbewerb',
+        detail: 'Teilnahme am SORDI.ai AI-Wettbewerb mit Platzierung unter den besten Einreichungen.',
+      },
+    ],
+  },
+];
+
 const contactMailto =
   'mailto:raphaeldc@gmx.de?subject=Anfrage%20zu%20AI%20%26%20Data&body=Hallo%20Raphael,%0A%0Aich%20interessiere%20mich%20fuer%20deine%20Arbeit%20im%20Bereich%20AI%20%26%20Data.%0A%0AViele%20Gruesse';
 
@@ -63,21 +107,64 @@ const contactDestinations = [
     </section>
 
     <section class="section" aria-label="Kurzprofil">
-      <div class="section-grid">
+      <div class="profile-grid">
+        <figure class="profile-image">
+          <img
+            src={withBase('/images/raphael-portrait.jpeg')}
+            alt="Raphael Fredebeul draussen vor einer Kuestenlandschaft"
+            loading="eager"
+            decoding="async"
+          />
+        </figure>
+
+        <div class="profile-copy">
+          <div class="section-copy">
+            <p class="kicker">Kurz-CV</p>
+            <h2>Ein kurzer Hintergrund zu meiner Arbeit.</h2>
+            <p class="section-text">
+              Mein Fokus liegt darauf, technologische Entwicklungen in klare Anwendungen,
+              nachvollziehbare Entscheidungen und sinnvolle naechste Schritte zu uebersetzen.
+            </p>
+          </div>
+
+          <div class="cv-list">
+            {cvPoints.map((item) => (
+              <div class="cv-item">
+                <p>{item}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Stationen und Nachweise">
+      <div class="evidence-section-grid">
         <div class="section-copy">
-          <p class="kicker">Kurz-CV</p>
-          <h2>Ein kurzer Hintergrund zu meiner Arbeit.</h2>
+          <p class="kicker">Stationen & Nachweise</p>
+          <h2>Kontexte, aus denen meine Arbeit kommt.</h2>
           <p class="section-text">
-            Mein Fokus liegt darauf, technologische Entwicklungen in klare Anwendungen,
-            nachvollziehbare Entscheidungen und sinnvolle naechste Schritte zu uebersetzen.
+            Meine Perspektive entsteht aus praktischer Datenarbeit, akademischem Hintergrund
+            und Wettbewerbserfahrung im AI-Umfeld.
           </p>
         </div>
 
-        <div class="cv-list">
-          {cvPoints.map((item) => (
-            <div class="cv-item">
-              <p>{item}</p>
-            </div>
+        <div class="evidence-groups">
+          {evidenceGroups.map((group) => (
+            <section class="evidence-group" aria-label={group.title}>
+              <div class="evidence-group-head">
+                <p class="evidence-label">{group.label}</p>
+                <h3>{group.title}</h3>
+              </div>
+              <div class="evidence-items">
+                {group.items.map((item) => (
+                  <article class="evidence-item">
+                    <h4>{item.title}</h4>
+                    <p>{item.detail}</p>
+                  </article>
+                ))}
+              </div>
+            </section>
           ))}
         </div>
       </div>
@@ -224,6 +311,61 @@ const contactDestinations = [
     align-items: start;
   }
 
+  .evidence-section-grid {
+    display: grid;
+    gap: clamp(1.6rem, 4vw, 3rem);
+  }
+
+  .evidence-section-grid .section-copy {
+    max-width: 46rem;
+  }
+
+  .evidence-section-grid h2 {
+    max-width: 16ch;
+  }
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1fr);
+    gap: clamp(1.6rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .profile-copy {
+    display: grid;
+    gap: 1.4rem;
+  }
+
+  .profile-image {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    min-height: 30rem;
+    aspect-ratio: 4 / 5;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-xl);
+    background: var(--panel);
+    box-shadow: var(--shadow-card);
+  }
+
+  .profile-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, rgba(244, 246, 243, 0.02), rgba(23, 25, 20, 0.14)),
+      linear-gradient(90deg, rgba(244, 246, 243, 0.16), transparent 42%);
+  }
+
+  .profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 36%;
+    filter: saturate(0.9) contrast(0.96);
+  }
+
   .kicker {
     margin: 0;
     font-size: 0.78rem;
@@ -235,6 +377,7 @@ const contactDestinations = [
   h1,
   h2,
   h3,
+  h4,
   p {
     margin-top: 0;
   }
@@ -291,9 +434,67 @@ const contactDestinations = [
     box-shadow: var(--shadow-card);
   }
 
+  .evidence-groups {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .evidence-group {
+    display: grid;
+    grid-template-columns: minmax(170px, 0.42fr) minmax(0, 1fr);
+    gap: clamp(1.2rem, 3vw, 2.5rem);
+    padding: 1.45rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .evidence-group-head {
+    display: grid;
+    align-content: start;
+    gap: 0.4rem;
+  }
+
+  .evidence-label {
+    margin: 0;
+    color: var(--accent-strong);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    line-height: 1.15;
+    text-transform: uppercase;
+  }
+
+  .evidence-group h3 {
+    font-size: clamp(1.22rem, 1.8vw, 1.55rem);
+    line-height: 1.08;
+  }
+
+  .evidence-items {
+    display: grid;
+    gap: 1.05rem;
+  }
+
+  .evidence-item {
+    display: grid;
+    gap: 0.45rem;
+    max-width: 42rem;
+  }
+
   .cv-item p,
   .service-card p {
     margin: 0.7rem 0 0;
+  }
+
+  .evidence-item h4 {
+    margin: 0;
+    font-size: clamp(1.02rem, 1.35vw, 1.2rem);
+    line-height: 1.18;
+  }
+
+  .evidence-item p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.58;
   }
 
   .contact-showcase {
@@ -392,8 +593,15 @@ const contactDestinations = [
   }
 
   @media (max-width: 900px) {
+    .profile-grid,
     .section-grid {
       grid-template-columns: 1fr;
+    }
+
+    .profile-image {
+      min-height: 0;
+      max-height: 42rem;
+      width: min(100%, 30rem);
     }
 
     .intro-section {
@@ -431,6 +639,22 @@ const contactDestinations = [
 
     .intro-section {
       padding-top: 1.6rem;
+    }
+
+    .profile-image {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      border-radius: var(--radius-lg);
+    }
+
+    .evidence-group {
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+      padding: 1.25rem 0;
+    }
+
+    .evidence-group-head {
+      gap: 0.25rem;
     }
 
     .contact-hero {

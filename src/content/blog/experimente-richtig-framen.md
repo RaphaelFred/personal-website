@@ -1,6 +1,8 @@
 ---
 title: Use Case Identifikation fuer KI
 description: Gute KI-Anwendungsfaelle entstehen dort, wo konkrete Taetigkeiten, Aufwand, Risiko und Verantwortung bewusst zusammengedacht werden.
+abstract: >-
+  Gute KI-Use-Cases entstehen selten aus der Faszination fuer ein Werkzeug. Sie beginnen mit einer genauen Betrachtung der eigenen Arbeit: Welche Taetigkeiten wiederholen sich, wo entsteht Aufwand, und welche Schritte profitieren wirklich von Struktur, Entwurf oder Automatisierung?
 coreThesis: Gute KI-Use-Cases beginnen nicht bei Tools, sondern bei einer praezisen Sicht auf wiederkehrende Taetigkeiten, Nutzen, Risiko und menschliche Verantwortung.
 publishDate: 2026-04-23
 ---

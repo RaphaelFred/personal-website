@@ -1,6 +1,8 @@
 ---
 title: Strategische Datenanalyse fuer erfolgreiche Projekte und Innovationen
 description: Strategische Datenanalyse macht Unsicherheit nicht unsichtbar, aber sie trennt belastbare Erkenntnisse von Annahmen und zeigt, wo Tests wirklich noetig sind.
+abstract: >-
+  Innovation beginnt fast immer mit Unsicherheit. Strategische Datenanalyse nimmt diese Unsicherheit nicht weg, aber sie hilft dabei, belastbare Erkenntnisse, plausible Annahmen und echte Erkenntnisluecken klarer voneinander zu trennen.
 coreThesis: Strategische Datenanalyse macht Innovation nicht sicher, aber sie macht sichtbar, welche Entscheidungen belastbar sind und wo gezielte Tests statt blinder Gewissheit noetig bleiben.
 publishDate: 2026-04-22
 ---

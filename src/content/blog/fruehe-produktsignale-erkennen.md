@@ -1,6 +1,8 @@
 ---
 title: User Innovation mit KI erkennen und nutzen
 description: KI hilft dabei, verstreute Nutzersignale systematisch lesbar zu machen und daraus relevante Innovationsimpulse abzuleiten.
+abstract: >-
+  Viele Innovationen entstehen nicht zuerst in Unternehmen, sondern im Gebrauch. KI kann helfen, verstreute Hinweise aus Workarounds, Feedback, Support-Faellen oder Communities so zu ordnen, dass aus schwachen Signalen relevante Innovationsmuster werden.
 coreThesis: KI ist besonders wertvoll, wenn sie verstreute Nutzersignale nicht ersetzt, sondern in Muster uebersetzt, die Menschen strategisch bewerten und weiterentwickeln koennen.
 publishDate: 2026-04-24
 ---

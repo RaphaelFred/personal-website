@@ -1,6 +1,8 @@
 ---
 title: AI Adoption in Organisationen
 description: KI wird erst dann wirksam, wenn Orientierung, Verantwortung und ein sicherer Lernraum den Einsatz im Alltag tragfaehig machen.
+abstract: >-
+  AI Adoption wird oft so behandelt, als ginge es primaer um die Auswahl eines Tools. In der Praxis liegt die eigentliche Huerde aber darin, wie Menschen KI verantwortbar, sicher und ohne innere Abwehr in ihren Arbeitsalltag integrieren koennen.
 coreThesis: KI wird in Organisationen nicht durch Verfuegbarkeit wirksam, sondern durch Vertrauen, klare Verantwortung und alltagstaugliche Lernraeume.
 publishDate: 2026-04-25
 ---

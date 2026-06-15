@@ -37,6 +37,27 @@ const aboutPoints = [
   'Texte ueber Unsicherheit, Struktur, kreative Arbeit und analytisches Denken.',
 ];
 
+const proofGroups = [
+  {
+    label: 'Wirtschaft & Industrie',
+    logos: [
+      { src: '/logos/miele.svg', alt: 'Miele' },
+      { src: '/logos/arvato.svg', alt: 'Arvato' },
+    ],
+  },
+  {
+    label: 'Forschung',
+    logos: [
+      { src: '/logos/uni-bielefeld.svg', alt: 'Universitaet Bielefeld' },
+      { src: '/logos/nova.png', alt: 'Nova Universidade' },
+    ],
+  },
+  {
+    label: 'Wettbewerb',
+    logos: [{ src: '/logos/sordi-ai.webp', alt: 'SORDI.ai' }],
+  },
+];
+
 const serviceCards = [
   {
     title: 'Tool-Exploration',
@@ -188,6 +209,24 @@ const contactDestinations = [
       </div>
     </section>
 
+    <section class="proof-strip" aria-label="Erfahrung und Nachweise">
+      <p class="section-label">Erfahrung aus Praxis, Forschung und Wettbewerb</p>
+      <div class="proof-groups">
+        {proofGroups.map((group) => (
+          <div class="proof-group">
+            <p class="proof-category">{group.label}</p>
+            <div class="proof-list">
+              {group.logos.map((item) => (
+                <span class="proof-logo">
+                  <img src={withBase(item.src)} alt={item.alt} loading="lazy" decoding="async" />
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
     <section class="contact-showcase" id="kontakt" aria-label="Kontakt">
       <div class="contact-hero">
         <div class="contact-card">
@@ -251,6 +290,7 @@ const contactDestinations = [
   }
 
   .intro-section,
+  .proof-strip,
   .list-section,
   .visual-work-section,
   .contact-showcase {
@@ -271,6 +311,13 @@ const contactDestinations = [
 
   .list-section {
     padding: 4.5rem 0;
+  }
+
+  .proof-strip {
+    display: grid;
+    justify-items: center;
+    gap: 1.45rem;
+    padding: 2.8rem 0;
   }
 
   .intro-section::before {
@@ -405,6 +452,57 @@ const contactDestinations = [
   .stack-list {
     display: grid;
     gap: 0;
+  }
+
+  .proof-groups {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    width: min(100%, 60rem);
+  }
+
+  .proof-group {
+    display: grid;
+    justify-items: center;
+    gap: 0.65rem;
+  }
+
+  .proof-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+  }
+
+  .proof-logo {
+    width: 10.4rem;
+    display: grid;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    min-height: 4.35rem;
+    padding: 0.9rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.62);
+  }
+
+  .proof-category {
+    color: var(--muted);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    line-height: 1.15;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .proof-logo img {
+    width: auto;
+    max-width: min(8rem, 82%);
+    height: 1.65rem;
+    object-fit: contain;
+    filter: grayscale(1) saturate(0) opacity(0.52);
   }
 
   .stack-item:hover h3 a,
@@ -699,6 +797,10 @@ const contactDestinations = [
       gap: 2rem;
     }
 
+    .proof-list {
+      width: auto;
+    }
+
     .contact-mail-link {
       width: 100%;
     }
@@ -734,6 +836,16 @@ const contactDestinations = [
 
     .contact-card {
       padding: 1.5rem;
+    }
+
+    .proof-groups,
+    .proof-group,
+    .proof-list {
+      width: 100%;
+    }
+
+    .proof-logo {
+      width: 100%;
     }
   }
 </style>
