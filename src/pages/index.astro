@@ -32,9 +32,9 @@ const blogImages = {
 };
 
 const aboutPoints = [
-  'AI- und Datenarbeit fuer Produkt, Innovation und Entscheidungsfindung.',
-  'Kreative Praxis zwischen Musik, Produktion, Rhythmus und Klang.',
-  'Texte ueber Unsicherheit, Struktur, kreative Arbeit und analytisches Denken.',
+  'KI und Daten als Grundlage für klarere Entscheidungen und bessere Prozesse.',
+  'Innovation und Kreativität, um neue Produkte und Arbeitsweisen zu entwickeln.',
+  'Texte über Unsicherheit, Struktur, KI und die Frage, wie Menschen besser denken und arbeiten.',
 ];
 
 const proofGroups = [
@@ -62,28 +62,28 @@ const serviceCards = [
   {
     title: 'Datenanalysen für Entscheider',
     detail: 'Ich bereite Analysen so auf, dass Kernaussagen, Unsicherheiten und Entscheidungen klarer werden.',
-    href: '/ueber-mich#tool-exploration',
+    href: '/ueber-mich#was-ich-biete',
     image: '/services/tool-exploration.png',
     alt: 'Abstrakte Visualisierung fuer Tool-Exploration in Daten- und KI-Prozessen',
   },
   {
     title: 'Use-Case-Schärfung',
     detail: 'Ich helfe, KI-Anwendungsfälle nach Nutzen, Aufwand, Risiko und Umsetzbarkeit zu sortieren.',
-    href: '/ueber-mich#use-cases',
+    href: '/ueber-mich#was-ich-biete',
     image: '/services/use-cases.png',
     alt: 'Abstrakte Visualisierung fuer die Identifikation von KI-Use-Cases',
   },
   {
     title: 'AI Enablement für Teams',
     detail: 'Ich entwickle Formate, mit denen Mitarbeitende KI nicht nur ausprobieren, sondern sinnvoll in ihre Arbeit integrieren.',
-    href: '/ueber-mich#ki-schulungen',
+    href: '/ueber-mich#was-ich-biete',
     image: '/services/ki-schulungen.png',
     alt: 'Abstrakte Visualisierung fuer KI-Schulungen und Enablement',
   },
   {
     title: 'Innovation & Kreativität',
     detail: 'Ich entwickle mit KI, Daten und kreativen Methoden neue Produktideen, bessere Prozesse und ungewohnte Lösungsräume.',
-    href: '/ueber-mich#datenanalysen',
+    href: '/ueber-mich#was-ich-biete',
     image: '/services/datenanalysen.png',
     alt: 'Abstrakte Visualisierung fuer Datenanalyse und Handlungsempfehlungen',
   },
@@ -135,8 +135,8 @@ const contactDestinations = [
       <div class="about-block">
         <p class="section-label">Meine Mission</p>
         <p class="about-text">
-          Ich arbeite an der Schnittstelle von KI, Innovation und Kreativität und übersetze technologische Entwicklungen in klare Strategien, bessere Prozesse, neue Produkte und kreative Möglichkeiten.
-          Dabei steht für mich nicht nur die Technologie im Mittelpunkt, sondern der Mensch, der mit ihr arbeitet.
+          Ich arbeite an der <strong>Schnittstelle von KI, Innovation und Kreativität</strong> und übersetze technologische Entwicklungen in <strong>klare Strategien, bessere Prozesse, neue Produkte</strong> und kreative Möglichkeiten.
+          Dabei steht für mich nicht nur die Technologie im Mittelpunkt, sondern <strong>der Mensch, der mit ihr arbeitet</strong>.
         </p>
       </div>
 
@@ -230,8 +230,7 @@ const contactDestinations = [
         <div class="contact-card">
           <h2>Schreib mir gern.</h2>
           <p class="contact-copy">
-            Wenn du über ein Projekt, eine Zusammenarbeit oder eine konkrete Fragestellung
-            sprechen möchtest, oeffnet sich per Klick direkt dein Mailprogramm.
+            Wenn du über KI, Daten, Innovation oder eine konkrete Herausforderung sprechen möchtest, freue ich mich über eine Nachricht.
           </p>
           <a class="contact-mail-link" href={contactMailto}>Kontakt</a>
         </div>
@@ -426,6 +425,14 @@ const contactDestinations = [
     line-height: 1.55;
     letter-spacing: -0.02em;
     color: var(--text);
+  }
+
+  .about-text strong {
+    padding: 0 0.04em 0.02em;
+    background:
+      linear-gradient(92deg, rgba(122, 143, 135, 0), rgba(122, 143, 135, 0.28) 12%, rgba(122, 143, 135, 0.18) 56%, rgba(122, 143, 135, 0.3) 88%, rgba(122, 143, 135, 0)) 0 88% / 100% 0.18em no-repeat;
+    color: inherit;
+    font-weight: inherit;
   }
 
   .about-list {

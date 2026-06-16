@@ -1,5 +1,5 @@
 ---
-title: "KI und menschliche Perspektiven: Welche Wirklichkeit bildet sie ab?"
+title: "KI und menschliche Perspektiven: Welche Wirklichkeit bildet KI ab?"
 description: "Daten sind nie die ganze Wirklichkeit. Für eine menschlichere KI müssen wir fragen, welche Perspektiven sichtbar werden und welche fehlen."
 abstract: >-
   Daten stellen eine Perspektive dar. Dieser Satz klingt zunächst einfach, verändert aber, wie wir über KI sprechen. Wenn Daten nicht die Welt selbst sind, sondern eine bestimmte Sicht auf die Welt, dann ist auch jede KI-Antwort das Ergebnis von Auswahl, Gewichtung und Interpretation.

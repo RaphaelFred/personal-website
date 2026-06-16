@@ -1,5 +1,5 @@
 ---
-title: AI Adoption in Organisationen
+title: "AI Adoption in Organisationen: Warum KI-Einführung oft an den falschen Fragen scheitert"
 description: KI wird erst dann wirksam, wenn Orientierung, Verantwortung und ein sicherer Lernraum den Einsatz im Alltag tragfaehig machen.
 abstract: >-
   AI Adoption wird oft so behandelt, als ginge es primaer um die Auswahl eines Tools. In der Praxis liegt die eigentliche Huerde aber darin, wie Menschen KI verantwortbar, sicher und ohne innere Abwehr in ihren Arbeitsalltag integrieren koennen.
