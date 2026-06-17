@@ -129,8 +129,9 @@ const contactDestinations = [
           </div>
 
           <div class="cv-list">
-            {cvPoints.map((item) => (
+            {cvPoints.map((item, index) => (
               <div class="cv-item">
+                <span class="cv-index">{String(index + 1).padStart(2, '0')}</span>
                 <p>{item}</p>
               </div>
             ))}
@@ -329,12 +330,14 @@ const contactDestinations = [
     display: grid;
     grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1fr);
     gap: clamp(1.6rem, 5vw, 4rem);
-    align-items: center;
+    align-items: stretch;
   }
 
   .profile-copy {
     display: grid;
     gap: 1.4rem;
+    align-content: space-between;
+    align-self: stretch;
   }
 
   .profile-image {
@@ -426,13 +429,37 @@ const contactDestinations = [
     gap: 1rem;
   }
 
-  .cv-item,
+  .cv-list {
+    gap: 0;
+    border-top: 1px solid var(--line);
+  }
+
   .service-card {
     padding: 1.2rem 1.25rem;
     border: 1px solid var(--line);
     border-radius: var(--radius-lg);
     background: var(--panel);
     box-shadow: var(--shadow-card);
+  }
+
+  .cv-item {
+    display: grid;
+    grid-template-columns: 3.25rem minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    padding: 1.15rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cv-index {
+    color: var(--accent-strong);
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    line-height: 1.7;
+  }
+
+  .cv-item p {
+    margin: 0;
   }
 
   .evidence-groups {
@@ -480,7 +507,6 @@ const contactDestinations = [
     max-width: 42rem;
   }
 
-  .cv-item p,
   .service-card p {
     margin: 0.7rem 0 0;
   }
@@ -599,6 +625,10 @@ const contactDestinations = [
       grid-template-columns: 1fr;
     }
 
+    .profile-copy {
+      align-content: start;
+    }
+
     .profile-image {
       min-height: 0;
       max-height: 42rem;
@@ -636,6 +666,11 @@ const contactDestinations = [
     h1,
     h2 {
       max-width: 100%;
+    }
+
+    .cv-item {
+      grid-template-columns: 2.6rem minmax(0, 1fr);
+      gap: 0.8rem;
     }
 
     .intro-section {

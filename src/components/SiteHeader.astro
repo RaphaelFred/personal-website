@@ -20,9 +20,15 @@ const externalLinks = [
 ---
 
 <header class="site-header">
-  <a class="wordmark" href={withBase('/')} aria-label="Startseite Raphael Fredebeul">
-    <span class="wordmark-name">Raphael Fredebeul</span>
-    <span class="wordmark-role">Bielefeld | OWL </span>
+  <a class="brand-mark" href={withBase('/')} aria-label="Startseite Raphael Fredebeul">
+    <svg class="brand-logo" viewBox="0 0 104 40" aria-hidden="true">
+      <path class="logo-frame" d="M4 4h96v32H4V4Z" />
+      <path class="logo-stroke" d="M21 30V10h14c5.2 0 8 2.6 8 6.6S40.2 23 35 23H21" />
+      <path class="logo-stroke" d="M35 23l8.5 7" />
+      <path class="logo-stroke" d="M58 30V10h25" />
+      <path class="logo-stroke" d="M58 20h21" />
+    </svg>
+    <span class="brand-meta">AI · Data · Innovation</span>
   </a>
   <nav class="nav" aria-label="Hauptnavigation">
     {navItems.map((item) => (
@@ -66,22 +72,39 @@ const externalLinks = [
     backdrop-filter: blur(20px);
   }
 
-  .wordmark {
-    display: grid;
-    gap: 0.12rem;
+  .brand-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
     min-width: 0;
+    color: var(--text);
   }
 
-  .wordmark-name {
-    font-size: 1.02rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
+  .brand-logo {
+    width: 6.5rem;
+    height: auto;
+    flex: 0 0 auto;
   }
 
-  .wordmark-role {
+  .logo-frame,
+  .logo-stroke {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.45;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .logo-frame {
+    opacity: 0.32;
+  }
+
+  .brand-meta {
     color: var(--muted);
-    font-size: 0.82rem;
-    letter-spacing: 0.04em;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
     text-transform: uppercase;
   }
 
@@ -173,6 +196,20 @@ const externalLinks = [
       padding: 0.85rem;
       margin-bottom: 1rem;
       border-radius: var(--radius-lg);
+    }
+
+    .brand-mark {
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .brand-logo {
+      width: 5.9rem;
+    }
+
+    .brand-meta {
+      font-size: 0.66rem;
+      text-align: right;
     }
 
     .nav {
