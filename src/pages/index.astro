@@ -63,28 +63,28 @@ const serviceCards = [
     title: 'Datenanalysen für Entscheider',
     detail: 'Ich bereite Analysen so auf, dass Kernaussagen, Unsicherheiten und Entscheidungen klarer werden.',
     href: '/ueber-mich#was-ich-biete',
-    image: '/services/tool-exploration.png',
+    image: '/services/cards/tool-exploration.png',
     alt: 'Abstrakte Visualisierung fuer Tool-Exploration in Daten- und KI-Prozessen',
   },
   {
     title: 'Use-Case-Schärfung',
     detail: 'Ich helfe, KI-Anwendungsfälle nach Nutzen, Aufwand, Risiko und Umsetzbarkeit zu sortieren.',
     href: '/ueber-mich#was-ich-biete',
-    image: '/services/use-cases.png',
+    image: '/services/cards/use-cases.png',
     alt: 'Abstrakte Visualisierung fuer die Identifikation von KI-Use-Cases',
   },
   {
     title: 'AI Enablement für Teams',
     detail: 'Ich entwickle Formate, mit denen Mitarbeitende KI nicht nur ausprobieren, sondern sinnvoll in ihre Arbeit integrieren.',
     href: '/ueber-mich#was-ich-biete',
-    image: '/services/ki-schulungen.png',
+    image: '/services/cards/ki-schulungen.png',
     alt: 'Abstrakte Visualisierung fuer KI-Schulungen und Enablement',
   },
   {
     title: 'Innovation & Kreativität',
     detail: 'Ich entwickle mit KI, Daten und kreativen Methoden neue Produktideen, bessere Prozesse und ungewohnte Lösungsräume.',
     href: '/ueber-mich#was-ich-biete',
-    image: '/services/datenanalysen.png',
+    image: '/services/cards/datenanalysen.png',
     alt: 'Abstrakte Visualisierung fuer Datenanalyse und Handlungsempfehlungen',
   },
 ];
@@ -644,7 +644,9 @@ const contactDestinations = [
   }
 
   .service-card-image {
+    display: block;
     width: 100%;
+    height: clamp(13rem, 22vw, 17.5rem);
     aspect-ratio: 16 / 10;
     object-fit: cover;
     border: 1px solid var(--line);

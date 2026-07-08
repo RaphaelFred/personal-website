@@ -11,7 +11,8 @@ const {
   description = 'Persoenliche Website von Raphael Fredebeul mit Fokus auf AI & Data, Innovation, Kreativitaet und Consulting.',
 } = Astro.props;
 
-const socialImage = withBase('/social-card.svg');
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const socialImage = new URL(withBase('/social-card.svg'), Astro.site).toString();
 ---
 
 <!doctype html>
@@ -20,20 +21,25 @@ const socialImage = withBase('/social-card.svg');
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="light" />
-    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
-    <link rel="icon" href={withBase('/favicon.ico')} />
+    <link rel="icon" type="image/png" sizes="32x32" href={withBase('/favicon-32.png?v=3')} />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg?v=3')} />
+    <link rel="shortcut icon" href={withBase('/favicon.ico?v=3')} />
+    <link rel="apple-touch-icon" sizes="180x180" href={withBase('/apple-touch-icon.png?v=3')} />
+    <link rel="canonical" href={canonicalUrl} />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
     <meta name="theme-color" content="#f7f8f5" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:locale" content="de_DE" />
     <meta property="og:site_name" content="Raphael Fredebeul" />
     <meta property="og:image" content={socialImage} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
     <title>{title}</title>
   </head>
   <body>

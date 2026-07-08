@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Host: raphaelfredebeul.de
+Sitemap: https://raphaelfredebeul.de/sitemap.xml

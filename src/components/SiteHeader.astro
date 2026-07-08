@@ -24,9 +24,9 @@ const externalLinks = [
     <svg class="brand-logo" viewBox="0 0 104 40" aria-hidden="true">
       <path class="logo-frame" d="M4 4h96v32H4V4Z" />
       <path class="logo-stroke" d="M21 30V10h14c5.2 0 8 2.6 8 6.6S40.2 23 35 23H21" />
-      <path class="logo-stroke" d="M35 23l8.5 7" />
+      <path class="logo-stroke logo-accent" d="M35 23l8.5 7" />
       <path class="logo-stroke" d="M58 30V10h25" />
-      <path class="logo-stroke" d="M58 20h21" />
+      <path class="logo-stroke logo-soft" d="M58 20h21" />
     </svg>
     <span class="brand-meta">AI · Data · Innovation</span>
   </a>
@@ -97,7 +97,16 @@ const externalLinks = [
   }
 
   .logo-frame {
-    opacity: 0.32;
+    opacity: 0.26;
+  }
+
+  .logo-accent {
+    stroke: var(--accent-strong);
+    opacity: 0.74;
+  }
+
+  .logo-soft {
+    opacity: 0.72;
   }
 
   .brand-meta {

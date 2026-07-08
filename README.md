@@ -1,60 +1,81 @@
-# Astro Starter Kit: Basics
+# Raphael Fredebeul Website
+
+Personal website built with Astro and intended to be published at:
+
+- Primary domain: `raphaelfredebeul.de`
+- Redirect/backup domain: `raphael-fredebeul.de`
+
+## Local Development
 
 ```sh
-npm create astro@latest -- --template basics
+npm install
+npm run dev
 ```
 
-<!-- ASTRO:REMOVE:START -->
+## Production Build
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-<!-- ASTRO:REMOVE:END -->
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-<!-- ASTRO:REMOVE:START -->
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-<!-- ASTRO:REMOVE:END -->
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npm run build
+npm run preview
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+The production output is generated in `dist/`.
 
-## 🧞 Commands
+After the Cloudflare Pages deployment and domain redirects are live, verify the public setup with:
 
-All commands are run from the root of the project, from a terminal:
+```sh
+npm run check:deployment
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+The deployment check verifies the canonical page, `robots.txt`, `sitemap.xml`, root-domain redirects, and one nested redirect with query string preservation.
 
-## 👀 Want to learn more?
+Static launch files in `public/` are copied into `dist/` during the build:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- `robots.txt` sets `raphaelfredebeul.de` as the preferred host.
+- `_headers` adds conservative security and privacy headers for Cloudflare Pages.
+
+## Cloudflare Pages Setup
+
+Recommended setup:
+
+- Hosting: Cloudflare Pages Free
+- Repository: `RaphaelFred/personal-website`
+- Production branch: `main`
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Node version: `>=18.17.1`
+
+Add these custom domains to the Cloudflare Pages project:
+
+- `raphaelfredebeul.de`
+- `www.raphaelfredebeul.de`
+- `raphael-fredebeul.de`
+- `www.raphael-fredebeul.de`
+
+Use `raphaelfredebeul.de` as the canonical domain. Redirect the other variants to it with Cloudflare Bulk Redirects, not with a Pages `_redirects` file. Pages `_redirects` is useful for path redirects, but not for domain-level redirects.
+
+Create a bulk redirect list with these entries:
+
+| Source URL | Target URL | Status |
+| :--- | :--- | :--- |
+| `www.raphaelfredebeul.de` | `https://raphaelfredebeul.de` | `301` |
+| `raphael-fredebeul.de` | `https://raphaelfredebeul.de` | `301` |
+| `www.raphael-fredebeul.de` | `https://raphaelfredebeul.de` | `301` |
+
+Enable these parameters for each entry:
+
+- Preserve query string
+- Subpath matching
+- Preserve path suffix
+
+## Domain Checklist
+
+1. Register `raphaelfredebeul.de`.
+2. Register `raphael-fredebeul.de`.
+3. Add both domains to Cloudflare.
+4. Point both domains to Cloudflare nameservers if they were registered elsewhere.
+5. Connect the GitHub repository to Cloudflare Pages.
+6. Add the four custom domain variants listed above.
+7. Configure Bulk Redirects to the canonical domain.
+8. Run `npm run check:deployment` once DNS and HTTPS certificates are active.
+9. Run a production build locally before pushing major changes.
