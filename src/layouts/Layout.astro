@@ -8,8 +8,8 @@ interface Props {
 }
 
 const {
-  title = 'Raphael Fredebeul | Data Science',
-  description = 'Persönliche Website von Raphael Fredebeul, Data Scientist mit Fokus auf KI, Daten, Innovation und Kreativität.',
+  title = 'Raphael Fredebeul | Data Scientist aus Bielefeld',
+  description = 'Raphael Fredebeul, Data Scientist aus Bielefeld: Gedanken und Artikel zu KI, Daten, Innovation und Kreativität.',
   noindex = false,
 } = Astro.props;
 
@@ -44,6 +44,7 @@ const socialImage = new URL(withBase('/social-card.svg'), Astro.site).toString()
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImage} />
     <title>{title}</title>
+    <slot name="head" />
   </head>
   <body>
     <a class="skip-link" href={withBase('/#main-content')}>Zum Inhalt springen</a>

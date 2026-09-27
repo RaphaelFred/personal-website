@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import SiteHeader from '../components/SiteHeader.astro';
 import { withBase } from '../utils/paths';
+import { personSchema } from '../utils/person';
 
 const blogPosts = (await getCollection('blog'))
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime())
@@ -109,9 +110,10 @@ const contactDestinations = [
 ---
 
 <Layout
-  title="Raphael Fredebeul | Data Scientist"
-  description="Persönliche Website von Raphael Fredebeul, Data Scientist mit Fokus auf KI, Daten, Innovation und Kreativität."
+  title="Raphael Fredebeul | Data Scientist aus Bielefeld"
+  description="Raphael Fredebeul, Data Scientist aus Bielefeld: Gedanken und Artikel zu KI, Daten, Innovation und Kreativität."
 >
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(personSchema(Astro.site))} />
   <main class="page" id="main-content">
     <SiteHeader current="home" />
 
@@ -122,7 +124,7 @@ const contactDestinations = [
           Innovation. <br>
           Kreativität.</h1>
         <p class="intro-text">
-          Ich bin Raphael, Data Scientist. Ich beschäftige mich damit, wie KI, Daten und Kreativität
+          Ich bin Raphael, Data Scientist aus Bielefeld. Ich beschäftige mich damit, wie KI, Daten und Kreativität
           Menschen helfen, klarer zu denken und besser zu arbeiten.
         </p>
         <a class="intro-cta" href={linkedInUrl} target="_blank" rel="noreferrer">Lass uns vernetzen</a>
