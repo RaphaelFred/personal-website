@@ -7,7 +7,7 @@ coreThesis: KI ist besonders wertvoll, wenn sie verstreute Nutzersignale nicht e
 publishDate: 2026-04-24
 ---
 
-![Abstrakte Visualisierung zu User Innovation mit KI](/blog/user-innovation-mit-ki.jpg)
+![Abstrakte Visualisierung zu User Innovation mit KI](/blog/user-innovation-mit-ki.webp)
 
 Viele Innovationen entstehen nicht zuerst in Unternehmen, sondern im Gebrauch. Nutzer entwickeln Workarounds, kombinieren Produkte neu, bauen sich kleine Hilfslösungen oder verwenden ein Angebot für Zwecke, die im ursprünglichen Konzept gar nicht vorgesehen waren. Gerade diese informellen Anpassungen sind oft besonders wertvoll, weil sie reale Bedürfnisse sichtbar machen, lange bevor sie in klassischen Marktstudien auftauchen.
 

@@ -45,8 +45,8 @@ async function assertCanonicalPage() {
   const requiredSnippets = [
     '<link rel="canonical" href="https://raphaelfredebeul.de/">',
     '<meta property="og:url" content="https://raphaelfredebeul.de/">',
-    '<meta property="og:image" content="https://raphaelfredebeul.de/social-card.svg">',
-    '<meta name="twitter:image" content="https://raphaelfredebeul.de/social-card.svg">',
+    '<meta property="og:image" content="https://raphaelfredebeul.de/social-card.png">',
+    '<meta name="twitter:image" content="https://raphaelfredebeul.de/social-card.png">',
   ];
 
   for (const snippet of requiredSnippets) {

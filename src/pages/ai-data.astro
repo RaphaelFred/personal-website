@@ -2,27 +2,28 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import SiteHeader from '../components/SiteHeader.astro';
+import ContactSection from '../components/ContactSection.astro';
 import { withBase } from '../utils/paths';
 
 const blogImages = {
   'building-clarity-from-complexity': {
-    src: '/blog/ai-adoption-organisationen.jpg',
+    src: '/blog/ai-adoption-organisationen.webp',
     alt: 'Abstrakte Szene zu AI Adoption in Organisationen',
   },
   'fruehe-produktsignale-erkennen': {
-    src: '/blog/user-innovation-mit-ki.jpg',
+    src: '/blog/user-innovation-mit-ki.webp',
     alt: 'Abstrakte Visualisierung zu User Innovation mit KI',
   },
   'experimente-richtig-framen': {
-    src: '/blog/use-case-identifikation-ki.jpg',
+    src: '/blog/use-case-identifikation-ki.webp',
     alt: 'Abstrakte Visualisierung zur Identifikation von KI-Use-Cases',
   },
   'forecasting-unter-unsicherheit': {
-    src: '/blog/strategische-datenanalyse-innovation.jpg',
+    src: '/blog/strategische-datenanalyse-innovation.webp',
     alt: 'Abstrakte Visualisierung zu strategischer Datenanalyse und Unsicherheit',
   },
   'human-perspectives': {
-    src: '/blog/ki-und-menschliche-perspektiven.jpg',
+    src: '/blog/ki-und-menschliche-perspektiven.webp',
     alt: 'Abstrakte Visualisierung unterschiedlicher menschlicher Perspektiven in KI-Systemen',
   },
 };
@@ -53,16 +54,6 @@ const trustItems = ['Miele', 'Arvato / Bertelsmann', 'Universität Bielefeld & N
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
-const contactMailto =
-  'mailto:raphaeldc@gmx.de?subject=Hallo%20Raphael&body=Hallo%20Raphael,%0A%0A%0A%0AViele%20Gr%C3%BC%C3%9Fe';
-
-const contactDestinations = [
-  { label: 'AI & Data', href: '/ai-data', icon: 'grid' },
-  { label: 'Texte', href: '/blog', icon: 'pen' },
-  { label: 'E-Mail', href: contactMailto, icon: 'mail' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raphael-fredebeul-733605140/', icon: 'linkedin' },
-  { label: 'SoundCloud', href: 'https://soundcloud.com/raphael-fredebeul', icon: 'soundcloud' },
-];
 ---
 
 <Layout
@@ -133,7 +124,10 @@ const contactDestinations = [
               <img
                 src={withBase(blogImages[post.slug]?.src ?? '/graphics/blog-panel.svg')}
                 alt={blogImages[post.slug]?.alt ?? post.data.title}
+                width="1536"
+                height="1024"
                 loading="lazy"
+                decoding="async"
               />
             </a>
             <div class="article-copy">
@@ -155,52 +149,7 @@ const contactDestinations = [
       </div>
     </section>
 
-    <section class="contact-showcase" id="kontakt" aria-label="Kontakt">
-      <div class="contact-hero">
-        <div class="contact-card">
-          <h2>Schreib mir gern.</h2>
-          <p class="contact-copy">
-             Wenn du über KI, Daten, Innovation oder eine konkrete Herausforderung sprechen möchtest, freue ich mich über eine Nachricht.
-          </p>
-          <a class="contact-mail-link" href={contactMailto}>Kontakt</a>
-        </div>
-      </div>
-
-      <div class="contact-icons" aria-label="Bereiche und Profile">
-        {contactDestinations.map((item) => (
-          <a
-            class="icon-tile"
-            href={item.href}
-            target={item.href.startsWith('http') ? '_blank' : undefined}
-            rel={item.href.startsWith('http') ? 'noreferrer' : undefined}
-            aria-label={item.label}
-            title={item.label}
-          >
-            {item.icon === 'grid' ? (
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 4h7v7H4V4Zm9 0h7v7h-7V4ZM4 13h7v7H4v-7Zm9 0h7v7h-7v-7Z" />
-              </svg>
-            ) : item.icon === 'pen' ? (
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m4 16.5 9.9-9.9 3.5 3.5-9.9 9.9L4 20l.5-3.5ZM14.9 5.6l1.7-1.7a1.9 1.9 0 0 1 2.7 0l1 1a1.9 1.9 0 0 1 0 2.7l-1.7 1.7-3.7-3.7Z" />
-              </svg>
-            ) : item.icon === 'mail' ? (
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4 6h16v12H4V6Zm0 1.2 8 6 8-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-            ) : item.icon === 'linkedin' ? (
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M6.94 8.5V19H3.5V8.5h3.44ZM7.16 5.26c0 1-.74 1.74-1.94 1.74A1.72 1.72 0 0 1 3.32 5.3c0-1 .76-1.76 1.92-1.76s1.88.74 1.92 1.72ZM20.68 12.58V19h-3.42v-6.02c0-1.52-.54-2.56-1.9-2.56-1.04 0-1.66.7-1.94 1.38-.1.24-.12.58-.12.92V19H9.88s.04-9.74 0-10.5h3.42v1.48c.45-.7 1.26-1.7 3.08-1.7 2.24 0 3.92 1.46 3.92 4.6Z" />
-              </svg>
-            ) : (
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M4.37 13.44a2.06 2.06 0 0 0 2.05 2.06h11.95a1.58 1.58 0 1 0 0-3.16h-.59a4.24 4.24 0 0 0-8.13-1.66 2.75 2.75 0 0 0-1.08-.22 2.73 2.73 0 0 0-2.63 1.97 2.05 2.05 0 0 0-1.57 2.01Zm14.72 4.1c.24 0 .43.19.43.42v.34a.43.43 0 0 1-.43.43H5.74a.43.43 0 0 1-.43-.43v-.34c0-.23.19-.42.43-.42h13.35Zm-11.4 2.15c.23 0 .42.19.42.42v.35a.42.42 0 0 1-.42.42H5.74a.42.42 0 0 1-.43-.42v-.35c0-.23.19-.42.43-.42h1.95Zm3.04 0c.23 0 .42.19.42.42v.35a.42.42 0 0 1-.42.42H8.78a.42.42 0 0 1-.42-.42v-.35c0-.23.19-.42.42-.42h1.95Zm3.03 0c.24 0 .43.19.43.42v.35a.43.43 0 0 1-.43.42h-1.95a.42.42 0 0 1-.42-.42v-.35c0-.23.19-.42.42-.42h1.95Zm3.03 0c.24 0 .43.19.43.42v.35a.43.43 0 0 1-.43.42h-1.95a.42.42 0 0 1-.42-.42v-.35c0-.23.19-.42.42-.42h1.95Z" />
-              </svg>
-            )}
-          </a>
-        ))}
-      </div>
-    </section>
+    <ContactSection copy="Wenn du über KI, Daten, Innovation oder eine konkrete Herausforderung sprechen möchtest, freue ich mich über eine Nachricht." />
   </main>
 </Layout>
 
@@ -213,8 +162,7 @@ const contactDestinations = [
 
   .hero,
   .trust-strip,
-  .section,
-  .contact-showcase {
+  .section {
     border-top: 1px solid var(--line);
   }
 
@@ -233,7 +181,7 @@ const contactDestinations = [
     overflow: hidden;
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    min-height: var(--hero-min-height);
+    min-height: var(--subpage-hero-min-height);
     display: flex;
     align-items: start;
     padding: clamp(2.2rem, 5vw, 3rem) 0 2rem;
@@ -246,7 +194,7 @@ const contactDestinations = [
     inset: 0;
     background:
       linear-gradient(180deg, rgba(244, 246, 243, 0.04), rgba(244, 246, 243, 0.12)),
-      url('/images/hero-illustration.jpg') center / cover no-repeat;
+      url('/images/hero-illustration.webp') center / cover no-repeat;
     opacity: 1;
     pointer-events: none;
     z-index: 0;
@@ -459,6 +407,7 @@ const contactDestinations = [
 
   .article-image-link img {
     width: 100%;
+    height: auto;
     aspect-ratio: 16 / 10;
     object-fit: cover;
     border: 1px solid var(--line);
@@ -483,107 +432,11 @@ const contactDestinations = [
     box-shadow: var(--shadow-soft);
   }
 
-  .contact-showcase {
-    position: relative;
-    width: 100vw;
-    margin-left: calc(50% - 50vw);
-    padding: 4.5rem 0 0;
-  }
-
-  .contact-hero {
-    position: relative;
-    overflow: hidden;
-    min-height: 34rem;
-    display: grid;
-    place-items: center;
-    padding: 2rem;
-    background:
-      linear-gradient(180deg, rgba(244, 246, 243, 0.18), rgba(244, 246, 243, 0.24)),
-      url('/images/contact-illustration.jpg') center / cover no-repeat;
-  }
-
-  .contact-card {
-    width: min(100%, 46rem);
-    padding: clamp(2rem, 5vw, 4rem);
-    background: rgba(248, 249, 246, 0.93);
-    border: 1px solid rgba(23, 25, 20, 0.08);
-    box-shadow: 0 20px 50px rgba(23, 25, 20, 0.08);
-    text-align: center;
-  }
-
-  .contact-card h2 {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 13ch;
-  }
-
-  .contact-copy {
-    margin: 1rem auto 0;
-    max-width: 30rem;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .contact-mail-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 3.7rem;
-    margin-top: 2rem;
-    padding: 0 1.5rem;
-    border: 1px solid var(--text);
-    background: var(--text);
-    color: #fff;
-    cursor: pointer;
-    text-decoration: none;
-  }
-
-  .contact-mail-link:hover {
-    background: var(--accent-strong);
-    border-color: var(--accent-strong);
-  }
-
-  .contact-icons {
-    width: var(--page-container);
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.9rem;
-    margin-top: 1.35rem;
-    padding: 1.35rem 0 0;
-    border-top: 1px solid var(--line);
-  }
-
-  .icon-tile {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border: 1px solid var(--line-strong);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.9);
-    color: var(--text);
-  }
-
-  .icon-tile svg {
-    width: 1.15rem;
-    height: 1.15rem;
-    fill: currentColor;
-  }
-
-  .icon-tile:hover {
-    color: var(--accent-strong);
-    border-color: currentColor;
-    transform: translateY(-1px);
-  }
-
   @media (max-width: 1180px) {
     .card-grid {
       grid-template-columns: 1fr;
     }
+
   }
 
   @media (max-width: 980px) {
@@ -603,6 +456,7 @@ const contactDestinations = [
     .hero::after {
       background: linear-gradient(180deg, rgba(244, 246, 243, 0.84) 0%, rgba(244, 246, 243, 0.72) 56%, rgba(244, 246, 243, 0.46) 100%);
     }
+
   }
 
   @media (max-width: 720px) {
@@ -620,7 +474,7 @@ const contactDestinations = [
     }
 
     .hero {
-      min-height: var(--hero-min-height-mobile);
+      min-height: var(--subpage-hero-min-height-mobile);
       padding-top: 1.6rem;
     }
 
@@ -628,29 +482,11 @@ const contactDestinations = [
       width: 100%;
     }
 
-    .contact-mail-link {
-      width: 100%;
-    }
-
     .card,
     .article-card {
       border-radius: var(--radius-lg);
     }
+
   }
 
-  @media (max-width: 720px) {
-    .contact-hero {
-      min-height: 28rem;
-      padding: 1rem;
-    }
-
-    .contact-icons {
-      width: var(--page-container);
-    }
-
-    .contact-card {
-      padding: 1.5rem;
-      border-radius: var(--radius-lg);
-    }
-  }
 </style>

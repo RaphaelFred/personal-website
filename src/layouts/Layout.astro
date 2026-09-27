@@ -14,7 +14,7 @@ const {
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
-const socialImage = new URL(withBase('/social-card.svg'), Astro.site).toString();
+const socialImage = new URL(withBase('/social-card.png'), Astro.site).toString();
 ---
 
 <!doctype html>
@@ -39,6 +39,9 @@ const socialImage = new URL(withBase('/social-card.svg'), Astro.site).toString()
     <meta property="og:locale" content="de_DE" />
     <meta property="og:site_name" content="Raphael Fredebeul" />
     <meta property="og:image" content={socialImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Raphael Fredebeul – Data Scientist aus Bielefeld" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
@@ -47,7 +50,7 @@ const socialImage = new URL(withBase('/social-card.svg'), Astro.site).toString()
     <slot name="head" />
   </head>
   <body>
-    <a class="skip-link" href={withBase('/#main-content')}>Zum Inhalt springen</a>
+    <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
     <slot />
     <footer class="site-footer">
       <span>© {new Date().getFullYear()} Raphael Fredebeul</span>
@@ -88,6 +91,8 @@ const socialImage = new URL(withBase('/social-card.svg'), Astro.site).toString()
     --container-narrow: min(860px, calc(100vw - 1.5rem));
     --hero-min-height: 34rem;
     --hero-min-height-mobile: 28rem;
+    --subpage-hero-min-height: 22rem;
+    --subpage-hero-min-height-mobile: 16rem;
     --font-sans: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
     --font-display: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
     --text-sm: 0.95rem;
@@ -130,7 +135,7 @@ const socialImage = new URL(withBase('/social-card.svg'), Astro.site).toString()
     content: '';
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: -1;
     pointer-events: none;
     background:
       radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.52), transparent 18%),
@@ -215,7 +220,7 @@ const socialImage = new URL(withBase('/social-card.svg'), Astro.site).toString()
   }
 
   ::selection {
-    background: rgba(182, 90, 58, 0.18);
+    background: rgba(122, 143, 135, 0.28);
   }
 
   .site-footer {
@@ -244,11 +249,29 @@ const socialImage = new URL(withBase('/social-card.svg'), Astro.site).toString()
     color: var(--accent-strong);
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      transition: none !important;
+    }
+
+    a:hover,
+    article:hover,
+    a:hover img {
+      transform: none !important;
+    }
+  }
+
   @media (max-width: 720px) {
     :root {
-      --container: min(1220px, calc(100vw - 1rem));
-      --page-container: min(1120px, calc(100vw - 1.5rem));
-      --container-narrow: min(860px, calc(100vw - 1rem));
+      --container: min(1220px, calc(100vw - 2rem));
+      --page-container: min(1120px, calc(100vw - 2rem));
+      --container-narrow: min(860px, calc(100vw - 2rem));
       --title-xl: clamp(2.55rem, 12vw, 4rem);
       --title-lg: clamp(1.85rem, 7.5vw, 2.8rem);
       --title-md: clamp(1.18rem, 4.8vw, 1.4rem);

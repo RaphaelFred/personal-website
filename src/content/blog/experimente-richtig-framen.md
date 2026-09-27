@@ -7,7 +7,7 @@ coreThesis: Gute KI-Use-Cases beginnen nicht bei Tools, sondern bei einer präzi
 publishDate: 2026-04-23
 ---
 
-![Abstrakte Visualisierung zur Identifikation von KI-Use-Cases](/blog/use-case-identifikation-ki.jpg)
+![Abstrakte Visualisierung zur Identifikation von KI-Use-Cases](/blog/use-case-identifikation-ki.webp)
 
 Viele Menschen suchen nach sinnvollen KI-Anwendungen, indem sie sich Listen möglicher Tools ansehen. Das wirkt zunächst naheliegend, führt aber oft an der eigentlichen Frage vorbei. Gute Use Cases entstehen selten aus der Faszination für ein Werkzeug, sondern aus einer genauen Betrachtung der eigenen Arbeit. Erst wenn sichtbar wird, welche Tätigkeiten regelmäßig anfallen, wo Aufwand entsteht und welche Schritte sich schwerfühlig anfühlen, lässt sich bewerten, ob KI tatsächlich einen Unterschied machen kann.
 

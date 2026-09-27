@@ -7,7 +7,7 @@ coreThesis: KI wird in Organisationen nicht durch Verfügbarkeit wirksam, sonder
 publishDate: 2026-04-25
 ---
 
-![Abstrakte Szene zu AI Adoption in Organisationen](/blog/ai-adoption-organisationen.jpg)
+![Abstrakte Szene zu AI Adoption in Organisationen](/blog/ai-adoption-organisationen.webp)
 
 AI Adoption wird oft so behandelt, als ginge es primär um die Auswahl eines Tools. In der Praxis zeigt sich meist etwas anderes: Die eigentliche Hürde liegt nicht in der Verfügbarkeit von KI, sondern in der Frage, wie Menschen sie verantwortbar, sicher und ohne innere Abwehr in ihren Arbeitsalltag integrieren können.
 

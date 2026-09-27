@@ -6,11 +6,11 @@ import { withBase } from '../../utils/paths';
 import { personId } from '../../utils/person';
 
 const blogImages = {
-  'building-clarity-from-complexity': '/blog/ai-adoption-organisationen.jpg',
-  'fruehe-produktsignale-erkennen': '/blog/user-innovation-mit-ki.jpg',
-  'experimente-richtig-framen': '/blog/use-case-identifikation-ki.jpg',
-  'forecasting-unter-unsicherheit': '/blog/strategische-datenanalyse-innovation.jpg',
-  'human-perspectives': '/blog/ki-und-menschliche-perspektiven.jpg',
+  'building-clarity-from-complexity': '/blog/ai-adoption-organisationen.webp',
+  'fruehe-produktsignale-erkennen': '/blog/user-innovation-mit-ki.webp',
+  'experimente-richtig-framen': '/blog/use-case-identifikation-ki.webp',
+  'forecasting-unter-unsicherheit': '/blog/strategische-datenanalyse-innovation.webp',
+  'human-perspectives': '/blog/ki-und-menschliche-perspektiven.webp',
 };
 
 export async function getStaticPaths() {
@@ -24,7 +24,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-const postHeroImage = withBase(blogImages[post.slug] ?? '/images/hero-illustration.jpg');
+const postHeroImage = withBase(blogImages[post.slug] ?? '/images/hero-illustration.webp');
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -113,7 +113,7 @@ const articleSchema = {
     overflow: hidden;
     width: 100vw;
     margin-left: calc(50% - 50vw);
-    min-height: var(--hero-min-height);
+    min-height: 24rem;
     display: flex;
     align-items: start;
     padding: clamp(2.2rem, 5vw, 3rem) 0 2rem;
@@ -196,10 +196,10 @@ const articleSchema = {
 
   h1 {
     margin: 0.5rem 0 1rem;
-    max-width: 11ch;
-    font-size: clamp(3.3rem, 8.5vw, 6rem);
-    line-height: 0.95;
-    letter-spacing: -0.055em;
+    max-width: 20ch;
+    font-size: clamp(2.2rem, 4.6vw, 3.9rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
   }
 
   .lead {
@@ -268,7 +268,7 @@ const articleSchema = {
   .post-body :global(a) {
     color: var(--accent-strong);
     text-decoration: underline;
-    text-decoration-color: rgba(140, 61, 34, 0.28);
+    text-decoration-color: rgba(76, 99, 90, 0.35);
     text-underline-offset: 0.18em;
   }
 
@@ -307,7 +307,7 @@ const articleSchema = {
     }
 
     .post-hero {
-      min-height: var(--hero-min-height-mobile);
+      min-height: 18rem;
       padding-top: 1.6rem;
     }
 
@@ -320,7 +320,7 @@ const articleSchema = {
     }
 
     .post-intro-inner {
-      width: min(860px, calc(100vw - 1.5rem));
+      width: min(860px, calc(100vw - 2rem));
       padding-inline: 0;
     }
 

@@ -7,7 +7,7 @@ coreThesis: Strategische Datenanalyse macht Innovation nicht sicher, aber sie ma
 publishDate: 2026-04-22
 ---
 
-![Abstrakte Visualisierung zu strategischer Datenanalyse und Unsicherheit](/blog/strategische-datenanalyse-innovation.jpg)
+![Abstrakte Visualisierung zu strategischer Datenanalyse und Unsicherheit](/blog/strategische-datenanalyse-innovation.webp)
 
 Innovation beginnt fast immer mit Unsicherheit. Neue Produkte, neue Services oder neue Geschäftsmodelle bewegen sich in einem Feld, in dem nicht alles vorab bekannt sein kann. Genau deshalb ist strategische Datenanalyse so wertvoll. Sie nimmt Unsicherheit nicht weg, aber sie hilft dabei, sie besser einzuordnen. Statt so zu tun, als ließe sich die Zukunft exakt vorhersagen, schafft sie ein differenzierteres Bild davon, was bereits belastbar ist, was nur plausibel erscheint und wo echte Erkenntnislücken bestehen.
 

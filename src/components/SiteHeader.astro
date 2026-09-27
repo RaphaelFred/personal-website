@@ -69,6 +69,7 @@ const externalLinks = [
     border-radius: var(--radius-xl);
     background: var(--panel-strong);
     box-shadow: var(--shadow-card);
+    -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
   }
 
@@ -187,15 +188,23 @@ const externalLinks = [
     .site-header {
       position: relative;
       top: 0;
-      grid-template-columns: 1fr;
+      grid-template-columns: minmax(0, 1fr) auto;
+      grid-template-areas:
+        'brand links'
+        'nav nav';
       gap: 0.85rem;
     }
 
-    .nav {
-      justify-content: flex-start;
+    .brand-mark {
+      grid-area: brand;
     }
 
     .header-links {
+      grid-area: links;
+    }
+
+    .nav {
+      grid-area: nav;
       justify-content: flex-start;
     }
   }
@@ -207,18 +216,12 @@ const externalLinks = [
       border-radius: var(--radius-lg);
     }
 
-    .brand-mark {
-      justify-content: space-between;
-      width: 100%;
-    }
-
     .brand-logo {
       width: 5.9rem;
     }
 
     .brand-meta {
       font-size: 0.66rem;
-      text-align: right;
     }
 
     .nav {
@@ -250,6 +253,12 @@ const externalLinks = [
 
     .header-links {
       gap: 0.45rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .brand-meta {
+      display: none;
     }
   }
 </style>

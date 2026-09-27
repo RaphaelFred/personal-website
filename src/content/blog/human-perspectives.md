@@ -7,7 +7,7 @@ coreThesis: Daten sind immer eine Auswahl und damit eine Perspektive; eine zukun
 publishDate: 2026-06-13
 ---
 
-![Abstrakte Visualisierung unterschiedlicher menschlicher Perspektiven in KI-Systemen](/blog/ki-und-menschliche-perspektiven.jpg)
+![Abstrakte Visualisierung unterschiedlicher menschlicher Perspektiven in KI-Systemen](/blog/ki-und-menschliche-perspektiven.webp)
 
 
 
