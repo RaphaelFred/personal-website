@@ -31,10 +31,35 @@ const blogImages = {
   },
 };
 
-const aboutPoints = [
-  'KI und Daten als Grundlage für klarere Entscheidungen und bessere Prozesse.',
-  'Innovation und Kreativität, um neue Produkte und Arbeitsweisen zu entwickeln.',
-  'Texte über Unsicherheit, Struktur, KI und die Frage, wie Menschen besser denken und arbeiten.',
+const focusAreas = [
+  {
+    title: 'Datenanalyse & Entscheidungen',
+    detail: 'Wie Analysen so aufbereitet werden, dass Kernaussagen, Unsicherheiten und Entscheidungen klar werden.',
+    slug: 'forecasting-unter-unsicherheit',
+    image: '/images/schwerpunkte/tool-exploration.jpg',
+    alt: 'Abstrakte Visualisierung zu Datenanalyse und Entscheidungen',
+  },
+  {
+    title: 'KI-Use-Cases',
+    detail: 'Welche KI-Anwendungen echten Nutzen stiften, eingeordnet nach Aufwand, Risiko und Umsetzbarkeit.',
+    slug: 'experimente-richtig-framen',
+    image: '/images/schwerpunkte/use-cases.jpg',
+    alt: 'Abstrakte Visualisierung zur Identifikation von KI-Use-Cases',
+  },
+  {
+    title: 'KI im Arbeitsalltag',
+    detail: 'Wie Menschen KI nicht nur ausprobieren, sondern sinnvoll in ihre Arbeit integrieren.',
+    slug: 'building-clarity-from-complexity',
+    image: '/images/schwerpunkte/ki-schulungen.jpg',
+    alt: 'Abstrakte Visualisierung zu KI im Arbeitsalltag',
+  },
+  {
+    title: 'Innovation & Kreativität',
+    detail: 'Wie KI, Daten und kreative Methoden neue Produktideen und ungewohnte Lösungsräume eröffnen.',
+    slug: 'fruehe-produktsignale-erkennen',
+    image: '/images/schwerpunkte/datenanalysen.jpg',
+    alt: 'Abstrakte Visualisierung zu Innovation und Kreativität',
+  },
 ];
 
 const proofGroups = [
@@ -48,44 +73,13 @@ const proofGroups = [
   {
     label: 'Forschung',
     logos: [
-      { src: '/logos/uni-bielefeld.svg', alt: 'Universitaet Bielefeld' },
+      { src: '/logos/uni-bielefeld.svg', alt: 'Universität Bielefeld' },
       { src: '/logos/nova.png', alt: 'Nova Universidade' },
     ],
   },
   {
     label: 'Wettbewerb',
     logos: [{ src: '/logos/sordi-ai.webp', alt: 'SORDI.ai' }],
-  },
-];
-
-const serviceCards = [
-  {
-    title: 'Datenanalysen für Entscheider',
-    detail: 'Ich bereite Analysen so auf, dass Kernaussagen, Unsicherheiten und Entscheidungen klarer werden.',
-    href: '/ueber-mich#was-ich-biete',
-    image: '/services/cards/tool-exploration.png',
-    alt: 'Abstrakte Visualisierung fuer Tool-Exploration in Daten- und KI-Prozessen',
-  },
-  {
-    title: 'Use-Case-Schärfung',
-    detail: 'Ich helfe, KI-Anwendungsfälle nach Nutzen, Aufwand, Risiko und Umsetzbarkeit zu sortieren.',
-    href: '/ueber-mich#was-ich-biete',
-    image: '/services/cards/use-cases.png',
-    alt: 'Abstrakte Visualisierung fuer die Identifikation von KI-Use-Cases',
-  },
-  {
-    title: 'AI Enablement für Teams',
-    detail: 'Ich entwickle Formate, mit denen Mitarbeitende KI nicht nur ausprobieren, sondern sinnvoll in ihre Arbeit integrieren.',
-    href: '/ueber-mich#was-ich-biete',
-    image: '/services/cards/ki-schulungen.png',
-    alt: 'Abstrakte Visualisierung fuer KI-Schulungen und Enablement',
-  },
-  {
-    title: 'Innovation & Kreativität',
-    detail: 'Ich entwickle mit KI, Daten und kreativen Methoden neue Produktideen, bessere Prozesse und ungewohnte Lösungsräume.',
-    href: '/ueber-mich#was-ich-biete',
-    image: '/services/cards/datenanalysen.png',
-    alt: 'Abstrakte Visualisierung fuer Datenanalyse und Handlungsempfehlungen',
   },
 ];
 
@@ -100,21 +94,23 @@ const externalLinks = [
   },
 ];
 
+const linkedInUrl = 'https://www.linkedin.com/in/raphael-fredebeul-733605140/';
+
 const contactMailto =
-  'mailto:raphaeldc@gmx.de?subject=Anfrage%20zu%20AI%20%26%20Data&body=Hallo%20Raphael,%0A%0Aich%20interessiere%20mich%20fuer%20deine%20Arbeit%20im%20Bereich%20AI%20%26%20Data.%0A%0AViele%20Gruesse';
+  'mailto:raphaeldc@gmx.de?subject=Hallo%20Raphael&body=Hallo%20Raphael,%0A%0A%0A%0AViele%20Gr%C3%BC%C3%9Fe';
 
 const contactDestinations = [
-  { label: 'AI & Data', href: '/beratung', icon: 'grid' },
+  { label: 'AI & Data', href: '/ai-data', icon: 'grid' },
   { label: 'Texte', href: '/blog', icon: 'pen' },
   { label: 'E-Mail', href: contactMailto, icon: 'mail' },
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raphael-fredebeul-733605140/', icon: 'linkedin' },
+  { label: 'LinkedIn', href: linkedInUrl, icon: 'linkedin' },
   { label: 'SoundCloud', href: 'https://soundcloud.com/raphael-fredebeul', icon: 'soundcloud' },
 ];
 ---
 
 <Layout
   title="Raphael Fredebeul | Data Scientist"
-  description="Persönliche Website von Raphael Fredebeul mit Fokus auf AI & Data, Innovation, Kreativität und Consulting."
+  description="Persönliche Website von Raphael Fredebeul, Data Scientist mit Fokus auf KI, Daten, Innovation und Kreativität."
 >
   <main class="page" id="main-content">
     <SiteHeader current="home" />
@@ -126,34 +122,53 @@ const contactDestinations = [
           Innovation. <br>
           Kreativität.</h1>
         <p class="intro-text">
-          
+          Ich bin Raphael, Data Scientist. Ich beschäftige mich damit, wie KI, Daten und Kreativität
+          Menschen helfen, klarer zu denken und besser zu arbeiten.
         </p>
+        <a class="intro-cta" href={linkedInUrl} target="_blank" rel="noreferrer">Lass uns vernetzen</a>
       </div>
     </section>
 
-    <section class="list-section" aria-label="Bereiche">
-      <div class="about-block">
-        <p class="section-label">Meine Mission</p>
-        <p class="about-text">
-          Ich arbeite an der <strong>Schnittstelle von KI, Innovation und Kreativität</strong> und übersetze technologische Entwicklungen in <strong>klare Strategien, bessere Prozesse, neue Produkte</strong> und kreative Möglichkeiten.
-          Dabei steht für mich nicht nur die Technologie im Mittelpunkt, sondern <strong>der Mensch, der mit ihr arbeitet</strong>.
-        </p>
+    <section class="list-section" aria-label="Schwerpunkte">
+      <div class="focus-head">
+        <p class="section-label">Schwerpunkte</p>
+        <h2>Worin ich mich auskenne.</h2>
       </div>
 
+      <div class="focus-grid">
+        {focusAreas.map((item) => (
+          <article class="focus-card">
+            <a class="focus-card-link" href={withBase(`/blog/${item.slug}`)}>
+              <img
+                class="focus-card-image"
+                src={withBase(item.image)}
+                alt={item.alt}
+                loading="lazy"
+              />
+              <h3>{item.title}</h3>
+              <p>{item.detail}</p>
+              <span class="focus-card-more">Mein Artikel dazu →</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
 
-      <div class="section-grid">
-        <div class="section-intro">
-          <p class="section-label">Bereiche</p>
-          <h2>Woran ich arbeite.</h2>
-        </div>
-
-        <div class="stack-list">
-          {aboutPoints.map((item) => (
-            <div class="stack-item">
-              <h3 class="stack-detail">{item}</h3>
+    <section class="proof-strip" aria-label="Erfahrung und Nachweise">
+      <p class="section-label">Stationen aus Praxis, Forschung und Wettbewerb</p>
+      <div class="proof-groups">
+        {proofGroups.map((group) => (
+          <div class="proof-group">
+            <p class="proof-category">{group.label}</p>
+            <div class="proof-list">
+              {group.logos.map((item) => (
+                <span class="proof-logo">
+                  <img src={withBase(item.src)} alt={item.alt} loading="lazy" decoding="async" />
+                </span>
+              ))}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
 
@@ -183,54 +198,12 @@ const contactDestinations = [
       </div>
     </section>
 
-    <section class="visual-work-section" aria-label="Was ich biete">
-      <div class="visual-work-head">
-        <p class="section-label">AI & Data</p>
-        <h2>Was ich biete.</h2>
-      </div>
-
-      <div class="service-card-grid">
-        {serviceCards.map((item) => (
-          <article class="service-card">
-            <a class="service-card-link" href={withBase(item.href)}>
-              <img
-                class="service-card-image"
-                src={withBase(item.image)}
-                alt={item.alt}
-                loading="lazy"
-              />
-              <h3>{item.title}</h3>
-              <p>{item.detail}</p>
-            </a>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <section class="proof-strip" aria-label="Erfahrung und Nachweise">
-      <p class="section-label">Erfahrung aus Praxis, Forschung und Wettbewerb</p>
-      <div class="proof-groups">
-        {proofGroups.map((group) => (
-          <div class="proof-group">
-            <p class="proof-category">{group.label}</p>
-            <div class="proof-list">
-              {group.logos.map((item) => (
-                <span class="proof-logo">
-                  <img src={withBase(item.src)} alt={item.alt} loading="lazy" decoding="async" />
-                </span>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-
     <section class="contact-showcase" id="kontakt" aria-label="Kontakt">
       <div class="contact-hero">
         <div class="contact-card">
           <h2>Schreib mir gern.</h2>
           <p class="contact-copy">
-            Wenn du über KI, Daten, Innovation oder eine konkrete Herausforderung sprechen möchtest, freue ich mich über eine Nachricht.
+            Ob KI, Daten, Innovation oder einfach ein guter Gedanke: Ich freue mich über Austausch und neue Kontakte.
           </p>
           <a class="contact-mail-link" href={contactMailto}>Kontakt</a>
         </div>
@@ -289,7 +262,6 @@ const contactDestinations = [
   .intro-section,
   .proof-strip,
   .list-section,
-  .visual-work-section,
   .contact-showcase {
     border-top: 1px solid var(--line);
   }
@@ -341,20 +313,6 @@ const contactDestinations = [
     z-index: 0;
   }
 
-  .section-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
-    gap: clamp(2rem, 5vw, 5rem);
-  }
-
-  .about-block {
-    width: 100%;
-    max-width: none;
-    margin-bottom: 4rem;
-    padding-bottom: 4rem;
-    border-bottom: 1px solid var(--line);
-  }
-
   .intro-main {
     max-width: 40rem;
     width: var(--page-container);
@@ -364,9 +322,25 @@ const contactDestinations = [
     padding-top: 0.2rem;
   }
 
+  .intro-cta {
+    display: inline-flex;
+    align-items: center;
+    min-height: 3.2rem;
+    margin-top: 1.8rem;
+    padding: 0 1.4rem;
+    border: 1px solid var(--text);
+    background: var(--text);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .intro-cta:hover {
+    background: var(--accent-strong);
+    border-color: var(--accent-strong);
+  }
+
   .kicker,
-  .section-label,
-  .stack-label {
+  .section-label {
     margin: 0;
     font-size: 0.78rem;
     letter-spacing: 0.16em;
@@ -404,59 +378,12 @@ const contactDestinations = [
     letter-spacing: -0.02em;
   }
 
-  .intro-text,
-  .stack-detail,
-  .about-text,
-  .about-list li {
+  .intro-text {
     color: var(--muted);
     line-height: 1.72;
-  }
-
-  .intro-text {
     margin: 1.45rem 0 0;
     max-width: 34rem;
     font-size: clamp(1.08rem, 1.8vw, 1.26rem);
-  }
-
-  .about-text {
-    margin: 0.9rem 0 0;
-    max-width: 58rem;
-    font-size: clamp(1.35rem, 2.6vw, 2rem);
-    line-height: 1.55;
-    letter-spacing: -0.02em;
-    color: var(--text);
-  }
-
-  .about-text strong {
-    padding: 0 0.04em 0.02em;
-    background:
-      linear-gradient(92deg, rgba(122, 143, 135, 0), rgba(122, 143, 135, 0.28) 12%, rgba(122, 143, 135, 0.18) 56%, rgba(122, 143, 135, 0.3) 88%, rgba(122, 143, 135, 0)) 0 88% / 100% 0.18em no-repeat;
-    color: inherit;
-    font-weight: inherit;
-  }
-
-  .about-list {
-    margin-top: 2.4rem;
-    max-width: 54rem;
-  }
-
-  .about-list h2 {
-    max-width: none;
-    font-size: clamp(1.5rem, 2.2vw, 2rem);
-  }
-
-  .about-list ul {
-    margin: 1rem 0 0;
-    padding-left: 1.2rem;
-  }
-
-  .about-list li + li {
-    margin-top: 0.7rem;
-  }
-
-  .stack-list {
-    display: grid;
-    gap: 0;
   }
 
   .proof-groups {
@@ -510,39 +437,52 @@ const contactDestinations = [
     filter: grayscale(1) saturate(0) opacity(0.52);
   }
 
-  .stack-item:hover h3 a,
-  .stack-item:hover .stack-label {
-    color: var(--accent-strong);
+  .focus-head {
+    margin-bottom: 2rem;
   }
 
-  .section-intro {
-    max-width: 22rem;
+  .focus-head h2 {
+    max-width: none;
   }
 
-  .stack-item {
+  .focus-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2.25rem;
+  }
+
+  .focus-card-link {
     display: block;
-    padding: 1rem 0 1.1rem;
-    border-top: 1px solid var(--line);
+    color: var(--text);
   }
 
-  .stack-item:first-child {
-    border-top: none;
-    padding-top: 0;
+  .focus-card-image {
+    width: 100%;
+    height: clamp(13rem, 22vw, 17.5rem);
+    object-fit: cover;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.7);
   }
 
-  .stack-detail {
-    margin: 0.55rem 0 0;
-    max-width: 38rem;
+  .focus-card h3 {
+    margin-top: 1rem;
+  }
+
+  .focus-card p {
+    margin: 0.7rem 0 0;
+    color: var(--muted);
+    line-height: 1.68;
     font-size: 1rem;
   }
 
-  .list-section[aria-label='Bereiche'] .stack-list .stack-detail {
-    margin-top: 0;
-    max-width: 24rem;
-    font-size: clamp(1.25rem, 1.9vw, 1.55rem);
-    line-height: 1.12;
-    letter-spacing: -0.02em;
-    color: var(--text);
+  .focus-card-more {
+    display: inline-flex;
+    margin-top: 1rem;
+  }
+
+  .focus-card-link:hover h3,
+  .focus-card-link:hover .focus-card-more {
+    color: var(--accent-strong);
   }
 
   .article-item h3 {
@@ -618,54 +558,6 @@ const contactDestinations = [
     width: 100vw;
     margin-left: calc(50% - 50vw);
     padding: 4.5rem 0 0;
-  }
-
-  .visual-work-section {
-    padding: 4.5rem 0;
-  }
-
-  .visual-work-head {
-    margin-bottom: 2rem;
-  }
-
-  .visual-work-head h2 {
-    max-width: none;
-  }
-
-  .service-card-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 2.25rem;
-  }
-
-  .service-card-link {
-    display: block;
-    color: var(--text);
-  }
-
-  .service-card-image {
-    display: block;
-    width: 100%;
-    height: clamp(13rem, 22vw, 17.5rem);
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-    border: 1px solid var(--line);
-    background: rgba(255, 255, 255, 0.7);
-  }
-
-  .service-card h3 {
-    margin-top: 1rem;
-  }
-
-  .service-card p {
-    margin: 0.7rem 0 0;
-    color: var(--muted);
-    line-height: 1.68;
-    font-size: 1rem;
-  }
-
-  .service-card:hover h3 {
-    color: var(--accent-strong);
   }
 
   .contact-hero {
@@ -771,11 +663,6 @@ const contactDestinations = [
   }
 
   @media (max-width: 900px) {
-    .section-grid {
-      grid-template-columns: 1fr;
-      gap: 1.75rem;
-    }
-
     .intro-section {
       min-height: var(--hero-min-height-mobile);
       align-items: start;
@@ -789,12 +676,11 @@ const contactDestinations = [
       background: linear-gradient(180deg, rgba(244, 246, 243, 0.58) 0%, rgba(244, 246, 243, 0.24) 42%, rgba(244, 246, 243, 0.18) 100%);
     }
 
-    .section-intro,
     .intro-main {
       max-width: none;
     }
 
-    .service-card-grid {
+    .focus-grid {
       grid-template-columns: 1fr;
       gap: 2rem;
     }

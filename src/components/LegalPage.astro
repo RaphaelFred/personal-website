@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SiteHeader from './SiteHeader.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Layout title={`${title} | Raphael Fredebeul`} description={description} noindex>
+  <main class="legal-page" id="main-content">
+    <SiteHeader />
+
+    <article class="legal-content">
+      <h1>{title}</h1>
+      <slot />
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .legal-page {
+    width: var(--page-container);
+    margin: 0 auto;
+    padding: 1rem 0 4rem;
+  }
+
+  .legal-content {
+    max-width: 44rem;
+    padding: 2.5rem 0 0;
+    border-top: 1px solid var(--line);
+  }
+
+  h1 {
+    margin: 0 0 2rem;
+    font-size: var(--title-lg);
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .legal-content :global(h2) {
+    margin: 2.25rem 0 0.6rem;
+    font-size: var(--title-md);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+
+  .legal-content :global(p),
+  .legal-content :global(li) {
+    margin: 0 0 0.8rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .legal-content :global(ul) {
+    margin: 0 0 0.8rem;
+    padding-left: 1.2rem;
+  }
+
+  .legal-content :global(a) {
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+  }
+</style>

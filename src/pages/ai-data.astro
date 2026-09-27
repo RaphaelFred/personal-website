@@ -27,37 +27,37 @@ const blogImages = {
   },
 };
 
-const offers = [
+const topics = [
   {
     title: 'AI & Data',
     detail:
-      'Unterstuetzung bei analytischen Fragestellungen, Modellierung, KPI-Systemen und datengetriebenen Entscheidungen.',
+      'Analytische Fragestellungen, Modellierung, KPI-Systeme und die Frage, wie aus Daten bessere Entscheidungen werden.',
     points: ['Forecasting und Modelllogik', 'Exploration relevanter Signale', 'Pragmatische Datennutzung'],
   },
   {
     title: 'Produkt und Innovation',
     detail:
-      'Analyse von Nutzerverhalten, Identifikation neuer Chancen und Strukturierung von Innovations- und Produktfragen.',
-    points: ['Nutzer- und Produktverhalten', 'Hypothesen fuer neue Chancen', 'Priorisierung unter Unsicherheit'],
+      'Wie sich Nutzerverhalten lesen lässt, wo neue Chancen entstehen und wie man Innovations- und Produktfragen strukturiert.',
+    points: ['Nutzer- und Produktverhalten', 'Hypothesen für neue Chancen', 'Priorisierung unter Unsicherheit'],
   },
   {
     title: 'Strategische Kommunikation',
     detail:
-      'Insights so aufbereiten, dass Teams, Stakeholder und Entscheider damit wirklich arbeiten koennen.',
-    points: ['Klare Entscheidungsbilder', 'Storylines fuer Stakeholder', 'Uebersetzung technischer Ergebnisse'],
+      'Wie Insights so aufbereitet werden, dass Teams, Stakeholder und Entscheider damit wirklich arbeiten können.',
+    points: ['Klare Entscheidungsbilder', 'Storylines für Stakeholder', 'Übersetzung technischer Ergebnisse'],
   },
 ];
 
-const trustItems = ['Industrieerfahrung bei Miele', 'Datenkontext bei Arvato / Bertelsmann', 'Universitaet Bielefeld & Nova Universidade', '4. Platz SORDI.ai Wettbewerb'];
+const trustItems = ['Miele', 'Arvato / Bertelsmann', 'Universität Bielefeld & Nova Universidade', '4. Platz SORDI.ai Wettbewerb'];
 
 const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
 
 const contactMailto =
-  'mailto:raphaeldc@gmx.de?subject=Anfrage%20zu%20AI%20%26%20Data&body=Hallo%20Raphael,%0A%0Aich%20interessiere%20mich%20fuer%20eine%20Zusammenarbeit%20im%20Bereich%20AI%20%26%20Data.%0A%0AViele%20Gruesse';
+  'mailto:raphaeldc@gmx.de?subject=Hallo%20Raphael&body=Hallo%20Raphael,%0A%0A%0A%0AViele%20Gr%C3%BC%C3%9Fe';
 
 const contactDestinations = [
-  { label: 'AI & Data', href: '/beratung', icon: 'grid' },
+  { label: 'AI & Data', href: '/ai-data', icon: 'grid' },
   { label: 'Texte', href: '/blog', icon: 'pen' },
   { label: 'E-Mail', href: contactMailto, icon: 'mail' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raphael-fredebeul-733605140/', icon: 'linkedin' },
@@ -67,7 +67,7 @@ const contactDestinations = [
 
 <Layout
   title="AI & Data | Raphael Fredebeul"
-  description="AI & Data von Raphael Fredebeul fuer Innovation, Produktfragen und analytische Strategie."
+  description="AI & Data: Themen, Notizen und Artikel von Raphael Fredebeul zu Daten, KI, Innovation und Produktfragen."
 >
   <main class="page" id="main-content">
     <SiteHeader current="ai-data" />
@@ -82,7 +82,7 @@ const contactDestinations = [
     </section>
 
     <section class="trust-strip" aria-label="Erfahrung und Nachweise">
-      <p class="kicker">Kompetenznachweise</p>
+      <p class="kicker">Hintergrund</p>
       <div class="trust-list">
         {trustItems.map((item) => (
           <span>{item}</span>
@@ -90,20 +90,20 @@ const contactDestinations = [
       </div>
     </section>
 
-    <section class="section" id="angebot">
+    <section class="section" id="themen">
       <div class="section-head">
         <div class="section-copy">
-          <p class="kicker">Leistungsschwerpunkte</p>
-          <h2>Wo ich besonders gerne unterstuetze.</h2>
+          <p class="kicker">Themenfelder</p>
+          <h2>Womit ich mich beschäftige.</h2>
           <p class="section-text">
-            Der gemeinsame Nenner ist fast immer derselbe: Komplexitaet reduzieren, ohne wichtige
+            Der gemeinsame Nenner ist fast immer derselbe: Komplexität reduzieren, ohne wichtige
             Nuancen zu verlieren.
           </p>
         </div>
       </div>
 
       <div class="card-grid">
-        {offers.map((item) => (
+        {topics.map((item) => (
           <article class="card">
             <h3>{item.title}</h3>
             <p>{item.detail}</p>

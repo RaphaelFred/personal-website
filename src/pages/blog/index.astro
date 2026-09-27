@@ -21,16 +21,16 @@ const posts = (await getCollection('blog')).sort(
         <p class="kicker">AI & Data</p>
         <h1>Artikelarchiv zu Daten, Innovation und analytischer Arbeit.</h1>
         <p class="lead">
-          Die Artikel gehoeren inhaltlich zum Bereich AI & Data. Hier liegt das vollstaendige Archiv
-          aller Beitraege in einer klareren, leichter scanbaren Uebersicht.
+          Die Artikel gehören inhaltlich zum Bereich AI & Data. Hier liegt das vollständige Archiv
+          aller Beiträge in einer klareren, leichter scanbaren Übersicht.
         </p>
       </div>
 
       <aside class="archive-note">
         <p class="meta">Archiv</p>
-        <h2>{posts.length} Beitraege</h2>
-        <p>Neueste Artikel zuerst. Fuer Projekte und Zusammenarbeit geht es ueber den AI-&-Data-Bereich weiter.</p>
-        <a class="archive-link" href={withBase('/beratung')}>Zur AI-&-Data-Seite</a>
+        <h2>{posts.length} Beiträge</h2>
+        <p>Neueste Artikel zuerst. Mehr zu meinen Themen findest du im AI-&-Data-Bereich.</p>
+        <a class="archive-link" href={withBase('/ai-data')}>Zur AI-&-Data-Seite</a>
       </aside>
     </header>
 

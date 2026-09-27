@@ -4,11 +4,13 @@ import { withBase } from '../utils/paths';
 interface Props {
   title?: string;
   description?: string;
+  noindex?: boolean;
 }
 
 const {
   title = 'Raphael Fredebeul | Data Science',
-  description = 'Persoenliche Website von Raphael Fredebeul mit Fokus auf AI & Data, Innovation, Kreativitaet und Consulting.',
+  description = 'Persönliche Website von Raphael Fredebeul, Data Scientist mit Fokus auf KI, Daten, Innovation und Kreativität.',
+  noindex = false,
 } = Astro.props;
 
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
@@ -28,6 +30,7 @@ const socialImage = new URL(withBase('/social-card.svg'), Astro.site).toString()
     <link rel="canonical" href={canonicalUrl} />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
     <meta name="theme-color" content="#f7f8f5" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -45,6 +48,13 @@ const socialImage = new URL(withBase('/social-card.svg'), Astro.site).toString()
   <body>
     <a class="skip-link" href={withBase('/#main-content')}>Zum Inhalt springen</a>
     <slot />
+    <footer class="site-footer">
+      <span>© {new Date().getFullYear()} Raphael Fredebeul</span>
+      <nav aria-label="Rechtliches">
+        <a href={withBase('/impressum')}>Impressum</a>
+        <a href={withBase('/datenschutz')}>Datenschutz</a>
+      </nav>
+    </footer>
   </body>
 </html>
 
@@ -205,6 +215,32 @@ const socialImage = new URL(withBase('/social-card.svg'), Astro.site).toString()
 
   ::selection {
     background: rgba(182, 90, 58, 0.18);
+  }
+
+  .site-footer {
+    width: var(--page-container);
+    margin: 0 auto;
+    padding: 1.5rem 0 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem 1.5rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+
+  .site-footer nav {
+    display: flex;
+    gap: 1.25rem;
+  }
+
+  .site-footer a {
+    color: var(--muted);
+  }
+
+  .site-footer a:hover {
+    color: var(--accent-strong);
   }
 
   @media (max-width: 720px) {

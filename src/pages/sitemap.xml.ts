@@ -1,6 +1,6 @@
 import { getCollection } from 'astro:content';
 
-const staticRoutes = ['/', '/beratung/', '/ueber-mich/', '/blog/'];
+const staticRoutes = ['/', '/ai-data/', '/ueber-mich/', '/blog/'];
 
 function escapeXml(value: string) {
   return value

@@ -7,7 +7,7 @@ const redirectHosts = [
 ];
 const redirectPaths = [
   '/',
-  '/beratung/?source=deployment-check',
+  '/ai-data/?source=deployment-check',
 ];
 
 const timeoutMs = 10000;
@@ -107,7 +107,7 @@ try {
   ]);
   await assertTextAsset('/sitemap.xml', [
     '<loc>https://raphaelfredebeul.de/</loc>',
-    '<loc>https://raphaelfredebeul.de/beratung/</loc>',
+    '<loc>https://raphaelfredebeul.de/ai-data/</loc>',
     '<loc>https://raphaelfredebeul.de/ueber-mich/</loc>',
     '<loc>https://raphaelfredebeul.de/blog/</loc>',
   ]);

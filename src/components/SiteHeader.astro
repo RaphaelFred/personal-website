@@ -9,7 +9,7 @@ const { current = 'home' } = Astro.props;
 
 const navItems = [
   { href: '/ueber-mich', label: 'Über Mich', key: 'about' },
-  { href: '/beratung', label: 'AI & Data', key: 'ai-data' },
+  { href: '/ai-data', label: 'AI & Data', key: 'ai-data' },
   { href: '/#kontakt', label: 'Kontakt', key: 'contact' },
 ];
 
@@ -236,6 +236,16 @@ const externalLinks = [
     .nav a,
     .header-links a {
       white-space: nowrap;
+    }
+
+    .nav {
+      gap: 0.3rem;
+    }
+
+    .nav a {
+      padding: 0.7rem 0.7rem;
+      font-size: 0.84rem;
+      letter-spacing: 0.05em;
     }
 
     .header-links {

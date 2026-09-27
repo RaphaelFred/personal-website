@@ -5,35 +5,8 @@ import { withBase } from '../utils/paths';
 
 const cvPoints = [
   'Data Scientist mit Fokus auf AI, Datenanalyse und Innovation.',
-  'Arbeit an der Schnittstelle von analytischer Praezision, strategischer Einordnung und praktischer Umsetzbarkeit.',
-  'Interesse an Projekten, in denen neue Technologien sinnvoll in reale Arbeitsprozesse uebersetzt werden.',
-];
-
-const serviceDetails = [
-  {
-    id: 'tool-exploration',
-    title: 'Tool-Exploration',
-    detail:
-      'Ich unterstuetze dabei, geeignete Daten- und KI-Tools fuer konkrete Geschaefts- und Innovationsprozesse einzuordnen. Im Mittelpunkt steht eine Auswahl, die zu Aufgaben, Team und organisatorischem Reifegrad passt.',
-  },
-  {
-    id: 'use-cases',
-    title: 'Use Cases',
-    detail:
-      'Gemeinsam identifiziere ich Anwendungsfaelle, bei denen KI echten Mehrwert schaffen kann. Entscheidend sind dabei nicht nur Ideen, sondern Klarheit ueber Nutzen, Risiko, Priorisierung und die konkrete Umsetzung im Alltag.',
-  },
-  {
-    id: 'ki-schulungen',
-    title: 'KI-Schulungen',
-    detail:
-      'Ich entwickle Schulungen, die Mitarbeitenden einen praktischen und sicheren Zugang zu KI-Tools ermoeglichen. Ziel ist eine bessere Nutzung im Arbeitsalltag, nicht nur ein abstraktes Verstaendnis der Technologie.',
-  },
-  {
-    id: 'datenanalysen',
-    title: 'Datenanalysen',
-    detail:
-      'Ich fuehre Datenanalysen so durch, dass daraus konkrete Handlungsempfehlungen entstehen. Gute Analyse soll nicht nur Erkenntnisse liefern, sondern Entscheidungen, Prioritaeten und naechste Schritte belastbar machen.',
-  },
+  'Arbeit an der Schnittstelle von analytischer Präzision, strategischer Einordnung und praktischer Umsetzbarkeit.',
+  'Interesse daran, wie neue Technologien sinnvoll in reale Arbeitsprozesse übersetzt werden.',
 ];
 
 const evidenceGroups = [
@@ -44,7 +17,7 @@ const evidenceGroups = [
       {
         title: 'Miele',
         detail:
-          'Daten- und AI-Fragestellungen in einem industriellen Kontext, in dem analytische Arbeit anschlussfaehig und praktisch nutzbar sein muss.',
+          'Daten- und AI-Fragestellungen in einem industriellen Kontext, in dem analytische Arbeit anschlussfähig und praktisch nutzbar sein muss.',
       },
       {
         title: 'Arvato / Bertelsmann',
@@ -58,8 +31,8 @@ const evidenceGroups = [
     title: 'Akademischer Hintergrund',
     items: [
       {
-        title: 'Universitaet Bielefeld',
-        detail: 'Analytische Ausbildung und wissenschaftliches Arbeiten als Grundlage fuer strukturierte Datenarbeit.',
+        title: 'Universität Bielefeld',
+        detail: 'Analytische Ausbildung und wissenschaftliches Arbeiten als Grundlage für strukturierte Datenarbeit.',
       },
       {
         title: 'Nova Universidade',
@@ -80,10 +53,10 @@ const evidenceGroups = [
 ];
 
 const contactMailto =
-  'mailto:raphaeldc@gmx.de?subject=Anfrage%20zu%20AI%20%26%20Data&body=Hallo%20Raphael,%0A%0Aich%20interessiere%20mich%20fuer%20deine%20Arbeit%20im%20Bereich%20AI%20%26%20Data.%0A%0AViele%20Gruesse';
+  'mailto:raphaeldc@gmx.de?subject=Hallo%20Raphael&body=Hallo%20Raphael,%0A%0A%0A%0AViele%20Gr%C3%BC%C3%9Fe';
 
 const contactDestinations = [
-  { label: 'AI & Data', href: '/beratung', icon: 'grid' },
+  { label: 'AI & Data', href: '/ai-data', icon: 'grid' },
   { label: 'Texte', href: '/blog', icon: 'pen' },
   { label: 'E-Mail', href: contactMailto, icon: 'mail' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/raphael-fredebeul-733605140/', icon: 'linkedin' },
@@ -93,7 +66,7 @@ const contactDestinations = [
 
 <Layout
   title="Über Mich | Raphael Fredebeul"
-  description="Über mich: Raphael Fredebeul über AI, Datenanalyse, Innovation und die Bereiche, in denen er Unternehmen unterstuetzt."
+  description="Über mich: Raphael Fredebeul über AI, Datenanalyse, Innovation und seinen beruflichen Hintergrund."
 >
   <main class="page" id="main-content">
     <SiteHeader current="about" />
@@ -111,7 +84,7 @@ const contactDestinations = [
         <figure class="profile-image">
           <img
             src={withBase('/images/raphael-portrait.jpeg')}
-            alt="Raphael Fredebeul draussen vor einer Kuestenlandschaft"
+            alt="Raphael Fredebeul draußen vor einer Küstenlandschaft"
             loading="eager"
             decoding="async"
           />
@@ -172,30 +145,12 @@ const contactDestinations = [
       </div>
     </section>
 
-    <section class="section" id="was-ich-biete" aria-label="Was ich biete">
-      <div class="section-grid">
-        <div class="section-copy">
-          <p class="kicker">Was ich biete</p>
-          <h2>Vier Bereiche, in denen ich Unternehmen besonders konkret unterstuetze.</h2>
-        </div>
-
-        <div class="services-grid">
-          {serviceDetails.map((item) => (
-            <article class="service-card" id={item.id}>
-              <h3>{item.title}</h3>
-              <p>{item.detail}</p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
     <section class="contact-showcase" id="kontakt" aria-label="Kontakt">
       <div class="contact-hero">
         <div class="contact-card">
           <h2>Schreib mir gern.</h2>
           <p class="contact-copy">
-             Wenn du über KI, Daten, Innovation oder eine konkrete Herausforderung sprechen möchtest, freue ich mich über eine Nachricht.
+             Ob KI, Daten, Innovation oder einfach ein guter Gedanke: Ich freue mich über Austausch und neue Kontakte.
           </p>
           <a class="contact-mail-link" href={contactMailto}>Kontakt</a>
         </div>
@@ -411,7 +366,6 @@ const contactDestinations = [
 
   .section-text,
   .cv-item p,
-  .service-card p,
   .contact-copy {
     color: var(--muted);
     line-height: 1.7;
@@ -423,8 +377,7 @@ const contactDestinations = [
     max-width: 34rem;
   }
 
-  .cv-list,
-  .services-grid {
+  .cv-list {
     display: grid;
     gap: 1rem;
   }
@@ -432,14 +385,6 @@ const contactDestinations = [
   .cv-list {
     gap: 0;
     border-top: 1px solid var(--line);
-  }
-
-  .service-card {
-    padding: 1.2rem 1.25rem;
-    border: 1px solid var(--line);
-    border-radius: var(--radius-lg);
-    background: var(--panel);
-    box-shadow: var(--shadow-card);
   }
 
   .cv-item {
@@ -505,10 +450,6 @@ const contactDestinations = [
     display: grid;
     gap: 0.45rem;
     max-width: 42rem;
-  }
-
-  .service-card p {
-    margin: 0.7rem 0 0;
   }
 
   .evidence-item h4 {
