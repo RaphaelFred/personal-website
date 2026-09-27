@@ -1,0 +1,12 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+import { withBase } from '../utils/paths';
+---
+
+<LegalPage title="Seite nicht gefunden" description="Diese Seite gibt es nicht (mehr).">
+  <p>Diese Seite gibt es nicht oder nicht mehr.</p>
+  <p>
+    Weiter geht es zur <a href={withBase('/')}>Startseite</a>, zu <a href={withBase('/ueber-mich')}>Über mich</a>
+    oder zu den <a href={withBase('/blog')}>Artikeln</a>.
+  </p>
+</LegalPage>
